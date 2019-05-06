@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking_type extends Model
+class VIPCard extends Model
 {
     //
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dish_type extends Model
+class DishType extends Model
 {
     //
 }
