@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking_purpose extends Model
+class IdentificationType extends Model
 {
     //
 }
