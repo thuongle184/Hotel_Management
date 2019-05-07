@@ -1,5 +1,6 @@
 <?php
-
+ use App\product;
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,45 +13,33 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
-
-
 
 Route::group(['prefix' => 'backend/'], function () {
 
-	Route::get('trangchu', [
-		'as'  =>'trang-chu',
-		'uses'=>'PageController@gettrangchu'	
+	 
+ 
+	Route::get('homeadmin', [
+		'as'=> 'homeadmin',
+		'uses'=>'PageController@getadmin'
 	]);
 
-	Route::get('loai', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@getloaiSP'
-	]);
 
-	Route::get('chitiet', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@getChitiet'
-	]);
-
-	Route::get('lienhe', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@getLH'
-	]);
-
-	Route::get('about', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@getAbout'
-	]);
-
-	Route::get('list', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@getList'
-	]);
-
-	Route::get('master', [
-		'as'=> 'loaisanpham',
-		'uses'=>'PageController@master'
-	]);
 });
+
+
+
+Route::any ( '/search', function () {
+    $q = Input::get ( 'product_search' );
+    $search = product::where('name','LIKE','%'.$q.'%')->get();
+    if(count($search) > 0)
+       return view('layout.pages.search')->withDetails($search)->withQuery ( $q );
+    else
+       return view ('layout.pages.search')->withMessage('No Details found. Try to search again !');
+});
+
+ 
+ 
+
+ 
