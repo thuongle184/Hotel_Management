@@ -39,7 +39,34 @@ Route::any ( '/search', function () {
        return view ('layout.pages.search')->withMessage('No Details found. Try to search again !');
 });
 
- 
+Route::get('trangchu', [
+    'as'    => 'trangchu',
+    'uses'  => 'PageController@getTrangchu'
+]);
+Route::get('about', [
+    'as'    => 'about',
+    'uses'  => 'PageController@getAbout'
+]);
+Route::get('service', [
+    'as'    => 'service',
+    'uses'  => 'PageController@getService'
+]);
+Route::get('contact', [
+    'as'    => 'contact',
+    'uses'  => 'PageController@getContact'
+]);
+Route::get('room', [
+    'as'    => 'room',
+    'uses'  => 'PageController@getRoom'
+]);
+Route::get('new', [
+    'as'    => 'new',
+    'uses'  => 'PageController@getNew'
+]);
+Route::get('element', [
+    'as'    => 'element',
+    'uses'  => 'PageController@getElement'
+]); 
  
 
  
