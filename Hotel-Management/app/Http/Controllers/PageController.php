@@ -29,5 +29,25 @@ class PageController extends Controller
         return view('admin.pages.user.listUser', compact('users'));
     }
 
-    
+    public function getTrangchu(){
+        return view('page.trangchu');
+    }
+    public function getAbout(){
+        return view('page.about');
+    }
+    public function getService(){
+        return view('page.service');
+    }
+    public function getContact(){
+        return view('page.lienhe');
+    }
+    public function getRoom(){
+        return view('page.room');
+    }
+    public function getNew(){
+        return view('page.new');
+    }
+    public function getElement(){
+        return view('page.element');
+    }
 }
