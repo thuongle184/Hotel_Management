@@ -1,5 +1,7 @@
 <!-- ##### All Javascript Script ##### -->
     <!-- jQuery-2.2.4 js -->
+    <base href="{{asset('')}}">
+
     <script src="public/thepalatin/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
     <script src="public/thepalatin/js/bootstrap/popper.min.js"></script>

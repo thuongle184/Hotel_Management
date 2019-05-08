@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <base href="{{asset('')}}">
+
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
