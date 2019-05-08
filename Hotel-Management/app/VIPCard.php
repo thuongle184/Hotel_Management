@@ -6,5 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class VIPCard extends Model
 {
-    //
+    protected $table = 'vip_cards'; // name of table in the database
+    protected $guarded = ['id','user_id', 'point']; // fields in the table
+    public $timestamps=true; // set timestamp, allow to use
+     public function users() {
+    	return $this->hasMany('App\User', 'user_id', 'id');
+    }
 }
