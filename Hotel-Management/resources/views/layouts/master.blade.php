@@ -20,9 +20,9 @@
 
 </head>
 <body>
-	@include('header')
+	@include('layouts.header')
 	@yield('content')	
-	@include('footer')
-	@include('script')
+	@include('layouts.footer')
+	@include('layouts.script')
 </body>
 </html>

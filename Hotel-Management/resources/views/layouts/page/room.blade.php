@@ -1,4 +1,4 @@
-	@extends('master')
+	@extends('layouts.master')
 	@section('slide')
 	<section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(public/thepalatin/img/bg-img/bg-6.jpg);">
         <div class="bradcumbContent">

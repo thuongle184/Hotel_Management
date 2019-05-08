@@ -18,12 +18,6 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'backend/'], function () {
 
-  
-   
-	Route::get('homeadmin', [
-		'as'=> 'homeadmin',
-		'uses'=>'PageController@getadmin'
-	]);
 
     
     Route::get('trangchu', [
@@ -55,6 +49,48 @@ Route::group(['prefix' => 'backend/'], function () {
         'uses'  => 'PageController@getElement'
     ]); 
 
+    Route::get('homeadmin', [
+        'as'=> 'homeadmin',
+        'uses'=>'PageController@getadmin'
+    ]);
+
+    // User Type Admin
+    // Select userType
+    Route::get('listusertype', [
+        'as'    => 'listusertype',
+        'uses'  => 'UserTypeController@getShow'
+    ]);
+
+
+    // Add userType
+    Route::get('addUserType', [
+        'as'    => ' addUserType',
+        'uses'  => 'UserTypeController@addUserType'
+    ]);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    Route::post('addUserType', [
+        'as'    => 'postUserType',
+        'uses'  => 'UserTypeController@postUserType'
+    ]);
+
+    
+    
+    // Delete userType
+    Route::get('deleteUsertype/{id}', [
+        'as'    => 'getDeleteUserType',
+        'uses'  => 'UserTypeController@deleteUserType'
+    ]);
+
+    //Edit UserType
+    Route::get('editUserType/{id}', [
+        'as'    => 'editUserType',
+        'uses'  => 'UserTypeController@getEditUserType'
+    ]);
+
+    Route::post('editUserType/{id}', [
+        'as'    => 'posteditUserType ',
+        'uses'  => 'UserTypeController@postEditUserType'
+    ]);
 
 });
 

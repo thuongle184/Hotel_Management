@@ -8,7 +8,7 @@
                 <div class="bang">
                     <div class="hoc">
                     </br>
-                    <h2> Danh sách user</h2> 
+                    <h2> List of user type</h2> 
                      </br></br>
                 </div>
                 
@@ -16,20 +16,20 @@
                     <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Full Name</th>
-                                <th>Email</th>
-                                <th>Phone number</th>
-                                <th>Address</th>
+                                <th>User type's name</th>
+                                <th >Tools</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($users as $value)
+                            @foreach($user_type as $value)
                             <tr>
                                 <td> {!! $value["id"] !!} </td>
-                                <td>{!! $value["full_name"] !!}</td>
-                                <td>{!! $value["email"] !!}</td>
-                                <td>{!! $value["phone"] !!}</td>
-                                <td>{!! $value["address"] !!}</td>
+                                <td>{!! $value["label"] !!}</td>
+                                <td>    
+                                    <a href="{!! url('backend/addUserType') !!}"><i class="fa fa-plus-circle"></i>&nbsp;Thêm</a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
+                                    <a href="{!! url('backend/editUserType',$value["id"]) !!}"><i class="fa fa-pencil"></i>&nbsp;Sửa</a>&nbsp;&nbsp;
+                                    <a href="{!! url('backend/deleteUsertype',$value["id"]) !!}"><i class="fa fa-trash"></i>&nbsp;Xóa</a>
+                                </td>
                             </tr>
                             @endforeach
                             
