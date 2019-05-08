@@ -24,30 +24,26 @@ class PageController extends Controller
         return view('admin.pages.customer.listCus', compact('customer'));
     }
 
-    public function getlistUser() {
-        $users = user::select('id', 'full_name','email','password','phone','address')->get()->toArray();
-        return view('admin.pages.user.listUser', compact('users'));
-    }
-
+     
     public function getTrangchu(){
-        return view('page.trangchu');
+        return view('layouts.page.trangchu');
     }
     public function getAbout(){
-        return view('page.about');
+        return view('layouts.page.about');
     }
     public function getService(){
-        return view('page.service');
+        return view('layouts.page.service');
     }
     public function getContact(){
-        return view('page.lienhe');
+        return view('layouts.page.lienhe');
     }
     public function getRoom(){
-        return view('page.room');
+        return view('layouts.page.room');
     }
     public function getNew(){
-        return view('page.new');
+        return view('layouts.page.new');
     }
     public function getElement(){
-        return view('page.element');
+        return view('layouts.page.element');
     }
 }

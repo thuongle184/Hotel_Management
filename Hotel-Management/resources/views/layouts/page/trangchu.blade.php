@@ -1,4 +1,4 @@
-	@extends('master')
+	@extends('layouts.master')
 	@section('slide')
 	<!-- ##### Hero Area Start ##### -->
     <section class="hero-area">

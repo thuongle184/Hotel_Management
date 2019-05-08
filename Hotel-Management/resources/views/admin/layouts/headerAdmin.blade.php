@@ -168,13 +168,13 @@
                             </li>
 
                             <li>
-                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage Use<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage User Type<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="#">Add user</a>
+                                        <a href="{!! url('backend/addUserType') !!}">Add user type</a>
                                     </li>
                                     <li>
-                                        <a href="{!! url('backend/listUser') !!}">List user</a>
+                                        <a href="{!! url('backend/listUserType') !!}">List user type</a>
                                     </li>
                                     
                                 </ul>
