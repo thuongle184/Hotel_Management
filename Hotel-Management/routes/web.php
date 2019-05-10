@@ -16,6 +16,14 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+
+Route::resources([
+  'dishTypes' => 'DishTypeController',
+  'titles' => 'TitleController',
+  'userTypes' => 'UserTypeController'
+]);
+
+
 Route::group(['prefix' => 'backend/'], function () {
 
   
@@ -54,37 +62,6 @@ Route::group(['prefix' => 'backend/'], function () {
         'as'    => 'element',
         'uses'  => 'PageController@getElement'
     ]); 
-
-    // User type  
-    
-    Route::get('addUserType', [
-        'as'    => 'addUserType',
-        'uses'  => 'UserTypeController@addUserType'
-    ]);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
-    Route::post('addUserType', [
-        'as'    => 'postAddUserType',
-        'uses'  => 'UserTypeController@postUserType'
-    ]);
- 
-    Route::get('listUserType', [
-        'as'    => 'listUserType',
-        'uses'  => 'UserTypeController@getlistUserType'
-    ]);
-     
-    Route::get('deleteUserType/{id}', [
-        'as'    => 'getdeleteUserType',
-        'uses'  => 'UserTypeController@deleteUserType'
-    ]);
-     
-    Route::get('editUserType/{id}', [
-        'as'    => 'editUserType',
-        'uses'  => 'UserTypeController@getEditUserType'
-    ]);
-    Route::post('editUserType/{id}', [
-        'as'    => 'postEditUserType',
-        'uses'  => 'UserTypeController@postEditUserType'
-    ]);
 
     
 });

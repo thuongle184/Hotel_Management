@@ -2,16 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\UserType;
+use App\Title;
 use Illuminate\Http\Request;
-use Validator;
-use Auth;
-use App\Http\Requests\userTypeRequest;
-use Input,File;
-use DB;     
-use Session;
 
-class UserTypeController extends Controller
+class TitleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +14,7 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-      $userType = UserType::select('id', 'label')->get()->toArray();
-      return view('userType/index', compact('userType'));
+        //
     }
 
     /**
@@ -48,10 +41,10 @@ class UserTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\UserType  $userType
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function show(UserType $userType)
+    public function show(Title $title)
     {
         //
     }
@@ -59,10 +52,10 @@ class UserTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UserType  $userType
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function edit(UserType $userType)
+    public function edit(Title $title)
     {
         //
     }
@@ -71,10 +64,10 @@ class UserTypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UserType  $userType
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserType $userType)
+    public function update(Request $request, Title $title)
     {
         //
     }
@@ -82,10 +75,10 @@ class UserTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UserType  $userType
+     * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UserType $userType)
+    public function destroy(Title $title)
     {
         //
     }

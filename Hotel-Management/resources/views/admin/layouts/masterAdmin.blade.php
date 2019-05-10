@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('admin.layouts.theheader')
+        @include('admin.layouts.theHeader')
     </head>
     <body>
         <div id="wrapper">
