@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BookingPurposeRequest extends FormRequest
+class TableRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,15 @@ class BookingPurposeRequest extends FormRequest
     public function rules()
     {
         return [
-            'txtlabel'          => 'required|unique:booking_purposes,label',
+            'label'             =>'required|unique:user_types,label',
+            
         ];
     }
 
-    public function messages() {
-        return [
-            'txtlabel.required'        => 'Please enter the name of booking purpose!',
-            'txtlabel.unique'          => 'Sorry this name is already exit!',      
+    public function messages (){
+        return[
+            'label.required'              =>'Enter user name type !',
+            'label.unique'                =>'This name exists !',
         ];
     }
 }

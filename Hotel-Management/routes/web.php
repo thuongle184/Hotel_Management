@@ -18,17 +18,21 @@ Route::get('/', function () {
 
 
 Route::resources([
-  'dishTypes' => 'DishTypeController',
+  // 'dishTypes' => 'DishTypeController',
   'titles' => 'TitleController',
   'userTypes' => 'UserTypeController'
 ]);
 
 
-Route::group(['prefix' => 'backend/'], function () {
 
-  
-   
-	Route::get('homeadmin', [
+
+
+
+
+
+
+Route::group(['prefix' => 'backend/'], function () {
+    Route::get('homeadmin', [
 		'as'=> 'homeadmin',
 		'uses'=>'PageController@getadmin'
 	]);

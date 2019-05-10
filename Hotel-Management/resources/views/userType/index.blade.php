@@ -27,7 +27,7 @@
                         <td> {!! $value["id"] !!} </td>
                         <td>{!! $value["label"] !!}</td>
                         <td>    
-                            <a href="{!! url('backend/addUserType') !!}"><i class="fa fa-plus-circle"></i>&nbsp;Thêm</a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
+                            <a href="{!! url('userTypes/create') !!}"><i class="fa fa-plus-circle"></i>&nbsp;Thêm</a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
                             <a href="{!! url('backend/editUserType',$value["id"]) !!}"><i class="fa fa-pencil"></i>&nbsp;Sửa</a>&nbsp;&nbsp;
                             <a href="{!! url('backend/deleteUserType',$value["id"]) !!}"><i class="fa fa-trash"></i>&nbsp;Xóa</a>
                         </td>

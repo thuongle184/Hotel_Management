@@ -171,10 +171,10 @@
                                 <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage User Type<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{!! url('backend/addUserType') !!}">Add user type</a>
+                                        <a href="{!! url('userTypes/create') !!}">Add user type</a>
                                     </li>
                                     <li>
-                                        <a href="{!! url('backend/listUserType') !!}">List user type</a>
+                                        <a href="{!! url('userTypes') !!}">List user type</a>
                                     </li>
                                     
                                 </ul>
