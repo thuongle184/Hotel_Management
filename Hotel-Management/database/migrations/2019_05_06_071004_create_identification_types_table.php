@@ -15,7 +15,7 @@ class CreateIdentificationTypesTable extends Migration
     {
         Schema::create('identification_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('label');
+            $table->string('label')->unique();
             $table->timestamps();
         });
     }

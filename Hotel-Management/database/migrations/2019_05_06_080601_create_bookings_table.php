@@ -20,12 +20,14 @@ class CreateBookingsTable extends Migration
             $table->integer('room_id')->unsigned();
             $table->date('entry_date');
             $table->date('exit_date');
+            $table->enum('is_paid', ['yes', 'no']);
             $table->integer('booking_purpose_id')->unsigned();
 
             $table->foreign('booking_type_id')->references('id')->on('booking_types')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('booking_purpose_id')->references('id')->on('booking_purposes')->onDelete('cascade');
+            $table->timestamps();
 
         });
     }

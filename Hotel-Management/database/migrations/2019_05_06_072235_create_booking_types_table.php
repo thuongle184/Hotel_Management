@@ -16,7 +16,8 @@ class CreateBookingTypesTable extends Migration
         Schema::create('booking_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('label');
-            $table->integer('online_plateform_id')->unsigned();
+
+            $table->integer('online_plateform_id')->unsigned()->nullable;
             
             $table->foreign('online_plateform_id')->references('id')->on('online_plateforms')->onDelete('cascade');
             $table->timestamps();

@@ -15,7 +15,7 @@ class CreateOnlinePlateformsTable extends Migration
     {
         Schema::create('online_plateforms', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('label');
+            $table->string('label')->unique();
             $table->timestamps();
         });
     }

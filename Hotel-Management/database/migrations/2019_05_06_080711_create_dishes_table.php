@@ -20,7 +20,7 @@ class CreateDishesTable extends Migration
             $table->string('image');
             $table->integer('price');
             $table->string('description');
-            $table->enum('is_availabel', ['yes', 'no']);
+            $table->enum('is_available', ['yes', 'no']);
             $table->foreign('dish_type_id')->references('id')->on('dish_types')->onDelete('cascade');
             $table->timestamps();
         });

@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,11 +16,11 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('room_size_id')->unsigned();
-            $table->integer('number');
+            $table->string('number')->unique();
             $table->enum('is_smoking', ['yes', 'no']);
             $table->integer('price');
             $table->enum('is_available', ['yes', 'no']);
-            $table->integer('bed_number');
+            $table->integer('beds');
             $table->foreign('room_size_id')->references('id')->on('room_sizes')->onDelete('cascade');
             $table->timestamps();
         });

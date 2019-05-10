@@ -18,14 +18,14 @@ class CreateUsersTable extends Migration
             $table->integer('user_type_id')->unsigned();
             $table->integer('title_id')->unsigned();
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->string('user_name');
+            $table->string('user_name')->nullable();;
             $table->date('DOB');
-            $table->string('password');
+            $table->string('password')->nullable();;
             $table->string('address');
             $table->string('email');
-            $table->integer('phone');
+            $table->string('phone');
             $table->integer('country_id')->unsigned();
             $table->integer('identification_type_id')->unsigned();
             $table->string('information');

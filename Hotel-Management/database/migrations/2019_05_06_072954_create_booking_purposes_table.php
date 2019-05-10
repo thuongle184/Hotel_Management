@@ -15,7 +15,7 @@ class CreateBookingPurposesTable extends Migration
     {
         Schema::create('booking_purposes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('label');
+            $table->string('label')->unique();
             $table->timestamps();
         });
     }

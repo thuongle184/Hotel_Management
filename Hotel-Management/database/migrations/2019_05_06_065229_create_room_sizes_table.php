@@ -15,7 +15,7 @@ class CreateRoomSizesTable extends Migration
     {
         Schema::create('room_sizes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('label');
+            $table->string('label')->unique();
             $table->timestamps();
         });
     }
