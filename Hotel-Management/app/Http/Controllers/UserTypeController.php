@@ -56,7 +56,7 @@ class UserTypeController extends Controller
      */
     public function show(UserType $userType)
     {
-        $userType = UserType::find($id);
+        // $userType = UserType::find($id); => NO NEED BECAUSE YOU ALREADY HAVE IT
         return view('userType/show',compact('userType'));
     }
 
@@ -66,9 +66,9 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function edit(TableRequest $userType)
+    public function edit(UserType $userType)
     {
-        $userType = UserType::find($id);
+        // $userType = UserType::find($id); => NO NEED BECAUSE YOU ALREADY HAVE IT
         return view('userType/edit',compact('userType'));
     
     }
@@ -80,10 +80,10 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UserType $userType)
+    public function update(TableRequest $request, UserType $userType)
     {
-        $userType = UserType::find($userType);
-        $userType->label = Request::input('label');
+        // $userType = UserType::find($userType); => NO NEED BECAUSE YOU ALREADY HAVE IT
+        $userType->label = $request->label;
         $userType->save();
         return redirect()->route('userTypes.index')->with('success','Sửa sản phẩm thành công!');
     }
@@ -96,8 +96,8 @@ class UserTypeController extends Controller
      */
     public function destroy(UserType $userType)
     {
-        $userType = UserType::find($userType);
-        $userType->delete($id);
+        // $userType = UserType::find($userType); => NO NEED BECAUSE YOU ALREADY HAVE IT
+        $userType->delete();
         return back()->with('success','Xóa sản phẩm thành công!');
     }
 }

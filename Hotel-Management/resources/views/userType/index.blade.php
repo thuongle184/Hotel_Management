@@ -21,18 +21,36 @@
                         <th >Tools</th>
                     </tr>
                 </thead>
+
                 <tbody id="myTable">
-                    @foreach($userType as $value)
+                  @foreach($userType as $value)
                     <tr>
-                        <td> {!! $value["id"] !!} </td>
-                        <td>{!! $value["label"] !!}</td>
-                        <td>    
-                            <a href="{!! url('userTypes/create') !!}"><i class="fa fa-plus-circle"></i>&nbsp;Thêm</a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
-                            <a href="{!! url('backend/editUserType',$value["id"]) !!}"><i class="fa fa-pencil"></i>&nbsp;Sửa</a>&nbsp;&nbsp;
-                            <a href="{!! url('backend/deleteUserType',$value["id"]) !!}"><i class="fa fa-trash"></i>&nbsp;Xóa</a>
-                        </td>
+                      <td>{!! $value["id"] !!}</td>
+                      <td>{!! $value["label"] !!}</td>
+                      
+                      <td>    
+                        <a href="{!! route('userTypes.show', $value["id"]) !!}">
+                          <i class="fa fa-plus-circle"></i>&nbsp;Thêm
+                        </a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
+                        
+                        <a href="{!! route('userTypes.edit', $value["id"]) !!}">
+                          <i class="fa fa-pencil"></i>&nbsp;Sửa
+                        </a>&nbsp;&nbsp;
+                        
+                        <form
+                          action="{!! URL::action('UserTypeController@destroy', $value["id"]) !!}"
+                          method="POST"
+                        >
+                          @method('DELETE')
+                          @csrf
+
+                          <button type="submit" class="btn btn-xs btn-danger">
+                            <i class="fa fa-trash"></i>&nbsp;Xóa
+                          </button>
+                        </form>
+                      </td>
                     </tr>
-                    @endforeach
+                  @endforeach
                     
                 </tbody>
                 
