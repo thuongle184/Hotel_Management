@@ -45,7 +45,7 @@ class UserTypeController extends Controller
         $userType = new UserType; // ten model
         $userType->label = $request->label;
         $userType->save();
-        return redirect()->route('userTypes')->with('success','Thêm sản phẩm thành công!'); // Lay dia chi cua phan as ben route
+        return redirect()->route('userTypes.index')->with('success','Thêm sản phẩm thành công!'); // Lay dia chi cua phan as ben route
     }
 
     /**
