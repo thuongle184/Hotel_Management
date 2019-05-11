@@ -85,7 +85,7 @@ class UserTypeController extends Controller
         $userType = UserType::find($userType);
         $userType->label = Request::input('label');
         $userType->save();
-        return redirect()->route('listUserType')->with('success','Sửa sản phẩm thành công!');
+        return redirect()->route('userTypes.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**
