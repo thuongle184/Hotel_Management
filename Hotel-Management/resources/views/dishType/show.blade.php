@@ -7,7 +7,7 @@
 
       <center>
         <h1 style="margin-top: 60px; color: #33fcb8;">
-          Show User Type
+          Show Dish Type
       </h1>
   </center>
 
@@ -15,11 +15,11 @@
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
 
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h4>User type id: </h4> 
+        <h4>Dish type id: </h4> 
       </div>
 
      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-          <h4 style="color: black;">{{$userType["id"]}}</h4>
+          <h4 style="color: black;">{{$dishType["id"]}}</h4>
      </div>
     </div>
 
@@ -27,11 +27,11 @@
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
 
       <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h4>User type name: </h4> 
+        <h4>Dish type name: </h4> 
       </div>
 
      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-          <h4 style="color: black;">{{$userType["label"]}}</h4>
+          <h4 style="color: black;">{{$dishType["label"]}}</h4>
      </div>
     </div>
 

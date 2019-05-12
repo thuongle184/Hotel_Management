@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <h1 style="color: #7a09ff;" class="page-header">Add User Type</h1>
+                <h1 style="color: #7a09ff;" class="page-header">Add Booking Purpose</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -18,7 +18,7 @@
 
     </div>
     @endif
-    <form   action="{{ URL::action('UserTypeController@postUserType') }}" enctype="multipart/form-data" method="POST" role="form" class="form-horizontal registration-form" >
+    <form   action="{!! url('/bookingPurposes') !!}" enctype="multipart/form-data" method="POST" role="form" class="form-horizontal registration-form" >
         {{ csrf_field() }}
         <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 
@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
             <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                <h4>User type name:</h4>
+                <h4>Purpose name:</h4>
             </div>
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
              <input  id="cach" value="{{old('label')}}" type="text" class="form-control" name="label" placeholder="Enter user type name">

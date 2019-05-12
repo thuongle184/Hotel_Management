@@ -18,9 +18,12 @@ Route::get('/', function () {
 
 
 Route::resources([
-  // 'dishTypes' => 'DishTypeController',
-  'titles' => 'TitleController',
-  'userTypes' => 'UserTypeController'
+  'dishTypes'         => 'DishTypeController',
+  'bookingPurposes'   => 'BookingPurposeController',
+  'roomSizes'         => 'RoomSizeController',
+  'titles'            => 'TitleController',
+  'userTypes'         => 'UserTypeController',
+  'equipments'        => 'EquipmentController',
 ]);
 
 

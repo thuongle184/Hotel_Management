@@ -9,7 +9,7 @@
                 <div class="bang">
                     <div class="hoc">
                     </br>
-                    <h2> List of user type</h2> 
+                    <h2> List of equipments</h2> 
                 </br></br>
             </div>
             <input class="form-control" id="myInput" type="text" placeholder="Search.."></br>
@@ -23,22 +23,22 @@
                 </thead>
 
                 <tbody id="myTable">
-                  @foreach($userType as $value)
+                  @foreach($equipment as $value)
                     <tr>
                       <td>{!! $value["id"] !!}</td>
                       <td>{!! $value["label"] !!}</td>
                       
                       <td>    
-                        <a href="{!! route('userTypes.show', $value["id"]) !!}">
+                        <a href="{!! route('equipments.show', $value["id"]) !!}">
                           <i class="fa fa-plus-circle"></i>&nbsp;Show
                         </a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
                         
-                        <a href="{!! route('userTypes.edit', $value["id"]) !!}">
+                        <a href="{!! route('equipments.edit', $value["id"]) !!}">
                           <i class="fa fa-pencil"></i>&nbsp;Update
                         </a>&nbsp;&nbsp;
                         
                         <form
-                          action="{!! URL::action('UserTypeController@destroy', $value["id"]) !!}"
+                          action="{!! URL::action('EquipmentController@destroy', $value["id"]) !!}"
                           method="POST"
                         >
                           @method('DELETE')
