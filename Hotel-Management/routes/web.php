@@ -21,9 +21,12 @@ Route::resources([
   'dishTypes'         => 'DishTypeController',
   'bookingPurposes'   => 'BookingPurposeController',
   'roomSizes'         => 'RoomSizeController',
-  'titles'            => 'TitleController',
   'userTypes'         => 'UserTypeController',
   'equipments'        => 'EquipmentController',
+  'titles'            => 'TitleController',
+  'onlinePlateforms'        => 'OnlinePlateformController',
+  'identificationTypes'        => 'IdentificationTypeController',
+  'countries'        => 'CountryController',
 ]);
 
 

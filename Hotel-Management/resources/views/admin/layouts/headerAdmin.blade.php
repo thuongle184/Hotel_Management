@@ -210,10 +210,10 @@
                                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage Tiltles<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="{!! url('userTypes/create') !!}">Add new title</a>
+                                                <a href="{!! url('titles.create') !!}">Add new title</a>
                                             </li>
                                             <li>
-                                                <a href="{!! url('userTypes') !!}">List titles</a>
+                                                <a href="{!! url('titles') !!}">List titles</a>
                                             </li>
                                             
                                         </ul>

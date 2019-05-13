@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Title;
+use App\Country;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
@@ -11,7 +11,7 @@ use Input,File;
 use DB;     
 use Session;
 
-class TitleController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $title = Title::select('id', 'label')->get()->toArray();
-        return view('title/index', compact('title'));
+        $country = Country::select('id', 'label')->get()->toArray();
+        return view('country/index', compact('country'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TitleController extends Controller
      */
     public function create()
     {
-        return view('title/create');
+        return view('country/create');
     }
 
     /**
@@ -42,57 +42,57 @@ class TitleController extends Controller
      */
     public function store(Request $request)
     {
-        $title = new Title; // ten model
-        $title->label = $request->label;
-        $title->save();
-        return redirect()->route('titles.index')->with('success','Add success!'); // Lay dia chi cua phan as ben route
+        $country = new Country; // ten model
+        $country->label = $request->label;
+        $country->save();
+        return redirect()->route('countries.index')->with('success','Add success!');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Title $title)
+    public function show(Country $country)
     {
-        return view('title/show',compact('title'));
+         return view('country/show',compact('country'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title)
+    public function edit(Country $country)
     {
-        return view('title/edit',compact('title'));
+        return view('country/edit',compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Title  $title
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Title $title)
+    public function update(Request $request, Country $country)
     {
-        $title->label = $request->label;
-        $title->save();
-        return redirect()->route('titles.index')->with('success','Edit success!');
+        $country->label = $request->label;
+        $country->save();
+        return redirect()->route('countries.index')->with('success','Edit success!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Title  $title
+     * @param  \App\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Title $title)
+    public function destroy(Country $country)
     {
-        $title->delete();
+        $country->delete();
         return back()->with('success','Delete success!');
     }
 }
