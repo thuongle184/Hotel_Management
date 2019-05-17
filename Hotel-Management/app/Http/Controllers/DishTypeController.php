@@ -21,7 +21,7 @@ class DishTypeController extends Controller
      */
     public function index()
     {
-        $dishType = DishType::select('id', 'label')->get()->toArray();
+        $dishType = DishType::all();
       return view('dishType/index', compact('dishType'));
     }
 

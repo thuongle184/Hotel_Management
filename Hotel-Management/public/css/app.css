@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 
 
+body { margin: 0 15px 0 15px; }
+aside, main { padding: 19px; }
+
 @media screen and (min-width: 768px) {
   aside {
     height: 100vh;
@@ -26,6 +29,11 @@ aside a:active {
 
 .navbar-toggler-icon { background-image: none !important; }
 .navbar-toggler { border: none !important; }
+
+.my-frame {
+  border: 1px solid #111;
+  padding: 19px;
+}
 
 
 /*  MARGINS   */

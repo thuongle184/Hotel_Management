@@ -20,8 +20,8 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $country = Country::select('id', 'label')->get()->toArray();
-        return view('country/index', compact('country'));
+        $countries = Country::orderBy('label')->get();
+        return view('country/index', compact('countries'));
     }
 
     /**

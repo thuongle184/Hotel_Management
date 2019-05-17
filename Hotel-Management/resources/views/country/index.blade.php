@@ -1,63 +1,63 @@
 @extends('_layouts.app')
 
+@section('header')
+
+  @include(
+    '_layouts.indexHeader',
+    ['title' => "Countries", 'route' => route('countries.create'), 'buttonLabel' => "Add a new country"]
+  )
+
+@endsection
+
+
 @section('content')
-<div id="page-wrapper">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                <div class="bang">
-                    <div class="hoc">
-                    </br>
-                    <h2> List of country</h2> 
-                </br></br>
+  <div class="row">
+
+    @foreach($countries as $country)
+
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object">
+        <div class="my-frame">
+          <div class="my-padding-bottom-12 my-filter-target">
+            {!! $country["label"] !!}
+          </div>
+          
+          <div class="d-flex flex-wrap">
+
+            <div class="my-padding-right-8 my-padding-bottom-8">
+              <a href="{!! route('countries.show', $country["id"]) !!}" class="btn btn-sm btn-outline-dark">
+                <i class="fas fa-eye my-margin-right-12"></i>
+                <span>Detail</span>
+              </a>
             </div>
-            <input class="form-control" id="myInput" type="text" placeholder="Search.."></br>
-            <table  class="table table-striped table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Name</th>
-                        <th >Tools</th>
-                    </tr>
-                </thead>
+            
+            <div class="my-padding-right-8 my-padding-bottom-8">
+              <a href="{!! route('countries.edit', $country["id"]) !!}" class="btn btn-sm btn-outline-primary">
+                <i class="far fa-edit my-margin-right-12"></i>
+                <span>Edit</span>
+              </a>
+            </div>
 
-                <tbody id="myTable">
-                  @foreach($country as $value)
-                    <tr>
-                      <td>{!! $value["id"] !!}</td>
-                      <td>{!! $value["label"] !!}</td>
-                      
-                      <td>    
-                        <a href="{!! route('countries.show', $value["id"]) !!}">
-                          <i class="fa fa-plus-circle"></i>&nbsp;Detail
-                        </a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
-                        
-                        <a href="{!! route('countries.edit', $value["id"]) !!}">
-                          <i class="fa fa-pencil"></i>&nbsp;Edit
-                        </a>&nbsp;&nbsp;
-                        
-                        <form
-                          action="{!! URL::action('CountryController@destroy', $value["id"]) !!}"
-                          method="POST"
-                        >
-                          @method('DELETE')
-                          @csrf
+            <div class="my-padding-bottom-8">
+              <form
+                action="{!! URL::action('CountryController@destroy', $country["id"]) !!}"
+                method="POST"
+              >
+                @method('DELETE')
+                @csrf
 
-                          <button type="submit" class="btn btn-sm btn-danger">
-                            <i class="fa fa-trash"></i>&nbsp;Delete
-                          </button>
-                        </form>
-                      </td>
-                    </tr>
-                  @endforeach
-                    
-                </tbody>
-                
-            </table>
-        </div><!-- /.bang -->
-    </div><!-- /.col -->
-</div><!-- /.row -->
-</div><!-- /.container -->
-</div>
+                <button type="submit" class="btn btn-sm btn-danger">
+                  <i class="fa fa-trash"></i>&nbsp;Delete
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    @endforeach
+
+  </div>
+
 @endsection

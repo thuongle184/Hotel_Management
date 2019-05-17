@@ -20,16 +20,25 @@
   </head>
 
 
-  <body class="row">
-    <aside class="col-12 col-md-3 p-3 bg-dark">
-      @include('_layouts.aside')
-    </aside>
+  <body>
 
-    <main class="col bg-faded py-3">
-      @yield('content') 
-    </main>
+    <section class="row">
+      <aside class="col-12 col-md-3 bg-dark">
+        @include('_layouts.aside')
+      </aside>
 
-    @include('_layouts.scripts')
+      <main class="col-12 col-md-9 bg-light">
+        <header>
+          @yield('header')
+        </header>
+
+        <article>
+          @yield('content') 
+        </article>
+      </main>
+
+      @include('_layouts.scripts')
+    </section>
   </body>
 
 </html>

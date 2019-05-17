@@ -4,10 +4,10 @@
 
 <script>
     $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
+      $(".my-filter").on("keyup", function() {
         var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(".my-filter-target").filter(function() {
+          $(this).closest('.my-filter-object').toggle($(this).text().toLowerCase().indexOf(value) > -1)
       });
     });
   });
