@@ -47,7 +47,8 @@
                 @csrf
 
                 <button type="submit" class="btn btn-sm btn-danger">
-                  <i class="fa fa-trash"></i>&nbsp;Delete
+                  <i class="far fa-trash-alt my-margin-right-12"></i>
+                  <span>Delete</span>
                 </button>
               </form>
             </div>
