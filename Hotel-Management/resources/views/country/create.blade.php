@@ -1,6 +1,41 @@
 @extends('_layouts.app')
 
+@section('header')
+
+  @include(
+    '_layouts.header',
+    ['title' => "Add a new country"]
+  )
+
+@endsection
+
+
 @section('content')
+
+  @include(
+    'country/_form',
+    ['errors' => $errors, 'action' => URL::action('CountryController@store'), 'country' => $country]
+  )
+
+@endsection
+
+
+
+
+
+
+
+
+@extends('_layouts.app')
+
+@section('content')
+
+
+
+
+
+
+
 <div id="page-wrapper">
     <div class="container-fluid">
         <div class="row">

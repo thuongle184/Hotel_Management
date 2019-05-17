@@ -31,7 +31,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('country/create');
+        $country = new Country;
+        return view('country/create', compact('country'));
     }
 
     /**
