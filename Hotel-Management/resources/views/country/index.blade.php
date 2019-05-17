@@ -16,7 +16,7 @@
 
     @foreach($countries as $country)
 
-      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object">
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-country">
         <div class="my-frame">
           <div class="my-padding-bottom-12 my-filter-target">
             {!! $country["label"] !!}
@@ -39,18 +39,14 @@
             </div>
 
             <div class="my-padding-bottom-8">
-              <form
-                action="{!! URL::action('CountryController@destroy', $country["id"]) !!}"
-                method="POST"
+              <button
+                class="btn btn-sm btn-danger my-country-delete"
+                data-token="{!! csrf_token() !!}"
+                data-url="{!! route('countries.destroy', $country['id']) !!}"
               >
-                @method('DELETE')
-                @csrf
-
-                <button type="submit" class="btn btn-sm btn-danger">
-                  <i class="far fa-trash-alt my-margin-right-12"></i>
-                  <span>Delete</span>
-                </button>
-              </form>
+                <i class="far fa-trash-alt my-margin-right-12"></i>
+                <span>Delete</span>
+              </button>
             </div>
 
           </div>

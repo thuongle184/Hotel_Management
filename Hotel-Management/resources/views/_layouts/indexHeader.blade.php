@@ -6,3 +6,5 @@
 </a>
 
 <input class="form-control my-filter my-margin-bottom-19 my-margin-top-40" type="text" placeholder="Filter...">
+
+<div class="d-none my-margin-bottom-19" id="my-entity-delete-status"></div>
