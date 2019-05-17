@@ -92,6 +92,6 @@ class DishTypeController extends Controller
     public function destroy(DishType $dishType)
     {
         $dishType->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }
