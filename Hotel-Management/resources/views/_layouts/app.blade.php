@@ -21,7 +21,7 @@
 
 
   <body class="row">
-    <aside class="col-12 col-md-2 p-0 bg-dark">
+    <aside class="col-12 col-md-3 p-3 bg-dark">
       @include('_layouts.aside')
     </aside>
 
