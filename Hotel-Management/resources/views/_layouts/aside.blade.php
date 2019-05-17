@@ -1,10 +1,35 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark py-2">
 
-  <div class="collapse navbar-collapse">
-    
-    <ul class="flex-md-column flex-row navbar-nav justify-content-between">
+  <div class="d-md-none">
+    <a href="{!! url('/') !!}">
+      <i class="fas fa-home my-margin-right-12"></i>
       
-      <li class="my-padding-bottom-19">
+      <strong>
+        <em>HOME</em>
+      </strong>
+    </a>
+  </div>
+  
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#my-navbar-content"
+    aria-controls="my-navbar-content"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon">
+      <i class="fas fa-sitemap"></i>
+    </span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="my-navbar-content">
+    
+    <ul class="nav navbar-nav d-flex flex-column">
+      
+      <li class="d-none d-md-block">
         <a href="{!! url('/') !!}">
           <i class="fas fa-home my-margin-right-12"></i>
           
@@ -14,7 +39,7 @@
         </a>
       </li>
 
-      <li>
+      <li class="my-margin-top-19">
         <a href="{!! url('bookingPurposes') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
           <span>Booking purposes</span>
