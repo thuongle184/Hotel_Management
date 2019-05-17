@@ -6,7 +6,7 @@ use App\DishType;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\DishTypeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -41,12 +41,10 @@ class DishTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableRequest $request)
+    public function store(DishTypeRequest $request)
     {
-        $dishType = new DishType; // ten model
-        $dishType->label = $request->label;
-        $dishType->save();
-        return redirect()->route('dishTypes.index')->with('success','Thêm sản phẩm thành công!'); 
+        DishType::create($request->all());
+        return redirect()->route('dishTypes.index')->with('success','Add success!');
     }
 
     /**
@@ -78,10 +76,9 @@ class DishTypeController extends Controller
      * @param  \App\DishType  $dishType
      * @return \Illuminate\Http\Response
      */
-    public function update(TableRequest $request, DishType $dishType)
+    public function update(DishTypeRequest $request, DishType $dishType)
     {
-        $dishType->label = $request->label;
-        $dishType->save();
+        $dishType->update($request->all());
         return redirect()->route('dishTypes.index')->with('success','Sửa sản phẩm thành công!');
     }
 
