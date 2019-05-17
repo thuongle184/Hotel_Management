@@ -7,21 +7,21 @@
         <title>Startmin - Bootstrap Admin Theme</title>
         <base href="{{asset('')}}"></base>
         <!-- Bootstrap Core CSS -->
-        <link href="public/css/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{{URL::asset('css/css/bootstrap.min.css')}}" rel="stylesheet">
 
         <!-- MetisMenu CSS -->
-        <link href="public/css/css/metisMenu.min.css" rel="stylesheet">
+        <link href="{{URL::asset('css/css/metisMenu.min.css')}}" rel="stylesheet">
 
         <!-- Timeline CSS -->
-        <link href="public/css/css/timeline.css" rel="stylesheet">
+        <link href="{{URL::asset('css/css/timeline.css')}}" rel="stylesheet">
 
         <!-- Custom CSS -->
-        <link href="public/css/css/startmin.css" rel="stylesheet">
+        <link href="{{URL::asset('css/css/startmin.css')}}" rel="stylesheet">
 
         <!-- Morris Charts CSS -->
-        <link href="public/css/css/morris.css" rel="stylesheet">
+        <link href="{{URL::asset('css/css/morris.css')}}" rel="stylesheet">
 
         <!-- Custom Fonts -->
-        <link href="public/css/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="{{URL::asset('css/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
