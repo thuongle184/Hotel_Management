@@ -1,4 +1,4 @@
-@extends('admin.layouts.masterAdmin')
+@extends('_layouts.app')
 
 @section('content')
 <div id="page-wrapper">
@@ -44,7 +44,7 @@
                           @method('DELETE')
                           @csrf
 
-                          <button type="submit" class="btn btn-xs btn-danger">
+                          <button type="submit" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash"></i>&nbsp;Delete
                           </button>
                         </form>

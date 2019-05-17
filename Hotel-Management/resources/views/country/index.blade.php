@@ -1,4 +1,4 @@
-@extends('admin.layouts.masterAdmin')
+@extends('_layouts.app')
 
 @section('content')
 <div id="page-wrapper">
@@ -44,7 +44,7 @@
                           @method('DELETE')
                           @csrf
 
-                          <button type="submit" class="btn btn-xs btn-danger">
+                          <button type="submit" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash"></i>&nbsp;Delete
                           </button>
                         </form>
@@ -60,17 +60,4 @@
 </div><!-- /.row -->
 </div><!-- /.container -->
 </div>
-<script>
-    $(document).ready(function(){
-      $("#myInput").on("keyup", function() {
-        var value = $(this).val().toLowerCase();
-        $("#myTable tr").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-      });
-    });
-  });
-</script>
 @endsection
-<div id="morris-area-chart" style="display: none;"></div>
-<div id="morris-bar-chart" style="display: none;"></div>
-<div id="morris-donut-chart" style="display: none;"></div>
