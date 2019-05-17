@@ -36,8 +36,8 @@ class DishTypeRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The dish type label is required',
-          'label.unique' => 'This dish type label has already been taken'
+          'label.required' => 'The dish category label is required',
+          'label.unique' => 'This dish category label has already been taken'
         ];
     }
 }

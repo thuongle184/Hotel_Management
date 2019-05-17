@@ -21,7 +21,7 @@ class DishTypeController extends Controller
      */
     public function index()
     {
-        $dishTypes = DishType::all();
+      $dishTypes = DishType::all();
       return view('dishType/index', compact('dishTypes'));
     }
 
@@ -32,7 +32,8 @@ class DishTypeController extends Controller
      */
     public function create()
     {
-        return view('dishType/create');
+      $dishType = new DishType;
+      return view('dishType/create', compact('dishType'));
     }
 
     /**
