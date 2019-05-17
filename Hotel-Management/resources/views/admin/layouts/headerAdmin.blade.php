@@ -222,10 +222,10 @@
                                         <a href="#"><i class="fa fa-sitemap fa-fw"></i> Manage Country<span class="fa arrow"></span></a>
                                         <ul class="nav nav-second-level">
                                             <li>
-                                                <a href="{!! url('userTypes/create') !!}">Add new country</a>
+                                                <a href="{!! url('countries/create') !!}">Add new country</a>
                                             </li>
                                             <li>
-                                                <a href="{!! url('userTypes') !!}">List countries</a>
+                                                <a href="{!! url('countries') !!}">List countries</a>
                                             </li>
                                             
                                         </ul>

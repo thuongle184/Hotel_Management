@@ -43,8 +43,20 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $country = new Country; // ten model
-        $country->label = $request->label;
-        $country->save();
+        // $country->label = $request->label;
+
+        $validator = Validator::make($request->all(), $country->rules, $country->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('countries.create')->withErrors($validator)->withInput();
+        }
+
+        // $request->validate($country->rules);
+        
+        // $country->save();
+
+        $country->Country::create($request->all());
+        
         return redirect()->route('countries.index')->with('success','Add success!');
     }
 
