@@ -43,7 +43,6 @@ class CountryController extends Controller
     public function store(Request $request)
     {
         $country = new Country; // ten model
-        // $country->label = $request->label;
 
         $validator = Validator::make($request->all(), $country->rules, $country->messages);
 
@@ -51,11 +50,7 @@ class CountryController extends Controller
           return redirect()->route('countries.create')->withErrors($validator)->withInput();
         }
 
-        // $request->validate($country->rules);
-        
-        // $country->save();
-
-        $country->Country::create($request->all());
+        Country::create($request->all());
         
         return redirect()->route('countries.index')->with('success','Add success!');
     }
@@ -91,8 +86,13 @@ class CountryController extends Controller
      */
     public function update(Request $request, Country $country)
     {
-        $country->label = $request->label;
-        $country->save();
+        $validator = Validator::make($request->all(), $country->rules, $country->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('countries.edit', $country->id)->withErrors($validator)->withInput();
+        }
+
+        $country->update($request->all());
         return redirect()->route('countries.index')->with('success','Edit success!');
     }
 

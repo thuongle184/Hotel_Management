@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     protected $table = 'countries'; // name of table in the database
-    protected $guarded = ['id','label']; // fields in the table
+    protected $guarded = ['id']; // fields in the table
+    protected $fillable = ['label']; // fields in the table
 
     public $rules = [
         'label' => 'required|unique:countries'
