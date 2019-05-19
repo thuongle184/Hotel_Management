@@ -54,7 +54,7 @@ class DishController extends Controller
         }
 
         elseif ($image->isValid()) {
-          $dish->image = $request->file('image')->storeAs('images/dish', $image->getClientOriginalName());
+          $dish->image = $request->file('image')->storeAs('public/images/dish', $image->getClientOriginalName());
         }
 
       }

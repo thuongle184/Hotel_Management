@@ -74,8 +74,8 @@
         id="dish_description"
         class="form-control"
         name="description"
-        value="{!! old ('price',isset($dish)?$dish['price']:NULL) !!}"
-      ></textarea>
+        value="{!! old ('description',isset($dish)?$dish['description']:NULL) !!}"
+      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}</textarea>
     </div>
   </div>
   
@@ -107,7 +107,9 @@
         type="checkbox"
         id="dish_is_available"
         name="is_available"
-        checked="{!! old ('is_available', isset($dish) ? $dish['is_available'] : 'checked') !!}"
+        @if (isset($dish) && $dish['is_available'])
+          checked="checked"
+        @endif
         value="1"
       >
     </div>
@@ -133,6 +135,7 @@
       </div>
       
       <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <img src="{!! Storage::url($dish['image']) !!}">
       </div>
     </div>
 
