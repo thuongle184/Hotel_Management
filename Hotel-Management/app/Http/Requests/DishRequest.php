@@ -13,7 +13,7 @@ class DishRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class DishRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'dish_type_id'  =>  'required',
+          'name'          =>  'required|unique:dishes'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+          'dish_type_id.required'   =>  'The dish category is required',
+          'name.required'           =>  'The name of the dish is required',
+          'name.unique'             =>  'This dish name has already been taken'
         ];
     }
 }
