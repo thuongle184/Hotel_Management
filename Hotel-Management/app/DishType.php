@@ -12,7 +12,7 @@ class DishType extends Model
     
     public $timestamps=true; // set timestamp, allow to use
     
-    public function Dish(){ // ten model cua bang 
-    	return $this->belongsTo('App\Dish'); // quan he 1 nhieu voi bang product
+    public function dishes(){ // ten model cua bang 
+    	return $this->hasMany('App\Dish');
     }
 }

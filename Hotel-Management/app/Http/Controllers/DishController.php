@@ -7,6 +7,7 @@ use App\DishType;
 use App\Http\Requests\DishRequest;
 use Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 
 class DishController extends Controller
@@ -18,8 +19,11 @@ class DishController extends Controller
      */
     public function index()
     {
-      $dishes = Dish::orderBy('dish_type_id')->orderBy('name')->get();
-      return view('dish/index', compact('dishes'));
+      $dishTypes = DishType::with(['dishes' => function ($dish) { $dish->orderBy('name'); }])
+          ->orderBy('id')
+          ->get();
+
+      return view('dish/index', compact('dishTypes'));
     }
 
     /**

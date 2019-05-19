@@ -22,7 +22,7 @@ class Dish extends Model
         'image.size'    =>  'Picture is too big'
       ];
 
-    public function dish_types() {
-    	return $this->hasMany('App\DishType', 'dish_type_id', 'id');
+    public function dishType() {
+    	return $this->belongsTo('App\DishType');
     }
 }

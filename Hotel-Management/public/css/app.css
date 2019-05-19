@@ -35,6 +35,8 @@ aside a:active {
 .navbar-toggler-icon { background-image: none !important; }
 .navbar-toggler { border: none !important; }
 
+.my-border-bottom { border-bottom: 1px solid #111; }
+
 .my-frame {
   border: 1px solid #111;
   border-radius: 4px;

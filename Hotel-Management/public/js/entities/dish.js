@@ -5,6 +5,7 @@ $(function(){
 
     $dishDelete = $(this);
     $dish = $dishDelete.closest('.my-dish');
+    $dishType = $dish.closest('.my-dish-type');
     dishLabel = $dish.find('.my-filter-target').text();
 
 
@@ -21,13 +22,17 @@ $(function(){
       success : function(data) {
 
         if(data === "ok") {
+
+          $dish.remove();
+
+          if($dishType.find('.my-dish').length < 1) {
+            $dishType.remove();
+          }
           
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
             .html(`<i>"${dishLabel}"</i> has successfully been deleted`);
-
-          $dish.remove();
 
         } 
 
