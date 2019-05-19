@@ -18,15 +18,16 @@ Route::get('/', function () {
 
 
 Route::resources([
-  'dishTypes'         => 'DishTypeController',
-  'bookingPurposes'   => 'BookingPurposeController',
-  'roomSizes'         => 'RoomSizeController',
-  'userTypes'         => 'UserTypeController',
-  'equipments'        => 'EquipmentController',
-  'titles'            => 'TitleController',
-  'onlinePlateforms'        => 'OnlinePlateformController',
-  'identificationTypes'        => 'IdentificationTypeController',
-  'countries'        => 'CountryController',
+  'dishes'                =>  'DishController',
+  'dishTypes'             =>  'DishTypeController',
+  'bookingPurposes'       =>  'BookingPurposeController',
+  'roomSizes'             =>  'RoomSizeController',
+  'userTypes'             =>  'UserTypeController',
+  'equipments'            =>  'EquipmentController',
+  'titles'                =>  'TitleController',
+  'onlinePlateforms'      =>  'OnlinePlateformController',
+  'identificationTypes'   =>  'IdentificationTypeController',
+  'countries'             =>  'CountryController'
 ]);
 
 

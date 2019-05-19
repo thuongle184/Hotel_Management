@@ -54,6 +54,13 @@
       </li>
 
       <li>
+        <a href="{!! url('dishes') !!}">
+          <i class="fas fa-sitemap my-margin-right-12"></i>
+          <span>Dishes</span>
+        </a>
+      </li>
+
+      <li>
         <a href="{!! url('dishTypes') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
           <span>Dish categories</span>
