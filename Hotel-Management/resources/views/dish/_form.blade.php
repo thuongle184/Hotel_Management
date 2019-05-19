@@ -21,15 +21,15 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="dish_label">Name of the dish:<label>
+      <label for="dish_name">Name of the dish:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-        id="dish_label"
+        id="dish_name"
         type="text"
         class="form-control"
-        name="label"
+        name="name"
         value="{!! old ('name',isset($dish)?$dish['name']:NULL) !!}"
       >
     </div>
@@ -107,10 +107,35 @@
         id="dish_is_available"
         name="is_available"
         checked="{!! old ('is_available', isset($dish) ? $dish['is_available'] : 'checked') !!}"
-        value="true"
+        value="1"
       >
     </div>
   </div>
+
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="dish_image">Upload a picture<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input type="file" id="dish_image" name="image">
+    </div>
+  </div>
+
+
+  @isset($dish['image'])
+
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label>Current picture<label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      </div>
+    </div>
+
+  @endisset
 
 
   <!-- button Save -->

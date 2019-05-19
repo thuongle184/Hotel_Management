@@ -11,6 +11,16 @@ class Dish extends Model
     protected $fillable = ['dish_type_id', 'name', 'image', 'price', 'description', 'is_available']; // fields in the table
     
     public $timestamps=true; // set timestamp, allow to use
+    
+    public $rules = [
+        'image' => 'image|mimes:jpeg,png,jpg,gif,bmp,svg|max:2048'
+      ];
+
+    public $messages = [
+        'image.image'   =>  'Only .jpeg, .jpg, .png, .gif, .bmp and .svg files are allowed',
+        'image.mimes'   =>  'Only .jpeg, .jpg, .png, .gif, .bmp and .svg files are allowed',
+        'image.max'     =>  'This country name has already been taken'
+      ];
 
     public function dish_types() {
     	return $this->hasMany('App\DishType', 'dish_type_id', 'id');

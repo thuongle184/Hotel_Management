@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Dish;
 use App\DishType;
-use Illuminate\Http\Request;
 use App\Http\Requests\DishRequest;
+use Validator;
+
 
 class DishController extends Controller
 {
@@ -38,9 +39,29 @@ class DishController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DishRequest $request)
     {
-        //
+      $dish = new Dish($request->all());
+
+
+      if ($request->hasFile('image')) {
+        
+        $image = $request->file('image');
+        $validator = Validator::make($request->all(), $dish->rules, $dish->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('countries.create')->withErrors($validator)->withInput();
+        }
+
+        elseif ($image->isValid()) {
+          $dish->image = $request->file('image')->storeAs('images/dish', $image->getClientOriginalName());
+        }
+        
+      }
+
+
+      $dish->save();
+      return redirect()->route('dishes.index')->with('success','Add success!');
     }
 
     /**
@@ -72,7 +93,7 @@ class DishController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dish $dish)
+    public function update(DishRequest $request, Dish $dish)
     {
         //
     }
