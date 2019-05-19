@@ -19,6 +19,10 @@
       Id: {!! $dish["id"] !!}
     </div>
     
+    <div class="my-padding-bottom-12">
+      Dish category: {!! $dish->dishType->label !!}
+    </div>
+    
     @if ($dish->description && strlen($dish->description))    
       <div class="my-padding-bottom-12">
         <p class="text-justify">
