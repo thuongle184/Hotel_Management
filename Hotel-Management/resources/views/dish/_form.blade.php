@@ -126,9 +126,18 @@
   </div>
 
 
+  <div class="row">
+    <div class="col-md-3 col-lg-4"></div>
+    
+    <div class="col-md-9 col-lg-8">
+      <div class="d-none my-margin-bottom-19" id="my-dish-discard-picture-status"></div>
+    </div>
+  </div>
+
+
   @isset($dish['image'])
 
-    <div class="row my-padding-bottom-19">
+    <div class="row my-padding-bottom-19 my-dish-image">
       <div class="col-md-3 col-lg-4 my-padding-bottom-8">
         <label>Current picture<label>
       </div>
@@ -146,15 +155,33 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a href="{!! route('dishes.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
+      <a
+        href="{!! route('dishes.index') !!}"
+        class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
+      >
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
         <span>Back to list of dishes</span>
       </a>
 
-      <button type="submit" class="btn btn-sm btn-success">
+      <button
+        type="submit"
+        class="btn btn-sm btn-success {!! isset($dish['image']) ? ' my-margin-right-8 ' : '' !!}my-margin-bottom-8"
+      >
         <i class="fas fa-check-circle my-margin-right-12"></i>
         <span>Save</span>
       </button>
+
+      @isset($dish['image'])    
+        <button
+          class="btn btn-sm btn-danger my-dish-discard-picture my-margin-bottom-8"
+          data-token="{!! csrf_token() !!}"
+          data-url="{!! route('dishes.discardPicture', $dish['id']) !!}"
+        >
+          <i class="far fa-trash-alt"></i>
+          <i class="far fa-image my-margin-right-12"></i>
+          <span>Discard picture</span>
+        </button>
+      @endisset
     </div>
   </div>
 

@@ -145,4 +145,22 @@ class DishController extends Controller
       $dish->delete();
       return "ok";
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Dish  $dish
+     * @return \Illuminate\Http\Response
+     */
+    public function discardPicture(Dish $dish)
+    {
+      if ($dish->image != NULL)
+      {
+        Storage::delete($dish->image);
+      }
+
+      $dish->image = NULL;
+      $dish->save();
+      return "ok";
+    }
 }
