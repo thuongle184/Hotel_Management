@@ -74,8 +74,7 @@
         id="dish_description"
         class="form-control"
         name="description"
-      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}
-      </textarea>
+      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}</textarea>
     </div>
   </div>
   

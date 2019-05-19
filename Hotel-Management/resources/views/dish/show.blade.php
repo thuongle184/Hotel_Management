@@ -17,6 +17,30 @@
       Id: {!! $dish["id"] !!}
     </div>
     
+    @if ($dish->description && strlen($dish->description))    
+      <div class="my-padding-bottom-12">
+        <p class="text-justify">
+          <em>{!! str_replace("\n","<br>", $dish->description) !!}</em>
+        </p>
+      </div>
+    @endif
+
+    <div class="my-padding-bottom-12">
+      @if ($dish->price)    
+        <b>VNĐ {!! $dish->price !!}</b>
+      
+      @else
+        <i>Ask us for the price</i>
+      
+      @endif
+    </div>
+
+    @isset($dish['image'])    
+      <div class="my-padding-bottom-12">
+        <img src="{!! Storage::url($dish->image) !!}">
+      </div>
+    @endisset
+    
     <div class="d-flex flex-wrap">
 
       <div class="my-padding-right-8 my-padding-bottom-8">
