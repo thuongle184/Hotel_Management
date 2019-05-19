@@ -24,7 +24,7 @@ class DishTypeRequest extends FormRequest
     public function rules()
     {
         return [
-          'label' => 'required|unique:dish_types'
+          'label' => 'required|unique:dish_types,label,'.$this->get('id')
         ];
     }
 

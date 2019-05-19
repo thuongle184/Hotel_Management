@@ -17,6 +17,7 @@
 
   @if($dish['id'] != NULL)
     @method('PATCH')
+    <input type="hidden" name="id" value="{!! $dish['id'] !!}">
   @endif 
   
   <div class="row my-padding-bottom-19">

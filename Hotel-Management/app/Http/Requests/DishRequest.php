@@ -25,7 +25,7 @@ class DishRequest extends FormRequest
     {
         return [
           'dish_type_id'  =>  'required',
-          'name'          =>  'required|unique:dishes'
+          'name'          =>  'required|unique:dishes,name,'.$this->get('id')
         ];
     }
 
