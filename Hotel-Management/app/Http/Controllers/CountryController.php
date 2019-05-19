@@ -5,11 +5,7 @@ namespace App\Http\Controllers;
 use App\Country;
 use Illuminate\Http\Request;
 use Validator;
-use Auth;
-use App\Http\Requests\TableRequest;
-use Input,File;
-use DB;     
-use Session;
+
 
 class CountryController extends Controller
 {
