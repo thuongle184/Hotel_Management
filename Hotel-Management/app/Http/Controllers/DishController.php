@@ -6,6 +6,7 @@ use App\Dish;
 use App\DishType;
 use App\Http\Requests\DishRequest;
 use Validator;
+use Illuminate\Support\Facades\Storage;
 
 
 class DishController extends Controller
@@ -50,11 +51,11 @@ class DishController extends Controller
         $validator = Validator::make($request->all(), $dish->rules, $dish->messages);
 
         if ($validator->fails()) {
-          return redirect()->route('countries.create')->withErrors($validator)->withInput();
+          return redirect()->route('dishes.create')->withErrors($validator)->withInput();
         }
 
         elseif ($image->isValid()) {
-          $dish->image = $request->file('image')->storeAs('public/images/dish', $image->getClientOriginalName());
+          $dish->image = $image->store('public/images/dish');
         }
 
       }
@@ -96,6 +97,32 @@ class DishController extends Controller
      */
     public function update(DishRequest $request, Dish $dish)
     {
+      if (!$request->is_available) {
+        $request->merge(['is_available' => false]);
+      }
+
+
+      $dish->update($request->all());
+
+
+      if ($request->hasFile('image')) {
+        
+        $image = $request->file('image');
+        $validator = Validator::make($request->all(), $dish->rules, $dish->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('dishes.edit', $dish->id)->withErrors($validator)->withInput();
+        }
+
+        elseif ($image->isValid()) {
+          Storage::delete($dish->image);
+          $dish->image = $image->store('public/images/dish');
+          $dish->save();
+        }
+
+      }
+
+      return redirect()->route('dishes.index')->with('success','Sửa sản phẩm thành công!');
     }
 
     /**

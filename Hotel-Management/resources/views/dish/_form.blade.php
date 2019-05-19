@@ -74,8 +74,8 @@
         id="dish_description"
         class="form-control"
         name="description"
-        value="{!! old ('description',isset($dish)?$dish['description']:NULL) !!}"
-      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}</textarea>
+      >{!! old ('description',isset($dish)?$dish['description']:NULL) !!}
+      </textarea>
     </div>
   </div>
   
@@ -107,7 +107,7 @@
         type="checkbox"
         id="dish_is_available"
         name="is_available"
-        @if (isset($dish) && $dish['is_available'])
+        @if (isset($dish) && $dish->is_available)
           checked="checked"
         @endif
         value="1"
