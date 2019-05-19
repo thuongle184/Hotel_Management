@@ -56,7 +56,7 @@ class DishController extends Controller
         elseif ($image->isValid()) {
           $dish->image = $request->file('image')->storeAs('images/dish', $image->getClientOriginalName());
         }
-        
+
       }
 
 
@@ -83,7 +83,8 @@ class DishController extends Controller
      */
     public function edit(Dish $dish)
     {
-        //
+      $dishTypes = DishType::orderBy('id')->get();
+      return view('dish/edit',compact('dish'))->with('dishTypes', $dishTypes);
     }
 
     /**
@@ -95,7 +96,6 @@ class DishController extends Controller
      */
     public function update(DishRequest $request, Dish $dish)
     {
-        //
     }
 
     /**
@@ -106,6 +106,7 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
-        //
+      $dish->delete();
+      return "ok";
     }
 }

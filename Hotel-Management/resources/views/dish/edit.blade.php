@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Edit {$dishType['label']}"]
+    ['title' => "Edit {$dish['name']}"]
   )
 
 @endsection
@@ -13,12 +13,13 @@
 @section('content')
 
   @include(
-    'dishType/_form',
-    
+    'dish/_form',
+
     [
-      'errors' => $errors,
-      'action' => URL::action('DishTypeController@update', $dishType->id),
-      'dishType' => $dishType
+      'errors'      =>  $errors,
+      'action'      =>  URL::action('DishController@update', $dish->id),
+      'dish'        =>  $dish,
+      'dishTypes'   =>  $dishTypes
     ]
   )
 
