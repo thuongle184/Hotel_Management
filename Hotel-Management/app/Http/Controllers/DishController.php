@@ -73,7 +73,7 @@ class DishController extends Controller
      */
     public function show(Dish $dish)
     {
-        //
+      return view('dish/show', compact('dish'));
     }
 
     /**
@@ -133,6 +133,11 @@ class DishController extends Controller
      */
     public function destroy(Dish $dish)
     {
+      if ($dish->image != NULL)
+      {
+        Storage::delete($dish->image);
+      }
+
       $dish->delete();
       return "ok";
     }
