@@ -11,21 +11,21 @@ class Booking extends Model
     public $timestamps=true; // set timestamp, allow to use
 
     public function booking_types() {
-    	return $this->belongsTo('App\BookingType', 'booking_type_id', 'booking_type_id');
+    	return $this->belongsTo('App\BookingType');
     }
     public function users() {
-    	return $this->belongsTo('App\User', 'user_id', 'id');
+    	return $this->belongsTo('App\User');
     }
 
     public function rooms() {
-    	return $this->belongsTo('App\Room', 'room_id', 'room_id');
+    	return $this->belongsTo('App\Room');
     }
 
     public function booking_purposes() {
-    	return $this->belongsTo('App\BookingPurpose', 'booking_purpose_id', 'booking_purpose_id');
+    	return $this->belongsTo('App\BookingPurpose');
     }
 
     public function bills() {
-        return $this->belongsTo('App\Bill', 'room_id', 'room_id');
+        return $this->belongsTo('App\Bill');
     }
 }

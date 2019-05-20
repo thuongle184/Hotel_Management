@@ -1,5 +1,14 @@
 @extends('_layouts.app')
 
+@section('header')
+
+  @include(
+    '_layouts.indexHeader',
+    ['equipment' => "Equipment", 'route' => route('equipment.create'), 'buttonLabel' => "Add an equipment"]
+  )
+
+@endsection
+
 @section('content')
 <div id="page-wrapper">
     <div class="container">
@@ -9,7 +18,7 @@
                 <div class="bang">
                     <div class="hoc">
                     </br>
-                    <h2> List of equipments</h2> 
+                    <h2> List of equipment</h2> 
                 </br></br>
             </div>
             <input class="form-control" id="myInput" type="text" placeholder="Search.."></br>
@@ -29,11 +38,11 @@
                       <td>{!! $value["label"] !!}</td>
                       
                       <td>    
-                        <a href="{!! route('equipments.show', $value["id"]) !!}">
+                        <a href="{!! route('equipment.show', $value["id"]) !!}">
                           <i class="fa fa-plus-circle"></i>&nbsp;Show
                         </a>&nbsp;&nbsp; <!-- Goi dia chi trong route -->
                         
-                        <a href="{!! route('equipments.edit', $value["id"]) !!}">
+                        <a href="{!! route('equipment.edit', $value["id"]) !!}">
                           <i class="fa fa-pencil"></i>&nbsp;Update
                         </a>&nbsp;&nbsp;
                         

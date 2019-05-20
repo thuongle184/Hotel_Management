@@ -68,9 +68,9 @@
       </li>
 
       <li>
-        <a href="{!! url('equipments') !!}">
+        <a href="{!! url('equipment') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Equipments</span>
+          <span>Equipment</span>
         </a>
       </li>
 

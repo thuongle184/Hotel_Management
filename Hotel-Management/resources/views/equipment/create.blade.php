@@ -18,7 +18,7 @@
 
     </div>
     @endif
-    <form   action="{!! url('/equipments') !!}" enctype="multipart/form-data" method="POST" role="form" class="form-horizontal registration-form" >
+    <form   action="{!! url('/equipment') !!}" enctype="multipart/form-data" method="POST" role="form" class="form-horizontal registration-form" >
         {{ csrf_field() }}
         <input type="hidden" name="_token" value="{!! csrf_token() !!}" />
 

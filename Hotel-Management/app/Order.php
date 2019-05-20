@@ -12,10 +12,10 @@ class Order extends Model
 
     public function bills()
     {
-    	return $this->hasOne('App\Bill','bill_id', 'bill_id');
+    	return $this->hasOne('App\Bill');
     }
     public function dishes()
     {
-    	return $this->hasOne('App\Dish','dish_id', 'dish_id');
+    	return $this->hasOne('App\Dish');
     }
 }

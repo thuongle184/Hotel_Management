@@ -10,7 +10,7 @@ class BookingPurpose extends Model
     protected $guarded = ['id','label']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-    public function Booking(){ 
+    public function bookings(){ 
     	return $this->hasMany('App\Booking'); 
     }
 }
