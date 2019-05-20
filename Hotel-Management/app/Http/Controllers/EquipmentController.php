@@ -6,7 +6,7 @@ use App\Equipment;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\EquipmentRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -92,6 +92,6 @@ class EquipmentController extends Controller
     public function destroy(Equipment $equipment)
     {
         $equipment->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }

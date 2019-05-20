@@ -4,66 +4,36 @@
 
   @include(
     '_layouts.header',
-    ['equipment' => $equipment["label"]]
+    ['title' => $equipment["label"]]
   )
 
 @endsection
 
+
 @section('content')
-<div id="page-wrapper">
 
-    <div class="container">
+  <div class="my-margin-top-40 my-frame">
+    <div class="my-padding-bottom-12">
+      Id: {!! $equipment["id"] !!}
+    </div>
+    
+    <div class="d-flex flex-wrap">
 
-      <center>
-        <h1 style="margin-top: 60px; color: #33fcb8;">
-          Show equipment
-      </h1>
-  </center>
-
-    <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
-
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h4>Equipment id: </h4> 
+      <div class="my-padding-right-8 my-padding-bottom-8">
+        <a href="{!! route('equipment.index') !!}" class="btn btn-sm btn-outline-dark">
+          <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
+          <span>Back to list of equipment</span>
+        </a>
+      </div>
+      
+      <div class="my-padding-bottom-8">
+        <a href="{!! route('equipment.edit', $equipment["id"]) !!}" class="btn btn-sm btn-outline-primary">
+          <i class="far fa-edit my-margin-right-12"></i>
+          <span>Edit</span>
+        </a>
       </div>
 
-     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-          <h4 style="color: black;">{{$equipment["id"]}}</h4>
-     </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"></div>
-
-      <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-        <h4>Equipment name: </h4> 
-      </div>
-
-     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-          <h4 style="color: black;">{{$equipment["label"]}}</h4>
-     </div>
-    </div>
-
- 
-</div>
-
-</form>
-
-</div>
-<!-- /.container -->
-
-</div>
 @endsection
-<div id="morris-area-chart" style="display: none;"></div>
-<div id="morris-bar-chart" style="display: none;"></div>
-<div id="morris-donut-chart" style="display: none;"></div>
-
-<style type="text/css">
-    #cach{
-        margin-top: 25px;
-    }
-    .row h4{
-        color: red;
-        margin-top: 35px;
-    }
-</style>
