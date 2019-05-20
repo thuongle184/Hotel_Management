@@ -24,5 +24,11 @@ class Dish extends Model
 
     public function dishType() {
     	return $this->belongsTo('App\DishType');
+        
+    }
+
+    public function orders() {
+        return $this->belongsTo('App\Order', 'dish_id', 'dish_id');
+        
     }
 }

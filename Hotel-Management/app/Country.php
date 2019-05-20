@@ -24,4 +24,8 @@ class Country extends Model
         'label'   =>  'required|unique:countries,label,'.$id
       ];
     }
+
+    public function users() {
+      return $this->hasMany('App\User', 'user_id', 'id');
+    }
 }

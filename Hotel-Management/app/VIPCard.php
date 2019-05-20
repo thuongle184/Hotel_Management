@@ -13,6 +13,6 @@ class VIPCard extends Model
     public $timestamps=true; // set timestamp, allow to use
     
     public function users() {
-    	return $this->hasMany('App\User', 'user_id', 'id');
+    	return $this->belongsTo('App\User', 'user_id', 'user_id');
     }
 }
