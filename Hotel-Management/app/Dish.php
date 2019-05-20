@@ -22,7 +22,7 @@ class Dish extends Model
         'image.max'    =>  'Picture is too big'
       ];
 
-    public function dishTypes() {
+    public function dishType() {
     	return $this->belongsTo('App\DishType');
         
     }

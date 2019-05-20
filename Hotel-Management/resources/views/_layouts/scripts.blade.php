@@ -5,3 +5,4 @@
 <script src="{{URL::asset('public/js/entities/country.js')}}"></script>
 <script src="{{URL::asset('public/js/entities/dish.js')}}"></script>
 <script src="{{URL::asset('public/js/entities/dishType.js')}}"></script>
+<script src="{{URL::asset('public/js/entities/equipment.js')}}"></script>
