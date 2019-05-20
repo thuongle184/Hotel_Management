@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VIPCard extends Model
+class VipCard extends Model
 {
     protected $table = 'vip_cards'; // name of table in the database
     
@@ -12,7 +12,7 @@ class VIPCard extends Model
     
     public $timestamps=true; // set timestamp, allow to use
     
-    public function users() {
+    public function user() {
     	return $this->belongsTo('App\User');
     }
 }

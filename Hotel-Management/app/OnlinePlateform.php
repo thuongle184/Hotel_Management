@@ -10,7 +10,7 @@ class OnlinePlateform extends Model
     protected $guarded = ['id','label']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-    public function booking_types() {
+    public function bookingTypes() {
     	return $this->hasMany('App\BookingType');
     }
 }

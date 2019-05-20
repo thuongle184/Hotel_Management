@@ -13,7 +13,5 @@ class IdentificationType extends Model
      
     public function users(){ // ten model cua bang 
     	return $this->hasMany('App\User');
-
-
     }
 }

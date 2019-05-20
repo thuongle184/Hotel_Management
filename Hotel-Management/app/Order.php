@@ -10,12 +10,13 @@ class Order extends Model
     protected $guarded = ['id','bill_id','dish_id']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-    public function bills()
+    public function bill()
     {
-    	return $this->hasOne('App\Bill');
+    	return $this->belongsTo('App\Bill');
     }
-    public function dishes()
+
+    public function dish()
     {
-    	return $this->hasOne('App\Dish');
+    	return $this->belongsTo('App\Dish');
     }
 }

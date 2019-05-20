@@ -10,22 +10,23 @@ class Booking extends Model
     protected $guarded = ['id','booking_type_id','user_id', 'room_id', 'entry_date', 'exit_date', 'booking_purpose_id']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-    public function booking_types() {
-    	return $this->belongsTo('App\BookingType');
-    }
-    public function users() {
-    	return $this->belongsTo('App\User');
+    public function bill() {
+      return $this->hasOne('App\Bill');
     }
 
-    public function rooms() {
-    	return $this->belongsTo('App\Room');
+    public function bookingPurpose() {
+      return $this->belongsTo('App\BookingPurpose');
     }
 
-    public function booking_purposes() {
-    	return $this->belongsTo('App\BookingPurpose');
+    public function bookingType() {
+      return $this->belongsTo('App\BookingType');
     }
 
-    public function bills() {
-        return $this->belongsTo('App\Bill');
+    public function room() {
+      return $this->belongsTo('App\Room');
+    }
+
+    public function user() {
+      return $this->belongsTo('App\User');
     }
 }

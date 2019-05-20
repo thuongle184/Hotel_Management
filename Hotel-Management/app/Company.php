@@ -10,7 +10,7 @@ class Company extends Model
     protected $guarded = ['id','user_id', 'name']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-     public function users() {
-    	return $this->hasMany('App\User');
+    public function user() {
+    	return $this->belongsTo('App\User');
     }
 }

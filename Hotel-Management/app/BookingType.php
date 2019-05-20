@@ -10,7 +10,11 @@ class BookingType extends Model
     protected $guarded = ['id','label', 'online_plateform_id']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-     public function online_plateforms() {
-    	return $this->belongsTo('App\OnlinePlateform');
+    public function bookings() {
+      return $this->hasMany('App\Booking');
+    }
+
+    public function onlinePlateform() {
+      return $this->belongsTo('App\OnlinePlateform');
     }
 }
