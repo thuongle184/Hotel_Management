@@ -14,7 +14,12 @@
 
   @include(
     'identificationType/_form',
-    ['errors' => $errors, 'action' => URL::action('IdentificationTypeController@store'), 'identificationType' => $identificationType]
+    
+    [
+      'errors'              =>  $errors,
+      'action'              =>  URL::action('IdentificationTypeController@store'),
+      'identificationType'  =>  $identificationType
+    ]
   )
 
 @endsection

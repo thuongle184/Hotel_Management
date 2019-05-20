@@ -4,7 +4,12 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Identification Type", 'route' => route('identificationTypes.create'), 'buttonLabel' => "Add a identification type"]
+
+    [
+      'title'         =>  "Identification Type",
+      'route'         =>  route('identificationTypes.create'),
+      'buttonLabel'   =>  "Add an identification type"
+    ]
   )
 
 @endsection
@@ -25,14 +30,20 @@
           <div class="d-flex flex-wrap">
 
             <div class="my-padding-right-8 my-padding-bottom-8">
-              <a href="{!! route('identificationTypes.show', $identificationType["id"]) !!}" class="btn btn-sm btn-outline-dark">
+              <a
+                href="{!! route('identificationTypes.show', $identificationType["id"]) !!}"
+                class="btn btn-sm btn-outline-dark"
+              >
                 <i class="fas fa-eye my-margin-right-12"></i>
                 <span>Detail</span>
               </a>
             </div>
             
             <div class="my-padding-right-8 my-padding-bottom-8">
-              <a href="{!! route('identificationTypes.edit', $identificationType["id"]) !!}" class="btn btn-sm btn-outline-primary">
+              <a
+                href="{!! route('identificationTypes.edit', $identificationType["id"]) !!}"
+                class="btn btn-sm btn-outline-primary"
+              >
                 <i class="far fa-edit my-margin-right-12"></i>
                 <span>Edit</span>
               </a>

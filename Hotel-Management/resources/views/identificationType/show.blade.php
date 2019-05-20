@@ -22,12 +22,15 @@
       <div class="my-padding-right-8 my-padding-bottom-8">
         <a href="{!! route('identificationTypes.index') !!}" class="btn btn-sm btn-outline-dark">
           <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-          <span>Back to list of identification  </span>
+          <span>Back to list of identification types</span>
         </a>
       </div>
       
       <div class="my-padding-bottom-8">
-        <a href="{!! route('identificationTypes.edit', $identificationType["id"]) !!}" class="btn btn-sm btn-outline-primary">
+        <a
+          href="{!! route('identificationTypes.edit', $identificationType["id"]) !!}"
+          class="btn btn-sm btn-outline-primary"
+        >
           <i class="far fa-edit my-margin-right-12"></i>
           <span>Edit</span>
         </a>
