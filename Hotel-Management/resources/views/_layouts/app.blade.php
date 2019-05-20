@@ -12,7 +12,7 @@
     <title>Passerelles Numériques - Guesthouse</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="{{URL::asset('public/images/pn-logo.png')}}">
+    <link rel="icon" href="{{URL::asset('images/pn-logo.png')}}">
 
     <!-- Stylesheets -->
     @include('_layouts.stylesheets')
