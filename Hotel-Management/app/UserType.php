@@ -11,6 +11,6 @@ class UserType extends Model
     public $timestamps=true; // set timestamp, allow to use
 
     public function users(){ // 
-    	return $this->hasMany('App\User','user_id','id');
+    	return $this->hasMany('App\User');
     }
 }

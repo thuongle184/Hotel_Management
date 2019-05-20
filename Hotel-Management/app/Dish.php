@@ -22,13 +22,13 @@ class Dish extends Model
         'image.max'    =>  'Picture is too big'
       ];
 
-    public function dishType() {
+    public function dishTypes() {
     	return $this->belongsTo('App\DishType');
         
     }
 
     public function orders() {
-        return $this->belongsTo('App\Order', 'dish_id', 'dish_id');
+        return $this->belongsTo('App\Order');
         
     }
 }

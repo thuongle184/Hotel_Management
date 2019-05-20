@@ -1,5 +1,14 @@
 @extends('_layouts.app')
 
+@section('header')
+
+  @include(
+    '_layouts.header',
+    ['equipment' => $equipment["label"]]
+  )
+
+@endsection
+
 @section('content')
 <div id="page-wrapper">
 

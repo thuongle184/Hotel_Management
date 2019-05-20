@@ -12,9 +12,9 @@ class Bill extends Model
 
     public function users()
     {
-    	return $this->belongsTo('App\User',['user_id', 'cashier_id'], 'user_id');
+    	return $this->belongsTo('App\User');
     }
     public function bookings() {
-    	return $this->hasOne('App\Booking','booking_id','booking_id');
+    	return $this->hasOne('App\Booking');
     }
 }

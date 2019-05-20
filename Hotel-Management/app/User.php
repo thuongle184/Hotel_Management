@@ -11,19 +11,19 @@ class User extends Model
     public $timestamps=true; // set timestamp, allow to use
 
     public function userTypes() {
-    	return $this->belongsTo('App\UserType', 'user_type_id', 'user_type_id');
+    	return $this->belongsTo('App\UserType');
     }
 
     public function countries() {
-    	return $this->belongsTo('App\Country', 'country_id', 'country_id');
+    	return $this->belongsTo('App\Country');
     }
 
     public function identificationTypes() {
-    	return $this->belongsTo('App\IdentificationType', 'identification_type_id', 'identification_type_id');
+    	return $this->belongsTo('App\IdentificationType');
     }
     
     public function titles() {
-        return $this->belongsTo('App\Title', 'title_id', 'title_id');
+        return $this->belongsTo('App\Title');
     }
 
     public function bookings() {

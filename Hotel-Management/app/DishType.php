@@ -12,7 +12,7 @@ class DishType extends Model
     
     public $timestamps=true; // set timestamp, allow to use
     
-    public function dishes(){ 
+    public function dish(){ 
     	return $this->hasMany('App\Dish');
     }
 }
