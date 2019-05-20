@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\identificationType;
+use App\IdentificationType;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
@@ -20,8 +20,8 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-        $identificationType = identificationType::all();
-        return view('identificationType/index', compact('identificationType'));
+        $identificationTypes = IdentificationType::all();
+        return view('identificationType/index', compact('identificationTypes'));
     }
 
     /**
@@ -31,7 +31,7 @@ class IdentificationTypeController extends Controller
      */
     public function create()
     {
-        $identificationType = new identificationType;
+        $identificationType = new IdentificationType;
         return view('identificationType/create',compact('identificationType'));
     }
 
@@ -43,7 +43,7 @@ class IdentificationTypeController extends Controller
      */
     public function store(IdentificationTypeRequest $request)
     {
-        identificationType::create($request->all());
+        IdentificationType::create($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Add success!');
     }
 
@@ -53,7 +53,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function show(identificationType $identificationType)
+    public function show(IdentificationType $identificationType)
     {
         return view('identificationType/show',compact('identificationType'));
     }
@@ -64,7 +64,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function edit(identificationType $identificationType)
+    public function edit(IdentificationType $identificationType)
     {
          return view('identificationType/edit',compact('identificationType'));
     }
@@ -76,7 +76,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function update(IdentificationTypeRequest $request, identificationType $identificationType)
+    public function update(IdentificationTypeRequest $request, IdentificationType $identificationType)
     {
         $identificationType->update($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Edit success!');
@@ -88,7 +88,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(identificationType $identificationType)
+    public function destroy(IdentificationType $identificationType)
     {
         $identificationType->delete();
         return "ok";

@@ -14,7 +14,7 @@
 
   <div class="row">
 
-    @foreach($identificationType as $identificationType)
+    @foreach($identificationTypes as $identificationType)
 
       <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-dish-type">
         <div class="my-frame">

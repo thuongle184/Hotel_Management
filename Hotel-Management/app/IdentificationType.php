@@ -10,7 +10,7 @@ class IdentificationType extends Model
     protected $guarded = ['id']; // fields in the table
     protected $fillable = ['label']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
-    identificationType
+     
     public function users(){ // ten model cua bang 
     	return $this->hasMany('App\User');
 
