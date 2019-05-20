@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\identificationType;
+use App\IdentificationType;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\IdentificationTypeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,8 +20,8 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-        $identificationType = IdentificationType::select('id', 'label')->get()->toArray();
-        return view('identificationType/index', compact('identificationType'));
+        $identificationTypes = IdentificationType::all();
+        return view('identificationType/index', compact('identificationTypes'));
     }
 
     /**
@@ -31,7 +31,8 @@ class IdentificationTypeController extends Controller
      */
     public function create()
     {
-        return view('identificationType/create');
+        $identificationType = new IdentificationType;
+        return view('identificationType/create',compact('identificationType'));
     }
 
     /**
@@ -40,11 +41,9 @@ class IdentificationTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IdentificationTypeRequest $request)
     {
-        $identificationType = new IdentificationType; // ten model
-        $identificationType->label = $request->label;
-        $identificationType->save();
+        IdentificationType::create($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Add success!');
     }
 
@@ -54,7 +53,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function show(identificationType $identificationType)
+    public function show(IdentificationType $identificationType)
     {
         return view('identificationType/show',compact('identificationType'));
     }
@@ -65,7 +64,7 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function edit(identificationType $identificationType)
+    public function edit(IdentificationType $identificationType)
     {
          return view('identificationType/edit',compact('identificationType'));
     }
@@ -77,10 +76,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, identificationType $identificationType)
+    public function update(IdentificationTypeRequest $request, IdentificationType $identificationType)
     {
-        $identificationType->label = $request->label;
-        $identificationType->save();
+        $identificationType->update($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Edit success!');
     }
 
@@ -90,9 +88,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(identificationType $identificationType)
+    public function destroy(IdentificationType $identificationType)
     {
         $identificationType->delete();
-        return back()->with('success','Delete success!');
+        return "ok";
     }
 }
