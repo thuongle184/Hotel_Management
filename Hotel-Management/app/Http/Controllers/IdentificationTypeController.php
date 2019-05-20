@@ -6,7 +6,7 @@ use App\identificationType;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\IdentificationTypeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,7 +20,7 @@ class IdentificationTypeController extends Controller
      */
     public function index()
     {
-        $identificationType = IdentificationType::select('id', 'label')->get()->toArray();
+        $identificationType = identificationType::all();
         return view('identificationType/index', compact('identificationType'));
     }
 
@@ -31,7 +31,8 @@ class IdentificationTypeController extends Controller
      */
     public function create()
     {
-        return view('identificationType/create');
+        $identificationType = new identificationType;
+        return view('identificationType/create',compact('identificationType'));
     }
 
     /**
@@ -40,11 +41,9 @@ class IdentificationTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(IdentificationTypeRequest $request)
     {
-        $identificationType = new IdentificationType; // ten model
-        $identificationType->label = $request->label;
-        $identificationType->save();
+        identificationType::create($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Add success!');
     }
 
@@ -77,10 +76,9 @@ class IdentificationTypeController extends Controller
      * @param  \App\identificationType  $identificationType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, identificationType $identificationType)
+    public function update(IdentificationTypeRequest $request, identificationType $identificationType)
     {
-        $identificationType->label = $request->label;
-        $identificationType->save();
+        $identificationType->update($request->all());
         return redirect()->route('identificationTypes.index')->with('success','Edit success!');
     }
 
@@ -93,6 +91,6 @@ class IdentificationTypeController extends Controller
     public function destroy(identificationType $identificationType)
     {
         $identificationType->delete();
-        return back()->with('success','Delete success!');
+        return "ok";
     }
 }
