@@ -16,7 +16,7 @@
 
     @if (count($roomSize->rooms) > 0)
 
-      <div class="my-room-type">
+      <div class="my-room-size">
 
         <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
           <strong>

@@ -47,13 +47,13 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="number">Number of room:<label>
+      <label for="number">Room-N°:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
         id="number"
-        type="text"
+        type="number"
         class="form-control"
         name="number"
         value="{!! old ('number',isset($room)?$room['number']:NULL) !!}"
@@ -63,7 +63,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="room_is_available">Room is smoking?<label>
+      <label for="room_is_available">Smoking allowed:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -97,7 +97,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="room_is_available">Room is available?<label>
+      <label for="room_is_available">Room is available:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -115,7 +115,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="bed_number">Number of bed:<label>
+      <label for="bed_number">Quantity of beds:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -143,7 +143,7 @@
         <span>Back to list of rooms</span>
       </a>
 
-      <button type="submit" class="btn btn-sm btn-success">
+      <button type="submit" class="btn btn-sm btn-success my-margin-bottom-8">
         <i class="fas fa-check-circle my-margin-right-12"></i>
         <span>Save</span>
       </button>

@@ -99,7 +99,7 @@
        <li>
         <a href="{!! url('rooms') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Room</span>
+          <span>Rooms</span>
         </a>
       </li>
 
