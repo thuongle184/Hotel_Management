@@ -79,7 +79,7 @@ class EquipmentController extends Controller
      */
     public function update(EquipmentRequest $request, Equipment $equipment)
     {
-        $dishType->update($request->all());
+        $equipment->update($request->all());
         return redirect()->route('equipment.index')->with('success','Update success!');
     }
 
