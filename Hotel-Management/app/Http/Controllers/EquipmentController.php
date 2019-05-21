@@ -22,7 +22,7 @@ class EquipmentController extends Controller
     public function index()
     {
         $equipment = Equipment::all();
-        return view('Equipment/index', compact('equipment'));
+        return view('equipment/index', compact('equipment'));
     }
 
     /**
@@ -33,7 +33,7 @@ class EquipmentController extends Controller
     public function create()
     {
         $equipment = new Equipment;
-        return view('Equipment/create', compact('equipment'));
+        return view('equipment/create', compact('equipment'));
     }
 
     /**
@@ -56,7 +56,7 @@ class EquipmentController extends Controller
      */
     public function show(Equipment $equipment)
     {
-        return view('Equipment/show',compact('equipment'));
+        return view('equipment/show',compact('equipment'));
     }
 
     /**
@@ -67,7 +67,7 @@ class EquipmentController extends Controller
      */
     public function edit(Equipment $equipment)
     {
-        return view('Equipment/edit',compact('equipment'));
+        return view('equipment/edit',compact('equipment'));
     }
 
     /**
