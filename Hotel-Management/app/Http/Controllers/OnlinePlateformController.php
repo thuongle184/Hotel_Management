@@ -31,7 +31,7 @@ class OnlinePlateformController extends Controller
      */
     public function create()
     {
-        $onlinePlateforms = new OnlinePlateform;
+        $onlinePlateform = new OnlinePlateform;
         return view('onlinePlateform/create', compact('onlinePlateform'));
     }
 

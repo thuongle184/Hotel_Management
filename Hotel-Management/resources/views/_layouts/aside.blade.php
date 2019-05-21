@@ -84,7 +84,7 @@
       <li>
         <a href="{!! url('onlinePlateforms') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Online booking platforms</span>
+          <span>Online booking plateforms</span>
         </a>
       </li>
 
