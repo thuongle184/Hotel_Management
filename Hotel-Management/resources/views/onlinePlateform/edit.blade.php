@@ -9,7 +9,6 @@
 
 @endsection
 
-
 @section('content')
 
   @include(
@@ -20,6 +19,7 @@
       'action' => URL::action('OnlinePlateformController@update', $onlinePlateform->id),
       'onlinePlateform' => $onlinePlateform
     ]
+    
   )
 
 @endsection

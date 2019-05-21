@@ -26,6 +26,7 @@
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      
       <input
         id="online_plateform_label"
         type="text"
@@ -44,7 +45,7 @@
     <div class="col-md-9 col-lg-8">
       <a href="{!! route('onlinePlateforms.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of dish categories</span>
+        <span>Back to list of online booking plateforms</span>
       </a>
 
       <button type="submit" class="btn btn-sm btn-success">
