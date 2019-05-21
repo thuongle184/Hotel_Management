@@ -31,8 +31,8 @@ class OnlinePlateformRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The online plateform label is required',
-          'label.unique' => 'This online plateform label has already been taken'
+          'label.required' => 'The plateform name is required',
+          'label.unique' => 'This online plateform already exists'
         ];
     }
 }

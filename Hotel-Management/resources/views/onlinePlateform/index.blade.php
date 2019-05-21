@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Online Booking Plateforms", 'route' => route('onlinePlateforms.create'), 'buttonLabel' => "Add an online plateform"]
+    ['title' => "Online booking plateforms", 'route' => route('onlinePlateforms.create'), 'buttonLabel' => "Add an online plateform"]
   )
 
 @endsection

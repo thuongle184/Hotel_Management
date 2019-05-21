@@ -22,7 +22,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="online_plateform_label">Online booking plateform label:<label>
+      <label for="online_plateform_label">Plateform name:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
