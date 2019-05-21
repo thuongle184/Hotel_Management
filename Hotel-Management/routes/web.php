@@ -28,7 +28,9 @@ Route::resources([
   'titles'                =>  'TitleController',
   'onlinePlateforms'      =>  'OnlinePlateformController',
   'identificationTypes'   =>  'IdentificationTypeController',
-  'countries'             =>  'CountryController'
+  'countries'             =>  'CountryController',
+  'users'                 =>  'UserController'
+
 ]);
 
 
