@@ -16,7 +16,7 @@
 
     @foreach($equipment as $equipment)
 
-      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-dish-type">
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-equipment">
         <div class="my-frame">
           <div class="my-padding-bottom-12 my-filter-target">
             {!! $equipment["label"] !!}
@@ -35,6 +35,7 @@
               <a href="{!! route('equipment.edit', $equipment["id"]) !!}" class="btn btn-sm btn-outline-primary">
                 <i class="far fa-edit my-margin-right-12"></i>
                 <span>Edit</span>
+                
               </a>
             </div>
 
