@@ -23,11 +23,13 @@ Route::resources([
   'bookingPurposes'       =>  'BookingPurposeController',
   'roomSizes'             =>  'RoomSizeController',
   'userTypes'             =>  'UserTypeController',
-  'equipment'            =>  'EquipmentController',
+  'equipment'             =>  'EquipmentController',
   'titles'                =>  'TitleController',
   'onlinePlateforms'      =>  'OnlinePlateformController',
   'identificationTypes'   =>  'IdentificationTypeController',
-  'countries'             =>  'CountryController'
+  'countries'             =>  'CountryController',
+  'users'                 =>  'UserController'
+
 ]);
 
 
