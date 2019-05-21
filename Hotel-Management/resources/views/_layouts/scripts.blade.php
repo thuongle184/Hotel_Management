@@ -14,5 +14,7 @@
 <script src="{{URL::asset('js/entities/identificationType.js')}}">
 </script>
 <script src="{{URL::asset('js/entities/onlinePlateform.js')}}"></script>
+<script src="{{URL::asset('js/entities/bookingPurpose.js')}}"></script>
+<script src="{{URL::asset('js/entities/userType.js')}}"></script>
 
 
