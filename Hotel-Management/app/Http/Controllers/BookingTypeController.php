@@ -18,11 +18,11 @@ class BookingTypeController extends Controller
      */
     public function index()
     {
-      $dishTypes = DishType::with(['dishes' => function ($dish) { $dish->orderBy('name'); }])
+      $onlinePlateforms = OnlinePlateform::with(['bookingTypes' => function ($bookingType) { $bookingType->orderBy('label'); }])
           ->orderBy('id')
           ->get();
 
-      return view('dish/index', compact('dishTypes'));
+      return view('bookingType/index', compact('onlinePlateforms'));
     }
 
     /**
@@ -32,9 +32,9 @@ class BookingTypeController extends Controller
      */
     public function create()
     {
-      $dish = new Dish;
-      $dishTypes = DishType::orderBy('id')->get();
-      return view('dish/create', compact('dish'))->with('dishTypes', $dishTypes);
+      $bookingType = new BookingType;
+      $onlinePlateforms = OnlinePlateform::orderBy('id')->get();
+      return view('bookingType/create', compact('bookingType'))->with('onlinePlateforms', $onlinePlateforms);
     }
 
     /**
@@ -43,29 +43,12 @@ class BookingTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(DishRequest $request)
+    public function store(BookingTypeRequest $request)
     {
-      $dish = new Dish($request->all());
+      $bookingType = new BookingType($request->all());
 
-
-      if ($request->hasFile('image')) {
-        
-        $image = $request->file('image');
-        $validator = Validator::make($request->all(), $dish->rules, $dish->messages);
-
-        if ($validator->fails()) {
-          return redirect()->route('dishes.create')->withErrors($validator)->withInput();
-        }
-
-        elseif ($image->isValid()) {
-          $dish->image = $image->store('public/images/dish');
-        }
-
-      }
-
-
-      $dish->save();
-      return redirect()->route('dishes.index')->with('success','Add success!');
+      $bookingType->save();
+      return redirect()->route('bookingTypes.index')->with('success','Add success!');
     }
 
     /**
@@ -74,9 +57,9 @@ class BookingTypeController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function show(Dish $dish)
+    public function show(BookingType $bookingType)
     {
-      return view('dish/show', compact('dish'));
+      return view('bookingType/show', compact('bookingType'));
     }
 
     /**
@@ -85,10 +68,10 @@ class BookingTypeController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish)
+    public function edit(BookingType $bookingType)
     {
-      $dishTypes = DishType::orderBy('id')->get();
-      return view('dish/edit',compact('dish'))->with('dishTypes', $dishTypes);
+      $bookingTypes = BookingType::orderBy('id')->get();
+      return view('bookingType/edit',compact('bookingType'))->with('bookingTypes', $bookingTypes);
     }
 
     /**
@@ -98,34 +81,16 @@ class BookingTypeController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function update(DishRequest $request, Dish $dish)
+    public function update(BookingTypeRequest $request, BookingType $bookingType)
     {
       if (!$request->is_available) {
         $request->merge(['is_available' => false]);
       }
 
 
-      $dish->update($request->all());
+      $bookingType->update($request->all());
 
-
-      if ($request->hasFile('image')) {
-        
-        $image = $request->file('image');
-        $validator = Validator::make($request->all(), $dish->rules, $dish->messages);
-
-        if ($validator->fails()) {
-          return redirect()->route('dishes.edit', $dish->id)->withErrors($validator)->withInput();
-        }
-
-        elseif ($image->isValid()) {
-          Storage::delete($dish->image);
-          $dish->image = $image->store('public/images/dish');
-          $dish->save();
-        }
-
-      }
-
-      return redirect()->route('dishes.index')->with('success','Sửa sản phẩm thành công!');
+      return redirect()->route('bookingTypes.index')->with('success','Update success!');
     }
 
     /**
@@ -134,32 +99,10 @@ class BookingTypeController extends Controller
      * @param  \App\Dish  $dish
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dish $dish)
+    public function destroy(BookingType $bookingType)
     {
-      if ($dish->image != NULL)
-      {
-        Storage::delete($dish->image);
-      }
-
-      $dish->delete();
+     $bookingType->delete();
       return "ok";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Dish  $dish
-     * @return \Illuminate\Http\Response
-     */
-    public function discardPicture(Dish $dish)
-    {
-      if ($dish->image != NULL)
-      {
-        Storage::delete($dish->image);
-      }
-
-      $dish->image = NULL;
-      $dish->save();
-      return "ok";
-    }
 }

@@ -126,7 +126,7 @@ class DishController extends Controller
 
       }
 
-      return redirect()->route('dishes.index')->with('success','Sửa sản phẩm thành công!');
+      return redirect()->route('dishes.index')->with('success','Update success!');
     }
 
     /**
