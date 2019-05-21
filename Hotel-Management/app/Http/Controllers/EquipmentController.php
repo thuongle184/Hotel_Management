@@ -6,7 +6,7 @@ use App\Equipment;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\EquipmentRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -21,7 +21,7 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipment = Equipment::select('id', 'label')->get()->toArray();
+        $equipment = Equipment::all();
         return view('Equipment/index', compact('equipment'));
     }
 
@@ -32,7 +32,8 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('Equipment/create');
+        $equipment = new Equipment;
+        return view('Equipment/create', compact('equipment'));
     }
 
     /**
@@ -41,12 +42,10 @@ class EquipmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableRequest $request)
+    public function store(EquipmentRequest $request)
     {
-        $equipment = new Equipment; // ten model
-        $equipment->label = $request->label;
-        $equipment->save();
-        return redirect()->route('equipments.index')->with('success','Thêm sản phẩm thành công!');
+        Equipment::create($request->all());
+        return redirect()->route('equipment.index')->with('success','Add success!');
     }
 
     /**
@@ -78,11 +77,10 @@ class EquipmentController extends Controller
      * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(TableRequest $request, Equipment $equipment)
+    public function update(EquipmentRequest $request, Equipment $equipment)
     {
-        $equipment->label = $request->label;
-        $equipment->save();
-        return redirect()->route('equipments.index')->with('success','Sửa sản phẩm thành công!');
+        $dishType->update($request->all());
+        return redirect()->route('equipment.index')->with('success','Update success!');
     }
 
     /**
@@ -94,6 +92,6 @@ class EquipmentController extends Controller
     public function destroy(Equipment $equipment)
     {
         $equipment->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }

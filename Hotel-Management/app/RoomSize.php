@@ -10,7 +10,8 @@ class RoomSize extends Model
     protected $guarded = ['id']; // fields in the table
     protected $fillable = ['label']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
+
     public function rooms(){ // ten model cua bang 
-    	return $this->belongTo('App\Room'); // quan he 1 nhieu voi bang product
+    	return $this->hasMany('App\Room'); // quan he 1 nhieu voi bang product
     }
 }

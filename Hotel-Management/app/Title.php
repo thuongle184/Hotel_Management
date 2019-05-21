@@ -12,7 +12,7 @@ class Title extends Model
     
     public $timestamps=true; // set timestamp, allow to use
 
-    public function users(){ // ten model cua bang 
-    	return $this->hasMany('App\User');
+    public function users() {
+      return $this->hasMany('App\User');
     }
 }

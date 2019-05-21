@@ -23,7 +23,7 @@ Route::resources([
   'bookingPurposes'       =>  'BookingPurposeController',
   'roomSizes'             =>  'RoomSizeController',
   'userTypes'             =>  'UserTypeController',
-  'equipments'            =>  'EquipmentController',
+  'equipment'            =>  'EquipmentController',
   'titles'                =>  'TitleController',
   'onlinePlateforms'      =>  'OnlinePlateformController',
   'identificationTypes'   =>  'IdentificationTypeController',

@@ -80,7 +80,7 @@ class DishTypeController extends Controller
     public function update(DishTypeRequest $request, DishType $dishType)
     {
         $dishType->update($request->all());
-        return redirect()->route('dishTypes.index')->with('success','Edit is success!');
+        return redirect()->route('dishTypes.index')->with('success','Update success!');
     }
 
     /**
