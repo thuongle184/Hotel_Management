@@ -16,7 +16,7 @@
 
     @foreach($titles as $title)
 
-      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-dish-type">
+      <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-title">
         <div class="my-frame">
           <div class="my-padding-bottom-12 my-filter-target">
             {!! $title["label"] !!}
