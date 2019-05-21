@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoomSizeRequest extends FormRequest
+class RoomRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,11 @@ class RoomSizeRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+   public function rules()
     {
         return [
-          'label' => 'required|unique:room_sizes,label,'.$this->get('id')
+          'room_size_id'  =>  'required',
+          'number'        =>  'required|unique:rooms,number,'.$this->get('id')
         ];
     }
 
@@ -36,8 +37,9 @@ class RoomSizeRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The room size is required',
-          'label.unique' => 'This room size has already been taken'
+          'room_size_id.required' => 'The room size is required',
+          'number.required'       =>  'The number of room is required',
+          'number.unique'         => 'This number has already been taken'
         ];
     }
 }

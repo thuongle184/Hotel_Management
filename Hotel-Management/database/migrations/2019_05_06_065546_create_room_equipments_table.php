@@ -16,7 +16,6 @@ class CreateRoomEquipmentsTable extends Migration
         Schema::create('room_equipments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('room_id')->unsigned();
-            
             $table->integer('equipment_id')->unsigned();
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
             $table->foreign('equipment_id')->references('id')->on('equipment')->onDelete('cascade');
