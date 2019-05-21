@@ -6,7 +6,7 @@ use App\OnlinePlateform;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\OnlinePlateformRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,8 +20,8 @@ class OnlinePlateformController extends Controller
      */
     public function index()
     {
-        $onlinePlateform = OnlinePlateform::select('id', 'label')->get()->toArray();
-        return view('onlinePlateform/index', compact('onlinePlateform'));
+        $onlinePlateforms = OnlinePlateform::all();
+        return view('onlinePlateform/index', compact('onlinePlateforms'));
     }
 
     /**
@@ -31,7 +31,8 @@ class OnlinePlateformController extends Controller
      */
     public function create()
     {
-        return view('onlinePlateform/create');
+        $onlinePlateform = new OnlinePlateform;
+        return view('onlinePlateform/create', compact('onlinePlateform'));
     }
 
     /**
@@ -40,11 +41,10 @@ class OnlinePlateformController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OnlinePlateformRequest $request)
     {
-        $onlinePlateform = new OnlinePlateform; // ten model
-        $onlinePlateform->label = $request->label;
-        $onlinePlateform->save();
+        OnlinePlateform::create($request->all()); 
+        
         return redirect()->route('onlinePlateforms.index')->with('success','Add success!');
     }
 
@@ -77,11 +77,10 @@ class OnlinePlateformController extends Controller
      * @param  \App\OnlinePlateform  $onlinePlateform
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OnlinePlateform $onlinePlateform)
+    public function update(OnlinePlateformRequest $request, OnlinePlateform $onlinePlateform)
     {
-        $onlinePlateform->label = $request->label;
-        $onlinePlateform->save();
-        return redirect()->route('onlinePlateforms.index')->with('success','Edit success!');
+        $onlinePlateform->update($request->all());
+        return redirect()->route('onlinePlateforms.index')->with('success','Update success!');
     }
 
     /**
@@ -93,6 +92,6 @@ class OnlinePlateformController extends Controller
     public function destroy(OnlinePlateform $onlinePlateform)
     {
         $onlinePlateform->delete();
-        return back()->with('success','Delete success!');
+        return "ok";
     }
 }

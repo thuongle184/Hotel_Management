@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TitleRequest extends FormRequest
+class OnlinePlateformRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,20 +24,15 @@ class TitleRequest extends FormRequest
     public function rules()
     {
         return [
-          'label' => 'required|unique:titles,label,'.$this->get('id')
+            'label' => 'required|unique:online_plateforms,label,'.$this->get('id')
         ];
     }
 
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
     public function messages()
     {
         return [
-          'label.required' => 'The title is required',
-          'label.unique' => 'This title has already been taken'
+          'label.required' => 'The online plateform label is required',
+          'label.unique' => 'This online plateform label has already been taken'
         ];
     }
 }

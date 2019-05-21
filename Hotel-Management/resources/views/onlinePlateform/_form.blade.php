@@ -15,23 +15,24 @@
 >
   @csrf
 
-  @if($equipment['id'] != NULL)
+  @if($onlinePlateform['id'] != NULL)
     @method('PATCH')
-    <input type="hidden" name="id" value="{!! $equipment['id'] !!}">
+    <input type="hidden" name="id" value="{!! $onlinePlateform['id'] !!}">
   @endif 
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="equipment_label">Equipment name:<label>
+      <label for="online_plateform_label">Online booking plateform label:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      
       <input
-        id="equipment_label"
+        id="online_plateform_label"
         type="text"
         class="form-control"
         name="label"
-        value="{!! old ('label',isset($equipment)?$equipment['label']:NULL) !!}"
+        value="{!! old ('label',isset($onlinePlateform)?$onlinePlateform['label']:NULL) !!}"
       >
     </div>
   </div>
@@ -42,9 +43,9 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a href="{!! route('equipment.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
+      <a href="{!! route('onlinePlateforms.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of equipment</span>
+        <span>Back to list of online booking plateforms</span>
       </a>
 
       <button type="submit" class="btn btn-sm btn-success">
