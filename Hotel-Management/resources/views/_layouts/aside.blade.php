@@ -96,6 +96,13 @@
         </a>
       </li>
 
+       <li>
+        <a href="{!! url('rooms') !!}">
+          <i class="fas fa-sitemap my-margin-right-12"></i>
+          <span>Room</span>
+        </a>
+      </li>
+
       <li>
         <a href="{!! url('titles') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>

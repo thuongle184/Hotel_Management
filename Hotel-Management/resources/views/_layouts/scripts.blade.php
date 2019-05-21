@@ -8,6 +8,7 @@
 <script src="{{URL::asset('js/entities/dishType.js')}}"></script>
 <script src="{{URL::asset('js/entities/title.js')}}"></script>
 <script src="{{URL::asset('js/entities/roomSize.js')}}"></script>
+<script src="{{URL::asset('js/entities/room.js')}}"></script>
 
 <script src="{{URL::asset('js/entities/equipment.js')}}"></script>
 <script src="{{URL::asset('js/entities/identificationType.js')}}">

@@ -17,9 +17,9 @@ class CreateRoomsTable extends Migration
             $table->increments('id');
             $table->integer('room_size_id')->unsigned();
             $table->string('number')->unique();
-            $table->enum('is_smoking', ['yes', 'no']);
+            $table->boolean('is_smoking')->default(false);
             $table->integer('price');
-            $table->enum('is_available', ['yes', 'no']);
+            $table->boolean('is_available')->default(false);
             $table->integer('beds');
             $table->foreign('room_size_id')->references('id')->on('room_sizes')->onDelete('cascade');
             $table->timestamps();

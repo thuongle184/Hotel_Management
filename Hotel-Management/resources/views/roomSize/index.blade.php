@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Room size", 'route' => route('roomSizes.create'), 'buttonLabel' => "Add a roomSize"]
+    ['title' => "Room size", 'route' => route('roomSizes.create'), 'buttonLabel' => "Add a room size"]
   )
 
 @endsection
