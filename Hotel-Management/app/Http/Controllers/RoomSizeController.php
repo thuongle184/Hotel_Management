@@ -6,7 +6,7 @@ use App\RoomSize;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\RoomSizeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,8 +20,8 @@ class RoomSizeController extends Controller
      */
     public function index()
     {
-        $roomSize = RoomSize::select('id', 'label')->get()->toArray();
-        return view('roomSize/index', compact('roomSize'));
+      $roomSizes = RoomSize::all();
+      return view('roomSize/index', compact('roomSizes'));
     }
 
     /**
@@ -31,7 +31,8 @@ class RoomSizeController extends Controller
      */
     public function create()
     {
-        return view('roomSize/create');
+      $roomSize = new RoomSize;
+      return view('roomSize/create', compact('roomSize'));
     }
 
     /**
@@ -40,12 +41,10 @@ class RoomSizeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableRequest $request)
+    public function store(RoomSizeRequest $request)
     {
-        $roomSize = new RoomSize; // ten model
-        $roomSize->label = $request->label;
-        $roomSize->save();
-        return redirect()->route('roomSizes.index')->with('success','Thêm sản phẩm thành công!'); // Lay dia chi cua phan as ben route
+        RoomSize::create($request->all());
+        return redirect()->route('roomSizes.index')->with('success','Add success!');
     }
 
     /**
@@ -68,7 +67,6 @@ class RoomSizeController extends Controller
     public function edit(RoomSize $roomSize)
     {
         return view('roomSize/edit',compact('roomSize'));
-        
     }
 
     /**
@@ -78,11 +76,10 @@ class RoomSizeController extends Controller
      * @param  \App\RoomSize  $roomSize
      * @return \Illuminate\Http\Response
      */
-    public function update(TableRequest $request, RoomSize $roomSize)
+    public function update(RoomSizeRequest $request, RoomSize $roomSize)
     {
-        $roomSize->label = $request->label;
-        $roomSize->save();
-        return redirect()->route('roomSizes.index')->with('success','Thêm sản phẩm thành công!'); // Lay dia chi cua phan as ben route
+        $roomSize->update($request->all());
+        return redirect()->route('roomSizes.index')->with('success','Edit is success!');
     }
 
     /**
@@ -94,6 +91,6 @@ class RoomSizeController extends Controller
     public function destroy(RoomSize $roomSize)
     {
         $roomSize->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }

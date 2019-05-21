@@ -6,10 +6,11 @@ use App\Title;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\TitleRequest;
 use Input,File;
 use DB;     
 use Session;
+
 
 class TitleController extends Controller
 {
@@ -20,8 +21,8 @@ class TitleController extends Controller
      */
     public function index()
     {
-        $title = Title::select('id', 'label')->get()->toArray();
-        return view('title/index', compact('title'));
+      $titles = Title::all();
+      return view('title/index', compact('titles'));
     }
 
     /**
@@ -31,7 +32,8 @@ class TitleController extends Controller
      */
     public function create()
     {
-        return view('title/create');
+      $title = new Title;
+      return view('title/create', compact('title'));
     }
 
     /**
@@ -40,12 +42,10 @@ class TitleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TitleRequest $request)
     {
-        $title = new Title; // ten model
-        $title->label = $request->label;
-        $title->save();
-        return redirect()->route('titles.index')->with('success','Add success!'); // Lay dia chi cua phan as ben route
+        Title::create($request->all());
+        return redirect()->route('titles.index')->with('success','Add success!');
     }
 
     /**
@@ -77,11 +77,10 @@ class TitleController extends Controller
      * @param  \App\Title  $title
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Title $title)
+    public function update(TitleRequest $request, Title $title)
     {
-        $title->label = $request->label;
-        $title->save();
-        return redirect()->route('titles.index')->with('success','Edit success!');
+        $title->update($request->all());
+        return redirect()->route('titles.index')->with('success','Edit is success!');
     }
 
     /**
@@ -93,6 +92,6 @@ class TitleController extends Controller
     public function destroy(Title $title)
     {
         $title->delete();
-        return back()->with('success','Delete success!');
+        return "ok";
     }
 }
