@@ -22,7 +22,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="equipment_label">Equipment label:<label>
+      <label for="equipment_label">Equipment name:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
