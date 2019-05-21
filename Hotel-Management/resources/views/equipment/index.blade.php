@@ -35,6 +35,7 @@
               <a href="{!! route('equipment.edit', $equipment["id"]) !!}" class="btn btn-sm btn-outline-primary">
                 <i class="far fa-edit my-margin-right-12"></i>
                 <span>Edit</span>
+                
               </a>
             </div>
 
