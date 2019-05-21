@@ -42,7 +42,7 @@ class BookingPurposeController extends Controller
      */
     public function store(TableRequest $request)
     {
-         $bookingPurpose = new BookingPurpose; // ten model
+        $bookingPurpose = new BookingPurpose; // ten model
         $bookingPurpose->label = $request->label;
         $bookingPurpose->save();
         return redirect()->route('bookingPurposes.index')->with('success','Thêm sản phẩm thành công!'); 
