@@ -31,8 +31,8 @@ class EquipmentRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The equipment label is required',
-          'label.unique' => 'This equipment has already been taken'
+          'label.required' => 'The equipment name is required',
+          'label.unique' => 'This piece of equipment already exists'
         ];
     }
 }

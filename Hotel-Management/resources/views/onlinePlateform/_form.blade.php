@@ -26,6 +26,7 @@
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      
       <input
         id="online_plateform_label"
         type="text"

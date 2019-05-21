@@ -86,6 +86,7 @@
           <i class="fas fa-sitemap my-margin-right-12"></i>
           <span>Online booking plateforms</span>
         </a>
+        
       </li>
 
       <li>
