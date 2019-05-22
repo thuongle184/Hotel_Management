@@ -28,14 +28,14 @@ class UserRequest extends FormRequest
             'title_id'                =>'required|numeric',
             'first_name'              => 'required',
             'last_name'               => 'required',
-            'user_name'               =>'required' ,
-            'DOB'                     => 'required',
+            'date_of_birth'           => 'required',
             'email'                   =>'required|unique:users,email,'.$this->get('id'),
             'password'                =>'required|min:6|max:20',
             'address'                 => 'required',
-            'phone'                   => 'required',
+            'phone'                   => 'required|unique:users,phone,'.$this->get('id'),
             'country_id'              =>'required|numeric',
-            'identification_type_id'  => 'required|numeric'
+            'identification_type_id'  => 'required|numeric',
+            'identification_number'   =>'required|unique:users,identification_number,'.$this->get('id')
         ];
     }
 
@@ -53,8 +53,11 @@ class UserRequest extends FormRequest
             'password.max'                    =>'Password not more than 20 characters',
             'address.required'                =>'Please enter address',
             'phone.required'                  =>'Please enter phone number',
+            'phone.unique'                    =>'Phone number has already been registered',
             'country_id.required'             =>'Please choose country!',
-            'identification_type_id.required'  =>'Please choose identification'
+            'identification_type_id.required' =>'Please choose identification type',
+            'identification_number.required'  =>'Please indication your identification number',
+            'identification_number.unique'    =>'Identification number has already been registered'
         ];
     }
 }

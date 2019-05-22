@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');
             $table->integer('country_id')->unsigned();
             $table->integer('identification_type_id')->unsigned();
+            $table->string('identification_number');
             $table->string('information')->nullable();
             
             $table->foreign('user_type_id')->references('id')->on('user_types')->onDelete('cascade');

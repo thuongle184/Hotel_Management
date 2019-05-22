@@ -27,7 +27,7 @@
     User name: {!! $user["user_name"] !!}
   </div>
   <div class="my-padding-bottom-12">
-    Day of Birth: {!! $user["DOB"] !!}
+    Day of Birth: {!! $user["date_of_birth"] !!}
   </div> 
   <div class="my-padding-bottom-12">
     Password: {!! $user["password"] !!}
