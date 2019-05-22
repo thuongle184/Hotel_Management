@@ -47,6 +47,13 @@
       </li>
 
       <li>
+        <a href="{!! url('bookingTypes') !!}">
+          <i class="fas fa-sitemap my-margin-right-12"></i>
+          <span>Booking types</span>
+        </a>
+      </li>
+
+      <li>
         <a href="{!! url('countries') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
           <span>Countries</span>
@@ -99,7 +106,7 @@
        <li>
         <a href="{!! url('rooms') !!}">
           <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Rooms</span>
+              <span>Rooms</span>
         </a>
       </li>
 

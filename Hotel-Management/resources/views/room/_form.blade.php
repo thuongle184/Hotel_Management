@@ -48,6 +48,7 @@
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
       <label for="number">Room-N°:<label>
+
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -142,7 +143,6 @@
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
         <span>Back to list of rooms</span>
       </a>
-
       <button type="submit" class="btn btn-sm btn-success my-margin-bottom-8">
         <i class="fas fa-check-circle my-margin-right-12"></i>
         <span>Save</span>

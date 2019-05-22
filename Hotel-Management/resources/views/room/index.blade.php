@@ -15,9 +15,7 @@
   @foreach($roomSizes as $roomSize)
 
     @if (count($roomSize->rooms) > 0)
-
       <div class="my-room-size">
-
         <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
           <strong>
             <em>{!! $roomSize->label !!}</em>
