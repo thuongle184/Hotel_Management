@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
             'middle_name'      => 'required',
             'last_name'      => 'required',
             'user_name'             =>'required|unique:users,user_name',
-            'DOB' => 'required',
+            'date_of_birth' => 'required',
             'email'=>'required|email',
             'password'=>'required|min:6|max:20',
             'address' => 'required',

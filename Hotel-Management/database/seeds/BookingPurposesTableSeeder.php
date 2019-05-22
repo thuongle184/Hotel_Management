@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class BookingpurposeTableSeeder extends Seeder
+class BookingPurposesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,10 +13,8 @@ class BookingpurposeTableSeeder extends Seeder
     public function run()
     {
        DB::table('booking_purposes')->insert ([
-            ['label'=> 'private'],
-            ['label'=> 'public'],
-            ['label'=> 'protected'],
-            
+            ['label'=> 'Tourism'],
+            ['label'=> 'Business']
         ]);
     }
 }

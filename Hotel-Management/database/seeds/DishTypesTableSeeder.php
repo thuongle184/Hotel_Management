@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class DishtypeTableSeeder extends Seeder
+class DishTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
