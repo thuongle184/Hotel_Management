@@ -31,7 +31,7 @@ class UserRequest extends FormRequest
             'last_name'               => 'required',
             'user_name'               =>'required' ,
             'DOB'                     => 'required',
-            'email'                   =>'required|unique:users,email',
+            'email'                   =>'required|unique:users,email,'.$this->get('id'),
             'password'                =>'required|min:6|max:20',
             'address'                 => 'required',
             'phone'                   => 'required|numeric',
