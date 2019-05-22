@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "User types", 'route' => route('userTypes.create'), 'buttonLabel' => "Add an user type"]
+    ['title' => "User types", 'route' => route('userTypes.create'), 'buttonLabel' => "Add a user type"]
   )
 
 @endsection

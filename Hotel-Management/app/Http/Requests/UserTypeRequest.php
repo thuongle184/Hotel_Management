@@ -36,8 +36,8 @@ class UserTypeRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The user type label is required',
-          'label.unique' => 'This user type label has already been taken'
+          'label.required' => 'The user type is required',
+          'label.unique' => 'This user type already exists'
         ];
     }
 }
