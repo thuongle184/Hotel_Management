@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class UsertypeTableSeeder extends Seeder
+class UserTypesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,14 +13,13 @@ class UsertypeTableSeeder extends Seeder
     public function run()
     {
         DB::table('user_types')->insert ([
+            ['label'=> 'Customer'],
             ['label'=> 'Cashier'],
             ['label'=> 'Manager'],
-            ['label'=> 'Customer'],
             ['label'=> 'Receptionist'],
             ['label'=> 'Accountant'],
             ['label'=> 'Guard'],
-            ['label'=> 'Director'],
-                              
+            ['label'=> 'Director']
         ]);
     }
 }

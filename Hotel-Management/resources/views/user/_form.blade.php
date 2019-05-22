@@ -130,16 +130,16 @@ class="my-margin-top-40"
             </div> 
             <div class="row my-padding-bottom-19">
               <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-                <label for="DOB">Day of Birth:<label>
+                <label for="date_of_birth">Day of Birth:<label>
                 </div>
 
                 <div class="col-md-9 col-lg-8 my-padding-bottom-8">
                   <input
-                  id="DOB"
+                  id="date_of_birth"
                   type="date"
                   class="form-control"
-                  name="DOB"
-                  value="{!! old ('DOB',isset($user)?$user['DOB']:NULL) !!}"
+                  name="date_of_birth"
+                  value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
                   >
                 </div>
               </div> 

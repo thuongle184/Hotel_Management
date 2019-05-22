@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
- 
-use Illuminate\Database\Eloquent\Model;
-class RoomsizeTableSeeder extends Seeder
+use Illuminate\Support\Facades\DB;
+
+class RoomSizesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,8 +18,7 @@ class RoomsizeTableSeeder extends Seeder
             ['label'=> 'Triple'],
             ['label'=> 'Quad'],
             ['label'=> 'Queen'],
-            ['label'=> 'King'],
-                      
+            ['label'=> 'King']
         ]);
     }
 }
