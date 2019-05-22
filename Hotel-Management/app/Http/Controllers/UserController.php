@@ -23,20 +23,7 @@ class UserController extends Controller
         $userTypes = UserType::with(['users' => function ($user) { $user->orderBy('first_name'); }])
           ->orderBy('id')
           ->get();
-
-          $titles = Title::with(['titles' => function ($title) { $title->orderBy('first_name'); }])
-          ->orderBy('id')
-          ->get();
-
-          $countries = Country::with(['countries' => function ($country) { $country->orderBy('first_name'); }])
-          ->orderBy('id')
-          ->get();
-
-          $identificationTypes = IdentificationType::with(['identificationTypes' => function ($identificationType) { $identificationType->orderBy('first_name'); }])
-          ->orderBy('id')
-          ->get();
-
-        return view('user/index', compact('userTypes','titles','countries','identificationTypes'));
+          return view('user/index', compact('userTypes'));
     }
 
     /**
@@ -62,7 +49,9 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        //
+        $user = new User($request->all());
+        $user->save();
+        return redirect()->route('users.index')->with('success','Add success!');
     }
 
     /**
@@ -73,7 +62,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('user/show', compact('user'));
+        return redirect()->route('users.index')->with('success','Add success!');
     }
 
     /**
@@ -84,7 +74,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        $userTypes = UserType::orderBy('id')->get();
+        $titles = Title::orderBy('id')->get();
+        $countries = Country::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
+        return view('user/edit', compact('user','userTypes','titles','countries','identificationTypes'));
     }
 
     /**
@@ -94,9 +88,10 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $request, User $user)
     {
-        //
+      $user->update($request->all());
+      return redirect()->route('users.index')->with('success','Edit is success!');
     }
 
     /**
@@ -107,6 +102,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return "ok";
     }
 }
