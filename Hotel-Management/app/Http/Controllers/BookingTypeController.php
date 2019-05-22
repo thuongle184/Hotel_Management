@@ -70,8 +70,8 @@ class BookingTypeController extends Controller
      */
     public function edit(BookingType $bookingType)
     {
-      $bookingTypes = BookingType::orderBy('id')->get();
-      return view('bookingType/edit',compact('bookingType'))->with('bookingTypes', $bookingTypes);
+      $onlinePlateform = OnlinePlateform::orderBy('id')->get();
+      return view('onlinePlateform/edit',compact('onlinePlateform'))->with('onlinePlateforms', $onlinePlateforms);
     }
 
     /**
@@ -83,11 +83,7 @@ class BookingTypeController extends Controller
      */
     public function update(BookingTypeRequest $request, BookingType $bookingType)
     {
-      if (!$request->is_available) {
-        $request->merge(['is_available' => false]);
-      }
-
-
+      
       $bookingType->update($request->all());
 
       return redirect()->route('bookingTypes.index')->with('success','Update success!');

@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Add a new roomSize"]
+    ['title' => "Add a new room size"]
   )
 
 @endsection
