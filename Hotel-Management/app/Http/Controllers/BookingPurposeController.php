@@ -6,7 +6,7 @@ use App\BookingPurpose;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\BookingPurposeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,8 +20,8 @@ class BookingPurposeController extends Controller
      */
     public function index()
     {
-        $bookingPurpose = BookingPurpose::select('id', 'label')->get()->toArray();
-        return view('bookingPurpose/index', compact('bookingPurpose'));
+        $bookingPurposes = BookingPurpose::all();
+        return view('bookingPurpose/index', compact('bookingPurposes'));
     }
 
     /**
@@ -31,7 +31,8 @@ class BookingPurposeController extends Controller
      */
     public function create()
     {
-        return view('bookingPurpose/create');
+        $bookingPurpose = new BookingPurpose;
+        return view('bookingPurpose/create', compact('bookingPurpose'));
     }
 
     /**
@@ -40,12 +41,11 @@ class BookingPurposeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableRequest $request)
+    public function store(BookingPurposeRequest $request)
     {
-        $bookingPurpose = new BookingPurpose; // ten model
-        $bookingPurpose->label = $request->label;
+        $bookingPurpose = new BookingPurpose($request->all()); // ten model
         $bookingPurpose->save();
-        return redirect()->route('bookingPurposes.index')->with('success','Thêm sản phẩm thành công!'); 
+        return redirect()->route('bookingPurposes.index')->with('success','Success!'); 
     }
 
     /**
@@ -77,11 +77,10 @@ class BookingPurposeController extends Controller
      * @param  \App\BookingPurpose  $bookingPurpose
      * @return \Illuminate\Http\Response
      */
-    public function update(TableRequest $request, BookingPurpose $bookingPurpose)
+    public function update(BookingPurposeRequest $request, BookingPurpose $bookingPurpose)
     {
-        $bookingPurpose->label = $request->label;
-        $bookingPurpose->save();
-        return redirect()->route('bookingPurposes.index')->with('success','Sửa sản phẩm thành công!');
+        $bookingPurpose->update($request->all());
+        return redirect()->route('bookingPurposes.index')->with('success','Update success!');
     }
 
     /**
@@ -93,6 +92,6 @@ class BookingPurposeController extends Controller
     public function destroy(BookingPurpose $bookingPurpose)
     {
         $bookingPurpose->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }

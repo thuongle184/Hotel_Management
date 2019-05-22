@@ -6,7 +6,7 @@ use App\UserType;
 use Illuminate\Http\Request;
 use Validator;
 use Auth;
-use App\Http\Requests\TableRequest;
+use App\Http\Requests\UserTypeRequest;
 use Input,File;
 use DB;     
 use Session;
@@ -20,8 +20,8 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-      $userType = UserType::select('id', 'label')->get()->toArray();
-      return view('userType/index', compact('userType'));
+        $userTypes = UserType::all();
+        return view('userType/index', compact('userTypes'));
     }
 
     /**
@@ -31,7 +31,8 @@ class UserTypeController extends Controller
      */
     public function create()
     {
-        return view('userType/create');
+        $userType = new UserType;
+        return view('userType/create',compact('userType'));
     }
 
     /**
@@ -40,12 +41,10 @@ class UserTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TableRequest  $request)
+    public function store(UserTypeRequest  $request)
     {
-        $userType = new UserType; // ten model
-        $userType->label = $request->label;
-        $userType->save();
-        return redirect()->route('userTypes.index')->with('success','Thêm sản phẩm thành công!'); // Lay dia chi cua phan as ben route
+        UserType::create($request->all());
+        return redirect()->route('userTypes.index')->with('success','Success'); // Lay dia chi cua phan as ben route
     }
 
     /**
@@ -80,12 +79,10 @@ class UserTypeController extends Controller
      * @param  \App\UserType  $userType
      * @return \Illuminate\Http\Response
      */
-    public function update(TableRequest $request, UserType $userType)
+    public function update(UserTypeRequest $request, UserType $userType)
     {
-        // $userType = UserType::find($userType); => NO NEED BECAUSE YOU ALREADY HAVE IT
-        $userType->label = $request->label;
-        $userType->save();
-        return redirect()->route('userTypes.index')->with('success','Sửa sản phẩm thành công!');
+        $userType->update($request->all());
+        return redirect()->route('userTypes.index')->with('success','Update success!');
     }
 
     /**
@@ -96,8 +93,7 @@ class UserTypeController extends Controller
      */
     public function destroy(UserType $userType)
     {
-        // $userType = UserType::find($userType); => NO NEED BECAUSE YOU ALREADY HAVE IT
         $userType->delete();
-        return back()->with('success','Xóa sản phẩm thành công!');
+        return "ok";
     }
 }
