@@ -2,25 +2,25 @@
 
 @section('header')
 
-  @include(
-    '_layouts.header',
-    ['title' => "Edit {$dish['name']}"]
-  )
+  <h2>
+   <em>Edit {!! $user->title->label !!} {!! $user["first_name"] !!} {!! $user["last_name"] !!} {!! $user["middle_name"] !!}</em>
+</h2>
 
 @endsection
 
 
 @section('content')
-
   @include(
-    'dish/_form',
+    'user/_form',
 
     [
-      'errors'      =>  $errors,
-      'action'      =>  URL::action('DishController@update', $dish->id),
-      'dish'        =>  $dish,
-      'dishTypes'   =>  $dishTypes
+      'errors'              =>  $errors,
+      'action'              =>  URL::action('UserController@update', $user->id),
+      'user'                =>  $user,
+      'userTypes'           =>  $userTypes,
+      'titles'              =>  $titles,
+      'countries'           =>  $countries,
+      'identificationTypes' =>  $identificationTypes
     ]
   )
-
 @endsection
