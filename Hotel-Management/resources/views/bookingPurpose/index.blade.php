@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Booking purpose", 'route' => route('bookingPurposes.create'), 'buttonLabel' => "Add a booking purpose"]
+    ['title' => "Booking purposes", 'route' => route('bookingPurposes.create'), 'buttonLabel' => "Add a booking purpose"]
   )
 
 @endsection

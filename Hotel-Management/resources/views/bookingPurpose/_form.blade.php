@@ -22,7 +22,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="booking_purpose_label">Booking purpose label:<label>
+      <label for="booking_purpose_label">Booking purpose:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -42,7 +42,7 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a href="{!! route('dishTypes.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
+      <a href="{!! route('bookingPurposes.index') !!}" class="btn btn-sm btn-outline-dark my-padding-right-8">
         <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
         <span>Back to list of booking purposes</span>
       </a>

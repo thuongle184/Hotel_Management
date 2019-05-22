@@ -36,8 +36,8 @@ class BookingPurposeRequest extends FormRequest
     public function messages()
     {
         return [
-          'label.required' => 'The booking purpose label is required',
-          'label.unique' => 'This booking purpose label has already been taken'
+          'label.required' => 'The booking purpose is required',
+          'label.unique' => 'This booking purpose already exists'
         ];
     }
 }
