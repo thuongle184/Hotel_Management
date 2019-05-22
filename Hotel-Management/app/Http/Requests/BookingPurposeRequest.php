@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OnlinePlateformRequest extends FormRequest
+class BookingPurposeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,20 @@ class OnlinePlateformRequest extends FormRequest
     public function rules()
     {
         return [
-            'label' => 'required|unique:online_plateforms,label,'.$this->get('id')
+          'label' => 'required|unique:booking_purposes,label,'.$this->get('id')
         ];
     }
 
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
     public function messages()
     {
         return [
-          'label.required' => 'The plateform name is required',
-          'label.unique' => 'This online plateform already exists'
+          'label.required' => 'The booking purpose is required',
+          'label.unique' => 'This booking purpose already exists'
         ];
     }
 }

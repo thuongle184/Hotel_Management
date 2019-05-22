@@ -20,15 +20,15 @@
     </div>
     
     <div class="my-padding-bottom-12">
-      room size: {!! $room->roomSize->label !!}
+      Room size: {!! strtolower($room->roomSize->label) !!}
     </div>
 
     <div class="my-padding-bottom-12">
-      Number: {!! $room["number"] !!}
+      Room-N°: {!! $room["number"] !!}
     </div>
 
     <div class="my-padding-bottom-12">
-      Room is smoking?: {!! $room["is_smoking"] !!}
+      Smoking is allowed: {!! $room["is_smoking"] ? 'yes' : 'no' !!}
     </div>
 
     <div class="my-padding-bottom-12">
@@ -42,7 +42,7 @@
     </div>
 
     <div class="my-padding-bottom-12">
-      Room is available: {!! $room["is_available"] !!}
+      Room is available: {!! $room["is_available"] ? 'yes' : 'no' !!}
     </div>
 
     <div class="my-padding-bottom-12">

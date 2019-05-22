@@ -25,7 +25,9 @@ class RoomRequest extends FormRequest
     {
         return [
           'room_size_id'  =>  'required',
-          'number'        =>  'required|unique:rooms,number,'.$this->get('id')
+          'number'        =>  'required|unique:rooms,number,'.$this->get('id'),
+          'price'         =>  'required',
+          'beds'           =>  'required'
         ];
     }
 
@@ -37,9 +39,11 @@ class RoomRequest extends FormRequest
     public function messages()
     {
         return [
-          'room_size_id.required' => 'The room size is required',
-          'number.required'       =>  'The number of room is required',
-          'number.unique'         => 'This number has already been taken'
+          'room_size_id.required' =>  'The room size is required',
+          'number.required'       =>  'The room number is required',
+          'price.required'        =>  'The price is required',
+          'beds.required'          =>  'The quantity of beds is required',
+          'number.unique'         =>  'This number already exists'
         ];
     }
 }

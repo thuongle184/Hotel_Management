@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     protected $table = 'users'; // name of table in the database
-    protected $guarded = ['id','user_type_id', 'title_id', 'first_name', 'middle_name', 'last_name', 'user_name', 'DOB', 'password', 'address', 'email', 'phone', 'country_id', 'identification_type_id', 'information']; // fields in the table
+    protected $guarded = ['id']; // fields in the table
+    protected $fillable = ['user_type_id', 'title_id', 'first_name', 'middle_name', 'last_name', 'user_name', 'DOB', 'password', 'address', 'email', 'phone', 'country_id', 'identification_type_id', 'information']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
 

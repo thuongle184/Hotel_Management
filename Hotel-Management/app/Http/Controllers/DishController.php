@@ -126,7 +126,9 @@ class DishController extends Controller
 
       }
 
-      return redirect()->route('dishes.index')->with('success','Update success!');
+
+      return redirect()->route('dishes.index')->with('success','Edit is success!');
+
     }
 
     /**
