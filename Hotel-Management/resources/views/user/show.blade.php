@@ -20,20 +20,17 @@
   </div>
 
   <div class="my-padding-bottom-12">
-    User type: {!! $user->userType->label !!}
+    User type: {!! strtolower($user->userType->label) !!}
   </div>
   
   <div class="my-padding-bottom-12">
     User name: {!! $user["user_name"] !!}
   </div>
   <div class="my-padding-bottom-12">
-    Day of Birth: {!! $user["date_of_birth"] !!}
+    Date of birth: {!! $user["date_of_birth"] !!}
   </div> 
   <div class="my-padding-bottom-12">
-    Password: {!! $user["password"] !!}
-  </div>
-  <div class="my-padding-bottom-12">
-    Address: {!! $user["address"] !!}
+    Address: {!! str_replace("\n","<br>", $user->address) !!}
   </div>
   <div class="my-padding-bottom-12">
     Email: {!! $user["email"] !!}
@@ -45,11 +42,18 @@
     Country:  {!! $user->country->label !!} 
   </div>
   <div class="my-padding-bottom-12">
-    Identification:  {!! $user->identificationType->label !!} 
+    Identification type:  {!! $user->identificationType->label !!} 
   </div>
   <div class="my-padding-bottom-12">
-    Information: {!! $user["information"] !!}
+    Identification number:  {!! $user["identification_number"] !!} 
   </div>
+  
+  @isset($user['information'])    
+    <div class="my-padding-bottom-12">
+      Information: {!! str_replace("\n","<br>", $user->information) !!}
+    </div>
+  @endisset
+  
   <div class="d-flex flex-wrap">
 
     <div class="my-padding-right-8 my-padding-bottom-8">

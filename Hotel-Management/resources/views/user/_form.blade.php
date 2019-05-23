@@ -29,16 +29,17 @@
       <select name="title_id" class="form-control" id="title_title_type_id">
 
         @foreach ($titles as $title)
-        <option
-        value="{!! $title['id'] !!}"
-        {!!
-          old (
-          'title_id',
-          isset($title) && $title['title_id'] == $title['id'] ? 'selected' : NULL )
-          !!}
+          <option
+            value="{!! $title['id'] !!}"
+            {!!
+                old (
+                  'title_id',
+                  isset($user) && $user['title_id'] == $title['id'] ? 'selected' : NULL 
+                )
+            !!}
           >
-          {!! $title['label'] !!}
-        </option>
+            {!! $title['label'] !!}
+          </option>
         @endforeach
 
       </select>
@@ -134,7 +135,8 @@
         placeholder="yyyy-mm-dd"
         id="date_of_birth"
         type="text"
-        class="form-control"
+        autocomplete="off"
+        class="form-control datepicker"
         name="date_of_birth"
         value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
       >
@@ -167,7 +169,7 @@
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
         id="phone"
-        type="number"
+        type="tel"
         class="form-control"
         name="phone"
         value="{!! old ('phone',isset($user)?$user['phone']:NULL) !!}"
@@ -206,7 +208,7 @@
             {!!
                 old (
                   'country_id',
-                  isset($country) && $country['country_id'] == $country['id'] ? 'selected' : NULL 
+                  isset($user) && $user['country_id'] == $country['id'] ? 'selected' : NULL 
                 )
             !!}
           >
@@ -261,7 +263,7 @@
         type="text"
         class="form-control"
         name="identification_number"
-        value="{!! old ('identification_number',isset($user)?$user['identification_number ']:NULL) !!}"
+        value="{!! old ('identification_number',isset($user)?$user['identification_number']:NULL) !!}"
       >
     </div>
   </div>
