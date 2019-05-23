@@ -56,7 +56,7 @@ class UserRequest extends FormRequest
             'phone.unique'                    =>'Phone number has already been registered',
             'country_id.required'             =>'Please choose country!',
             'identification_type_id.required' =>'Please choose identification type',
-            'identification_number.required'  =>'Please indication your identification number',
+            'identification_number.required'  =>'Please indicate your identification number',
             'identification_number.unique'    =>'Identification number has already been registered'
         ];
     }
