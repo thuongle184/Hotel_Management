@@ -53,11 +53,11 @@
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-      id="last_name"
-      type="text"
-      class="form-control"
-      name="last_name"
-      value="{!! old ('last_name',isset($user)?$user['last_name']:NULL) !!}"
+        id="last_name"
+        type="text"
+        class="form-control"
+        name="last_name"
+        value="{!! old ('last_name',isset($user)?$user['last_name']:NULL) !!}"
       >
     </div>
   </div>
@@ -131,11 +131,12 @@
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-      id="date_of_birth"
-      type="date"
-      class="form-control"
-      name="date_of_birth"
-      value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
+        placeholder="yyyy-mm-dd"
+        id="date_of_birth"
+        type="text"
+        class="form-control"
+        name="date_of_birth"
+        value="{!! old ('date_of_birth',isset($user)?$user['date_of_birth']:NULL) !!}"
       >
     </div>
   </div> 
@@ -181,7 +182,7 @@
     </div>
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <textarea placeholder="Son Tra District - Da Nang city"
+      <textarea
         rows="4"
         id="address"
         class="form-control"
@@ -251,17 +252,33 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="information">Information:<label>
+      <label for="identification_number">Identification number:<label>
     </div>
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-        id="information"
+        id="identification_number"
         type="text"
         class="form-control"
-        name="information"
-        value="{!! old ('information',isset($user)?$user['information ']:NULL) !!}"
+        name="identification_number"
+        value="{!! old ('identification_number',isset($user)?$user['identification_number ']:NULL) !!}"
       >
+    </div>
+  </div>
+
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="information">Information:<label>
+    </div>
+
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <textarea
+        rows="4"
+        id="information"
+        class="form-control"
+        name="information"
+      >{!! old ('information',isset($user)?$user['information']:NULL) !!}</textarea>
     </div>
   </div>
 
