@@ -16,7 +16,7 @@
 
 @if (count($userType->users) > 0)
 
-<div class="my-user">
+<div class="my-user-type">
 
  <h4 class="my-margin-bottom-19 my-margin-top-40 my-border-bottom">
   <strong>
