@@ -5,7 +5,7 @@ $(function(){
 
     $userDelete = $(this);
     $user = $userDelete.closest('.my-user');
-    $userType = $userDelete.closest('.my-user-type');
+    $label = $userDelete.closest('.my-user-type');
     userLabel = $user.find('.my-filter-target').text();
 
 
@@ -22,16 +22,15 @@ $(function(){
       success : function(data) {
 
         if(data === "ok") {
-          if($userType.find('.my-user-type').length < 1) {
-            $userType.remove();
-          }
-
           $('#my-entity-delete-status')
           .addClass('my-entity-delete-status-ok')
           .removeClass('d-none')
           .html(`<i>"${userLabel}"</i> has successfully been deleted`);
 
           $user.remove();
+          if($label.children('.row').children().length == 0){
+            $label.remove();
+          }
 
         } 
 
