@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => $company["name"]]
+    ['title' => $company["label"]]
   )
 
 @endsection
@@ -17,10 +17,6 @@
   <div class="my-margin-top-40 my-frame">
     <div class="my-padding-bottom-12">
       Id: {!! $company["id"] !!}
-    </div>
-    
-    <div class="my-padding-bottom-12">
-      User: {!! ($company->user->first_name) !!} {!!$company->user->middle_name!!} {!!$company->user->last_name!!}
     </div>
 
     <div class="d-flex flex-wrap">

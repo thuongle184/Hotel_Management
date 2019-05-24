@@ -24,16 +24,20 @@ class CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'                 =>'required|numeric',
-            'name'                   => 'required|unique:companies,name,'.$this->get('id')
+          'label' => 'required|unique:companies,label,'.$this->get('id')
         ];
     }
 
-    public function messages (){
-        return[
-            'user_id.required'                =>'Please choose user',
-            'name.required'                   =>'Please company name',
-            'name.unique'                     =>'Company name has is exist'
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+          'label.required' => 'The company name is required',
+          'label.unique' => 'This company name already exists'
         ];
     }
 }

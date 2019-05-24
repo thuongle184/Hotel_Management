@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RoomSizesTableSeeder::class);
         $this->call(TitlesTableSeeder::class);
         $this->call(UserTypesTableSeeder::class);
+        $this->call(CompaniesTableSeeder::class);
     }
 }
