@@ -30,8 +30,8 @@ Route::resources([
   'identificationTypes'   =>  'IdentificationTypeController',
   'countries'             =>  'CountryController',
   'users'                 =>  'UserController',
-  'companies'             =>  'CompanyController'
-
+  'companies'             =>  'CompanyController',
+  'userCompanies'         =>  'UserCompanyController',
 ]);
 
 

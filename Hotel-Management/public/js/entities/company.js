@@ -5,7 +5,6 @@ $(function(){
 
     $companyDelete = $(this);
     $company = $companyDelete.closest('.my-company');
-    $user = $company.closest('.my-user');
     companyLabel = $company.find('.my-filter-target').text();
 
 
@@ -24,10 +23,6 @@ $(function(){
         if(data === "ok") {
 
           $company.remove();
-
-          if($user.find('.my-company').length < 1) {
-            $user.remove();
-          }
           
           $('#my-entity-delete-status')
             .addClass('my-entity-delete-status-ok')
@@ -43,7 +38,6 @@ $(function(){
             .addClass('my-entity-delete-status-ko')
             .removeClass('d-none')
             .html(`Something went wrong when attempting to delete <i>"${companyLabel}"</i>`);
-
         }
 
       },

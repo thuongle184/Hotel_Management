@@ -19,31 +19,6 @@
     @method('PATCH')
     <input type="hidden" name="id" value="{!! $company['id'] !!}">
   @endif 
-  
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="room_room_size_id">User id:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="user_id" class="form-control" id="user_user_id">
-        
-        @foreach ($users as $user)
-          <option
-            value="{!! $user['id'] !!}"
-            {!!
-                old (
-                  'user_id',
-                  isset($company) && $company['user_id'] == $user['id'] ? 'selected' : NULL )
-            !!}
-          >
-            {!! $user["first_name"] !!} {!! $user["last_name"] !!} {!! $user["middle_name"] !!}
-          </option>
-        @endforeach
-
-      </select>
-    </div>
-  </div>
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
@@ -53,11 +28,11 @@
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-        id="name"
+        id="label"
         type="text"
         class="form-control"
-        name="name"
-        value="{!! old ('name',isset($company)?$company['name']:NULL) !!}"
+        name="label"
+        value="{!! old ('label',isset($company)?$company['label']:NULL) !!}"
       >
     </div>
   </div>

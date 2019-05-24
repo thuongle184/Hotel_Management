@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Company;
-use App\User;
-use App\Http\Requests\CompanyRequest;
+use Illuminate\Http\Request;
 use Validator;
-use Illuminate\Support\Facades\Storage;
+use Auth;
+use App\Http\Requests\CompanyRequest;
 use Input,File;
 use DB;     
-use Session;    
+use Session;
 
 class CompanyController extends Controller
 {
@@ -20,11 +20,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $users = User::with(['companies' => function ($company) { $company->orderBy('name'); }])
-          ->orderBy('id')
-          ->get();
-
-        return view('company/index', compact('users'));
+        $companies = Company::all();
+        return view('company/index', compact('companies'));
     }
 
     /**
@@ -35,8 +32,7 @@ class CompanyController extends Controller
     public function create()
     {
         $company = new Company;
-        $users = User::orderBy('id')->get();
-        return view('company/create', compact('company','users'));
+        return view('company/create',compact('company'));
     }
 
     /**
@@ -47,10 +43,8 @@ class CompanyController extends Controller
      */
     public function store(CompanyRequest $request)
     {
-        $company = new Company($request->all());
-        $company->save();
-        return redirect()->route('companies.index')->with('success','Add success!');
-
+        Company::create($request->all());
+        return redirect()->route('companies.index')->with('success','Success'); // Lay dia chi cua phan as ben route
     }
 
     /**
@@ -61,7 +55,7 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return view('company/show', compact('company'));
+        return view('company/show',compact('company'));
     }
 
     /**
@@ -72,8 +66,8 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        $users = User::orderBy('id')->get();
-        return view('company/edit',compact('company'))->with('users', $users);
+        return view('company/edit',compact('company'));
+
     }
 
     /**
@@ -86,7 +80,7 @@ class CompanyController extends Controller
     public function update(CompanyRequest $request, Company $company)
     {
         $company->update($request->all());
-        return redirect()->route('companies.index')->with('success','Edit is success!');
+        return redirect()->route('companies.index')->with('success','Update success!');
     }
 
     /**

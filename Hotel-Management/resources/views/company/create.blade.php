@@ -18,8 +18,7 @@
     [
       'errors'      =>  $errors,
       'action'      =>  URL::action('CompanyController@store'),
-      'company'        =>  $company,
-      'users'   =>  $users
+      'company'        =>  $company
     ]
   )
 

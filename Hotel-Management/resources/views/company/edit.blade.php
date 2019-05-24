@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Edit company {$company['name']}"]
+    ['title' => "Edit company {$company['label']}"]
   )
 
 @endsection
@@ -18,8 +18,7 @@
     [
       'errors'      =>  $errors,
       'action'      =>  URL::action('CompanyController@update', $company->id),
-      'company'        =>  $company,
-      'users'   =>  $users
+      'company'        =>  $company
     ]
   )
 
