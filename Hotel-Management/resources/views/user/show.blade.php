@@ -1,11 +1,11 @@
 @extends('_layouts.app')
 
 @section('header')
-<h2>
-   <em> {!! $user->title->label !!} {!! $user["first_name"] !!} {!! $user["last_name"] !!} {!! $user["middle_name"] !!}</em>
-</h2>
 
-
+@include(
+    '_layouts.header',
+    ['title' => $user["title"]["label"].' '. $user["first_name"].' '.$user["last_name"].' '.$user["middle_name"] ]
+  )
 
 @endsection
 
