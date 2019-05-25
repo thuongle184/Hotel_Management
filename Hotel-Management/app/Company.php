@@ -12,6 +12,6 @@ class Company extends Model
     public $timestamps=true; // set timestamp, allow to use
 
     public function users() {
-      return $this->belongsToMany('App\User', 'users_companies', 'user_id', 'company_id');
+      return $this->belongsToMany('App\User', 'users_companies', 'company_id', 'user_id');
     }
 }

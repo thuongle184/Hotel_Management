@@ -15,9 +15,37 @@
   <div class="d-none my-margin-top-40 my-margin-bottom-19" id="my-room-discard-picture-status"></div>
 
   <div class="my-margin-top-40 my-frame">
-    <div class="my-padding-bottom-12">
+    
+    <div class="my-padding-bottom-19">
       Id: {!! $company["id"] !!}
     </div>
+
+    @if (count($company->users) > 0)
+      <div class="my-padding-bottom-19">
+        <div class="d-flex flex-wrap">
+          @foreach($company->users as $user)
+
+            <div class="my-padding-bottom-8 my-padding-right-40">
+              <div class="d-flex align-items-center text-info">
+                <div class="my-margin-right-19 my-entity-icon">
+                  <i class="fas fa-user"></i>
+                </div>
+
+                <div class="my-entity-label">
+                  <i>
+                    {!! $user->title->label !!}
+                    {!! $user->last_name !!}
+                    {!! $user->middle_name !!}
+                    {!! $user->first_name !!}
+                  </i>
+                </div>
+              </div>
+            </div>
+          
+          @endforeach
+        </div>
+      </div>
+    @endif
 
     <div class="d-flex flex-wrap">
 

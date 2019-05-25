@@ -24,9 +24,6 @@
   </div>
   
   <div class="my-padding-bottom-12">
-    User name: {!! $user["user_name"] !!}
-  </div>
-  <div class="my-padding-bottom-12">
     Date of birth: {!! $user["date_of_birth"] !!}
   </div> 
   <div class="my-padding-bottom-12">
@@ -53,6 +50,28 @@
       Information: {!! str_replace("\n","<br>", $user->information) !!}
     </div>
   @endisset
+
+  @if (count($user->companies) > 0)
+    <div class="my-padding-bottom-19">
+      <div class="d-flex flex-wrap">
+        @foreach($user->companies as $company)
+
+          <div class="my-padding-bottom-8 my-padding-right-40">
+            <div class="d-flex align-items-center text-info">
+              <div class="my-margin-right-19 my-entity-icon">
+                <i class="fas fa-industry"></i>
+              </div>
+
+              <div class="my-entity-label">
+                <i>{!! $company->label !!}</i>
+              </div>
+            </div>
+          </div>
+        
+        @endforeach
+      </div>
+    </div>
+  @endif
   
   <div class="d-flex flex-wrap">
 

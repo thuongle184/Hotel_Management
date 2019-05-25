@@ -1,35 +1,4 @@
-$(window).resize(function(){
-  resizeCheckboxes();
-});
-
-
-function resizeCheckboxes(){
-
-  $('.my-user-company-checkbox').css('width', 'auto');
-  $('.my-user-company-label').css('width', 'auto');
-
-  var widthUserCompanyCheckbox, widthUserCompanyLabel = 0;
-
-  $('.my-user-company-checkbox').each(function(){
-    if (parseFloat($(this).css('width')) > widthUserCompanyCheckbox) {
-      widthUserCompanyCheckbox = parseFloat($(this).css('width'));
-    }
-  });
-
-  $('.my-user-company-label').each(function(){
-    if (parseFloat($(this).css('width')) > widthUserCompanyLabel) {
-      widthUserCompanyLabel = parseFloat($(this).css('width'));
-    }
-  });
-
-  $('.my-user-company-checkbox').css('width', widthUserCompanyCheckbox);
-  $('.my-user-company-label').css('width', widthUserCompanyLabel);
-}
-
-
 $(function(){
-  
-  resizeCheckboxes();
   
   $('.my-user-delete').on('click', function(e) {
     e.preventDefault();
@@ -91,4 +60,3 @@ $(function(){
   });
 
 });
-
