@@ -129,6 +129,42 @@ class UserController extends Controller
     public function update(UserRequest $request, User $user)
     {
       $user->update($request->all());
+
+      // updating companies linked to the user
+      $companyIds = $request->input('company_id');
+
+      $userCompanyIds = $user->companies
+          
+          ->map(function($company, $key){
+              return $company->id;
+            })
+
+          ->toArray();
+
+
+      // for each company selected in the form, creating a new record in users_companies
+      // => ONLY IF THIS DOES NOT ALREADY EXIST!
+      foreach ($companyIds as $companyId) {
+        if(!in_array($companyId, $userCompanyIds)) {
+          $usersCompany = new UsersCompany;
+          $usersCompany->user_id = $user->id;
+          $usersCompany->company_id = $companyId;
+          $usersCompany->save();
+        }
+      }
+
+
+      // deleting records of companies unselected
+      foreach ($userCompanyIds as $userCompanyId) {
+        if(!in_array($userCompanyId, $companyIds)) {
+          $usersCompanies = UsersCompany::where('user_id', $user->id)->where('company_id', $userCompanyId)->get();
+
+          foreach ($usersCompanies as $usersCompany) {
+            $usersCompany->delete();
+          }
+        }
+      }
+
       return redirect()->route('users.index')->with('success','Edit is success!');
     }
 
