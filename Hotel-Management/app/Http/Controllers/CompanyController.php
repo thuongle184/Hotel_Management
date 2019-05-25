@@ -20,7 +20,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
+        $companies = Company::orderBy('label')->get();
         return view('company/index', compact('companies'));
     }
 
