@@ -2,9 +2,19 @@
 
 @section('header')
 
-  <h2>
-   <em>Edit {!! $user->title->label !!} {!! $user["first_name"] !!} {!! $user["last_name"] !!} {!! $user["middle_name"] !!}</em>
-</h2>
+  @include(
+    '_layouts.header',
+    [
+      'title' => "Edit "
+          .$user["title"]["label"]
+          .' '
+          .$user["first_name"]
+          .' '
+          .$user["last_name"]
+          .' '
+          .$user["middle_name"]
+    ]
+  )
 
 @endsection
 
@@ -20,6 +30,7 @@
       'userTypes'           =>  $userTypes,
       'titles'              =>  $titles,
       'countries'           =>  $countries,
+      'companies'           =>  $companies,
       'identificationTypes' =>  $identificationTypes
     ]
   )

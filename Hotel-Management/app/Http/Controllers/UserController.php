@@ -6,6 +6,7 @@ use App\User;
 use App\UserType;
 use App\Title;
 use App\Country;
+use App\Company;
 use App\IdentificationType;
 use App\Http\Requests\UserRequest;
 use Validator;
@@ -36,9 +37,14 @@ class UserController extends Controller
         $user = new User;
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
-        $countries = Country::orderBy('id')->get();
+        $countries = Country::orderBy('label')->get();
+        $companies = Company::orderBy('label')->get();
         $identificationTypes = IdentificationType::orderBy('id')->get();
-        return view('user/create', compact('user','userTypes','titles','countries','identificationTypes'));
+
+        return view(
+          'user/create',
+          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'identificationTypes')
+        );
     }
 
     /**
@@ -76,9 +82,14 @@ class UserController extends Controller
     {
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
-        $countries = Country::orderBy('id')->get();
+        $countries = Country::orderBy('label')->get();
+        $companies = Company::orderBy('label')->get();
         $identificationTypes = IdentificationType::orderBy('id')->get();
-        return view('user/edit', compact('user','userTypes','titles','countries','identificationTypes'));
+
+        return view(
+          'user/edit',
+          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'identificationTypes')
+        );
     }
 
     /**

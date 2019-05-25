@@ -22,6 +22,7 @@
       'userTypes'           =>  $userTypes,
       'titles'              =>  $titles,
       'countries'           =>  $countries,
+      'companies'           =>  $companies,
       'identificationTypes' =>  $identificationTypes
     ]
   )

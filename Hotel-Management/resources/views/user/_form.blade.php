@@ -285,9 +285,50 @@
   </div>
 
 
+  <!-- list of companies -->
+
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="Password">Password:<label>
+      <label>Companies:<label>
+    </div>
+  
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      
+      <div class="d-flex flex-wrap">
+        @foreach($companies as $company)
+
+          <div class="my-padding-bottom-8 my-padding-right-40">
+            <div class="d-flex align-items-center">
+              <input
+                type="checkbox"
+                class="my-margin-right-19 my-user-company-checkbox"
+                id="company_id_{!! $company->id !!}"
+                name="company_id"
+                value="{!! $company->id !!}"
+
+                @if(in_array($company, $user->companies->toArray()))
+                  checked="checked"
+                @endif
+              >
+
+              <label for="company_id_{!! $company->id !!}" class="my-user-company-label">
+                {!! $company->label !!}
+              </label>
+            </div>
+          </div>
+        
+        @endforeach
+      </div>
+      
+    </div>
+  </div>
+
+
+  <!-- password -->
+
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="password">Password:<label>
     </div>
   
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -303,6 +344,7 @@
 
 
   <!-- button Save -->
+
   <div class="row">
     <div class="col-md-3 col-lg-4"></div>
 

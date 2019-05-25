@@ -124,3 +124,10 @@ aside a:active {
 .my-padding-right-40 { padding-right: 40px; }
 .my-padding-bottom-40 { padding-bottom: 40px; }
 .my-padding-left-40 { padding-left: 40px; }
+
+
+.d-flex label {
+  margin: 0; 
+  font-weight: normal;
+  font-style: italic;
+}

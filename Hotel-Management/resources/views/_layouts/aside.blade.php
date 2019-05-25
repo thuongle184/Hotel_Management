@@ -135,12 +135,6 @@
           <span>Companies</span>
         </a>
       </li>
-      <li>
-        <a href="{!! url('userCompanies ') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>User companies</span>
-        </a>
-      </li>
     </ul>
 
   </div>
