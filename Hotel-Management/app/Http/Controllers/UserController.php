@@ -8,10 +8,10 @@ use App\Title;
 use App\Country;
 use App\Company;
 use App\IdentificationType;
+use App\UsersCompany;
 use App\Http\Requests\UserRequest;
-use Validator;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
+
+
 class UserController extends Controller
 {
     /**
@@ -37,13 +37,22 @@ class UserController extends Controller
         $user = new User;
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
         $countries = Country::orderBy('label')->get();
         $companies = Company::orderBy('label')->get();
-        $identificationTypes = IdentificationType::orderBy('id')->get();
+        
+        $userCompanyIds = $user->companies
+            
+            ->map(function($company, $key){
+                return $company->id;
+              })
+
+            ->toArray();
+
 
         return view(
           'user/create',
-          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'identificationTypes')
+          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'userCompanyIds', 'identificationTypes')
         );
     }
 
@@ -55,9 +64,18 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        $user = new User($request->all());
-        $user->save();
-        return redirect()->route('users.index')->with('success','Add success!');
+      $user = new User($request->all());
+      $user->save();
+
+      // saving companies linked to the user
+      foreach ($request->input('company_id') as $companyId) {
+        $usersCompany = new UsersCompany;
+        $usersCompany->user_id = $user->id;
+        $usersCompany->company_id = $companyId;
+        $usersCompany->save();
+      }
+
+      return redirect()->route('users.index')->with('success','Add success!');
     }
 
     /**
@@ -82,13 +100,22 @@ class UserController extends Controller
     {
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
+        $identificationTypes = IdentificationType::orderBy('id')->get();
         $countries = Country::orderBy('label')->get();
         $companies = Company::orderBy('label')->get();
-        $identificationTypes = IdentificationType::orderBy('id')->get();
+        
+        $userCompanyIds = $user->companies
+            
+            ->map(function($company, $key){
+                return $company->id;
+              })
+
+            ->toArray();
+
 
         return view(
           'user/edit',
-          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'identificationTypes')
+          compact('user', 'userTypes', 'titles', 'countries', 'companies', 'userCompanyIds', 'identificationTypes')
         );
     }
 

@@ -31,6 +31,7 @@
       'titles'              =>  $titles,
       'countries'           =>  $countries,
       'companies'           =>  $companies,
+      'userCompanyIds'      =>  $userCompanyIds,
       'identificationTypes' =>  $identificationTypes
     ]
   )

@@ -303,10 +303,10 @@
                 type="checkbox"
                 class="my-margin-right-19 my-user-company-checkbox"
                 id="company_id_{!! $company->id !!}"
-                name="company_id"
+                name="company_id[]"
                 value="{!! $company->id !!}"
 
-                @if(in_array($company, $user->companies->toArray()))
+                @if(in_array($company->id, $userCompanyIds))
                   checked="checked"
                 @endif
               >
