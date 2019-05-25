@@ -11,7 +11,7 @@ class Company extends Model
     protected $fillable = ['label']; // fields in the table
     public $timestamps=true; // set timestamp, allow to use
 
-    public function user() {
+    public function users() {
     	return $this->belongsToMany('App\User');
     }
 }

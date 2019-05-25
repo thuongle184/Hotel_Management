@@ -12,7 +12,7 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Companies')->insert ([
+        DB::table('companies')->insert ([
             ['label'=> 'Asian Test'],
             ['label'=> 'Digital Unicorn'],
             ['label'=> 'mgm'],
