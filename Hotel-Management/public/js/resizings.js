@@ -27,17 +27,48 @@ function resizeIconsAndLabels(elementLeft, elementRight){
 
 function resizeLayout(){
 
-  console.log('toto');
-
-  $('body > header').css('height', 'auto');
-  $('aside').css('height', 'auto');
-  $('main').css('height', 'auto');
+  $('body > header, aside, main > header, main > article').css('height', 'auto');
 
   var headerHeight = parseFloat($('body > header').css('height'));
+  var mainHeaderHeight = parseFloat($('main > header').css('height'));
+  var asideHeight = parseFloat($('aside').css('height'));
+  var asideWidth = parseFloat($('aside').css('width'));
 
-  $('aside, main')
-    .css('top', headerHeight)
+  $('aside').css('top', headerHeight);
+
+  $('main > header, main > article')
+    .css('width', '100vw')
+    .css('width', "-=15px");
+
+  
+  $('main > article')
     .css('height', '100vh')
-    .css('height', "-=" + headerHeight + "px");
+    .css('height', "-=" + headerHeight + "px")
+    .css('height', "-=" + mainHeaderHeight + "px");
+
+
+  if(Modernizr.mq('(min-width: 768px)')) {
+
+    $('aside').css('height', '100vh').css('height', "-=" + headerHeight + "px");
+    $('main > header').css('top', headerHeight);
+    $('main > header, main > article').css('width', "-=" + asideWidth + "px");
+    $('main > article').css('top', headerHeight + mainHeaderHeight);
+  
+  } else {
+
+    $('aside').css('width', '100vw');
+    $('main > header').css('top', headerHeight + asideHeight);
+    
+    $('main > article')
+      .css('top', headerHeight + asideHeight + mainHeaderHeight)
+      .css('height', "-=" + asideHeight + "px");
+
+  }
+
+  
+  // if scrollbar
+  if($('main > article').get(0).scrollHeight > $('main > article').get(0).offsetHeight){
+    $('main > header').css('width', '-=15px');
+  }
 
 }

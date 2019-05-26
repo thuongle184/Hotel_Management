@@ -9,7 +9,7 @@ $(function(){
   resizeIconsAndLabels('my-sidebar-action-icon', 'my-sidebar-action-label');
   resizeLayout();
 
-  $('#my-navbar-content').on('shown.bs.collapse', function(){
+  $('#my-navbar-content').on('shown.bs.collapse hidden.bs.collapse', function(){
     resizeIconsAndLabels('my-sidebar-action-icon', 'my-sidebar-action-label');
     resizeLayout();
   });
