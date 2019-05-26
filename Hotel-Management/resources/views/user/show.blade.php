@@ -12,9 +12,9 @@
 
 @section('content')
 
-<div class="d-none my-margin-top-40 my-margin-bottom-19" id="my-user-discard-picture-status"></div>
+<div class="d-none my-margin-bottom-19" id="my-user-discard-picture-status"></div>
 
-<div class="my-margin-top-40 my-frame">
+<div class="my-frame">
   <div class="my-padding-bottom-12">
     Id: {!! $user["id"] !!}
   </div>

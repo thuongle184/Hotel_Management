@@ -3,7 +3,7 @@
 @section('header')
 
   @include(
-    '_layouts.header',
+    '_layouts.showHeader',
     ['title' => $company["label"]]
   )
 
@@ -12,9 +12,9 @@
 
 @section('content')
 
-  <div class="d-none my-margin-top-40 my-margin-bottom-19" id="my-room-discard-picture-status"></div>
+  <div class="d-none my-margin-bottom-19" id="my-room-discard-picture-status"></div>
 
-  <div class="my-margin-top-40 my-frame">
+  <div class="my-frame">
     
     <div class="my-padding-bottom-19">
       Id: {!! $company["id"] !!}
