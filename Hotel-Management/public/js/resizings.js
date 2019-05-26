@@ -68,7 +68,18 @@ function resizeLayout(){
   
   // if scrollbar
   if($('main > article').get(0).scrollHeight > $('main > article').get(0).offsetHeight){
-    $('main > header').css('width', '-=15px');
+    $('main > header').css('width', "-=" + getScrollBarWidth() + "px");
   }
+
+}
+
+
+function getScrollBarWidth() {
+
+  var $outer = $('<div>').css({visibility: 'hidden', width: 100, overflow: 'scroll'}).appendTo('body');
+  var widthWithScroll = $('<div>').css({width: '100%'}).appendTo($outer).outerWidth();
+
+  $outer.remove();
+  return 100 - widthWithScroll;
 
 }

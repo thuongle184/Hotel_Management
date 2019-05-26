@@ -5,10 +5,16 @@
   src: url("../fonts/Mali-Regular.ttf");
 }
 
-
 body {
   margin: 0 15px 0 15px;
   font-family: "my-font";
+  background-image: url("../images/wallpaper.jpg");
+}
+
+aside {
+  padding-top: 15px; 
+  padding-bottom: 15px; 
+  background-image: url("../images/wood-texture.jpg");
 }
 
 body > header {
@@ -19,19 +25,10 @@ body > header {
   width: 100%;
 }
 
-body > section { background-image: url("../images/wallpaper.jpg"); }
-aside { background-image: url("../images/wood-texture.jpg"); }
-
-body > header, body > section, aside {
+body, body > header, aside {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-}
-
-
-aside {
-  padding-top: 15px; 
-  padding-bottom: 15px; 
 }
 
 main > header { padding-top: 15px; }
