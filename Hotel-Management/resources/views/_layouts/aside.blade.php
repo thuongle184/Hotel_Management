@@ -51,21 +51,25 @@
         </a>
       </li>
 
-      @foreach(myLayoutHelperSidebarActions() as $action)
-        <li class="my-margin-top-19">
-          <a href="{!! url($action['url']) !!}">
-            <div class="d-flex align-items-center">
-              <div class="my-padding-right-19 my-sidebar-action-icon">
-                <i class="fas fa-sitemap"></i>
+      <div class="d-flex flex-wrap">
+
+        @foreach(myLayoutHelperSidebarActions() as $action)
+          <li class="my-margin-top-8">
+            <a href="{!! url($action['url']) !!}">
+              <div class="d-flex align-items-center">
+                <div class="my-padding-right-19 my-sidebar-action-icon">
+                  <i class="fas fa-sitemap"></i>
+                </div>
+                
+                <div class="my-padding-right-19 my-sidebar-action-label">
+                  {!! $action['label'] !!}
+                </div>
               </div>
-              
-              <div class="my-sidebar-action-label">
-                {!! $action['label'] !!}
-              </div>
-            </div>
-          </a>
-        </li>
-      @endforeach
+            </a>
+          </li>
+        @endforeach
+
+      </div>
 
     </ul>
 
