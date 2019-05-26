@@ -7,7 +7,7 @@
           <i class="fas fa-home"></i>
         </div>
         
-        <div class="my-sidebar-action-label">
+        <div>
           <strong>
             <em>HOME</em>
           </strong>
