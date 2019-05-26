@@ -2,11 +2,17 @@
 
   <div class="d-md-none">
     <a href="{!! url('/') !!}">
-      <i class="fas fa-home my-margin-right-12"></i>
-      
-      <strong>
-        <em>HOME</em>
-      </strong>
+      <div class="d-flex align-items-center">
+        <div class="my-padding-right-19 my-entity-icon">
+          <i class="fas fa-home"></i>
+        </div>
+        
+        <div class="my-entity-label">
+          <strong>
+            <em>HOME</em>
+          </strong>
+        </div>
+      </div>
     </a>
   </div>
   
@@ -31,110 +37,36 @@
       
       <li class="d-none d-md-block">
         <a href="{!! url('/') !!}">
-          <i class="fas fa-home my-margin-right-12"></i>
-          
-          <strong>
-            <em>HOME</em>
-          </strong>
+          <div class="d-flex align-items-center">
+            <div class="my-padding-right-19 my-entity-icon">
+              <i class="fas fa-home"></i>
+            </div>
+            
+            <div class="my-entity-label">
+              <strong>
+                <em>HOME</em>
+              </strong>
+            </div>
+          </div>
         </a>
       </li>
 
-      <li class="my-margin-top-19">
-        <a href="{!! url('bookingPurposes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Booking purposes</span>
-        </a>
-      </li>
+      @foreach(myLayoutHelperSidebarActions() as $action)
+        <li class="my-margin-top-19">
+          <a href="{!! url($action['url']) !!}">
+            <div class="d-flex align-items-center">
+              <div class="my-padding-right-19 my-entity-icon">
+                <i class="fas fa-sitemap"></i>
+              </div>
+              
+              <div class="my-entity-label">
+                {!! $action['label'] !!}
+              </div>
+            </div>
+          </a>
+        </li>
+      @endforeach
 
-      <li>
-        <a href="{!! url('bookingTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Booking types</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('countries') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Countries</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('dishes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Dishes</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('dishTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Dish categories</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('equipment') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Equipment</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('identificationTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Identification types</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('onlinePlateforms') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Online booking plateforms</span>
-        </a>
-        
-      </li>
-
-      <li>
-        <a href="{!! url('roomSizes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Room sizes</span>
-        </a>
-      </li>
-
-       <li>
-        <a href="{!! url('rooms') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-              <span>Rooms</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('titles') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Titles</span>
-        </a>
-      </li>
-
-      <li>
-        <a href="{!! url('userTypes') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>User types</span>
-        </a>
-      </li>
-      <li>
-        <a href="{!! url('users') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Users</span>
-        </a>
-      </li>
-      <li>
-        <a href="{!! url('companies') !!}">
-          <i class="fas fa-sitemap my-margin-right-12"></i>
-          <span>Companies</span>
-        </a>
-      </li>
     </ul>
 
   </div>

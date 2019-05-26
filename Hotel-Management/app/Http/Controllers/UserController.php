@@ -21,10 +21,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $userTypes = UserType::with(['users' => function ($user) { $user->orderBy('first_name'); }])
-          ->orderBy('id')
-          ->get();
-          return view('user/index', compact('userTypes'));
+      $userTypes = UserType::with(['users' => function ($user) { $user->orderBy('first_name'); }])
+        ->orderBy('id')
+        ->get();
+    
+      return view('user/index', compact('userTypes'));
     }
 
     /**
