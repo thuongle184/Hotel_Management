@@ -23,3 +23,21 @@ function resizeIconsAndLabels(elementLeft, elementRight){
   $elementLeft.css('width', widthElementLeft);
   $elementRight.css('width', widthElementRight);
 }
+
+
+function resizeLayout(){
+
+  console.log('toto');
+
+  $('body > header').css('height', 'auto');
+  $('aside').css('height', 'auto');
+  $('main').css('height', 'auto');
+
+  var headerHeight = parseFloat($('body > header').css('height'));
+
+  $('aside, main')
+    .css('top', headerHeight)
+    .css('height', '100vh')
+    .css('height', "-=" + headerHeight + "px");
+
+}

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark py-2">
+<nav class="navbar navbar-expand-md navbar-dark py-2">
 
   <div class="d-md-none">
     <a href="{!! url('/') !!}">

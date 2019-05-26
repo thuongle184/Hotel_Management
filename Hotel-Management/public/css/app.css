@@ -1,15 +1,47 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 
+@font-face {
+  font-family: "my-font";
+  src: url("../fonts/Mali-Regular.ttf");
+}
 
-body { margin: 0 15px 0 15px; }
-aside, main { padding: 19px; }
-main { min-height: 100vh; }
+
+body {
+  margin: 0 15px 0 15px;
+  font-family: "my-font";
+}
+
+body > header {
+  margin: 0 -15px 0 -15px;
+  padding: 19px;
+  background-image: url("../images/wood_bg.jpg");
+  position: fixed;
+  width: 100%;
+}
+
+body > section { background-image: url("../images/wallpaper.jpg"); }
+aside { background-image: url("../images/wood-texture.jpg"); }
+
+body > header, body > section, aside {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+aside, main {
+  padding: 19px; 
+  position: fixed;
+  overflow: auto; 
+}
+
+
 img { max-width: 100%; }
 
+.my-website-logo { max-height: 40px; }
+
 @media screen and (min-width: 768px) {
-  aside {
-    min-height: 100vh;
-  }
+  .my-website-logo { max-height: 77px; }
 }
 
 
@@ -28,7 +60,7 @@ aside a,
 aside a:visited,
 aside a:hover,
 aside a:active {
-  color: #aaa;
+  color: #ccc;
 }
 
 
