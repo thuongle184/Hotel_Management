@@ -1,32 +1,25 @@
-$(window).resize(function(){
-  resizeIconsAndLabels();
-});
+function resizeIconsAndLabels(elementLeft, elementRight){
 
+  $elementLeft = $(document.getElementsByClassName(elementLeft));
+  $elementRight = $(document.getElementsByClassName(elementRight));
 
-function resizeIconsAndLabels(){
+  $elementLeft.css('width', 'auto');
+  $elementRight.css('width', 'auto');
 
-  $('.my-entity-icon').css('width', 'auto');
-  $('.my-entity-label').css('width', 'auto');
+  var widthElementLeft, widthElementRight = 0;
 
-  var widthIcon, widthLabel = 0;
-
-  $('.my-entity-icon').each(function(){
-    if (parseFloat($(this).css('width')) > widthIcon) {
-      widthIcon = parseFloat($(this).css('width'));
+  $elementLeft.each(function(){
+    if (parseFloat($(this).css('width')) > widthElementLeft) {
+      widthElementLeft = parseFloat($(this).css('width'));
     }
   });
 
-  $('.my-entity-label').each(function(){
-    if (parseFloat($(this).css('width')) > widthLabel) {
-      widthLabel = parseFloat($(this).css('width'));
+  $elementRight.each(function(){
+    if (parseFloat($(this).css('width')) > widthElementRight) {
+      widthElementRight = parseFloat($(this).css('width'));
     }
   });
 
-  $('.my-entity-icon').css('width', widthIcon);
-  $('.my-entity-label').css('width', widthLabel);
+  $elementLeft.css('width', widthElementLeft);
+  $elementRight.css('width', widthElementRight);
 }
-
-
-$(function(){
-  resizeIconsAndLabels();
-});

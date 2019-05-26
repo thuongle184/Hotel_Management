@@ -58,11 +58,11 @@
 
           <div class="my-padding-bottom-8 my-padding-right-40">
             <div class="d-flex align-items-center text-info">
-              <div class="my-margin-right-19 my-entity-icon">
+              <div class="my-margin-right-19 my-user-company-icon">
                 <i class="fas fa-industry"></i>
               </div>
 
-              <div class="my-entity-label">
+              <div class="my-user-company-label">
                 <i>{!! $company->label !!}</i>
               </div>
             </div>

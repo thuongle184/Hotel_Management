@@ -27,11 +27,11 @@
 
             <div class="my-padding-bottom-8 my-padding-right-40">
               <div class="d-flex align-items-center text-info">
-                <div class="my-margin-right-19 my-entity-icon">
+                <div class="my-margin-right-19 my-company-user-icon">
                   <i class="fas fa-user"></i>
                 </div>
 
-                <div class="my-entity-label">
+                <div class="my-company-user-label">
                   <i>
                     {!! $user->title->label !!}
                     {!! $user->last_name !!}

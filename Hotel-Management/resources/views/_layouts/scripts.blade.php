@@ -6,6 +6,7 @@
 <script src="{{URL::asset('js/filter.js')}}"></script>
 <script src="{{URL::asset('js/resizings.js')}}"></script>
 
+<script src="{{URL::asset('js/entities/_layout.js')}}"></script>
 <script src="{{URL::asset('js/entities/country.js')}}"></script>
 <script src="{{URL::asset('js/entities/dish.js')}}"></script>
 <script src="{{URL::asset('js/entities/dishType.js')}}"></script>

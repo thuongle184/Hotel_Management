@@ -1,4 +1,12 @@
+$(window).resize(function(){
+  resizeIconsAndLabels('my-company-user-icon', 'my-company-user-label');
+});
+
+
 $(function(){
+
+  resizeIconsAndLabels('my-company-user-icon', 'my-company-user-label');
+
 
   $('.my-company-delete').on('click', function(e) {
     e.preventDefault();

@@ -301,7 +301,7 @@
             <div class="d-flex align-items-center">
               <input
                 type="checkbox"
-                class="my-margin-right-19 my-entity-icon"
+                class="my-margin-right-19 my-user-company-icon"
                 id="company_id_{!! $company->id !!}"
                 name="company_id[]"
                 value="{!! $company->id !!}"
@@ -311,7 +311,7 @@
                 @endif
               >
 
-              <label for="company_id_{!! $company->id !!}" class="my-entity-label">
+              <label for="company_id_{!! $company->id !!}" class="my-user-company-label">
                 {!! $company->label !!}
               </label>
             </div>

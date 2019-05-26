@@ -3,11 +3,11 @@
   <div class="d-md-none">
     <a href="{!! url('/') !!}">
       <div class="d-flex align-items-center">
-        <div class="my-padding-right-19 my-entity-icon">
+        <div class="my-padding-right-19 my-sidebar-action-icon">
           <i class="fas fa-home"></i>
         </div>
         
-        <div class="my-entity-label">
+        <div class="my-sidebar-action-label">
           <strong>
             <em>HOME</em>
           </strong>
@@ -38,11 +38,11 @@
       <li class="d-none d-md-block">
         <a href="{!! url('/') !!}">
           <div class="d-flex align-items-center">
-            <div class="my-padding-right-19 my-entity-icon">
+            <div class="my-padding-right-19 my-sidebar-action-icon">
               <i class="fas fa-home"></i>
             </div>
             
-            <div class="my-entity-label">
+            <div class="my-sidebar-action-label">
               <strong>
                 <em>HOME</em>
               </strong>
@@ -55,11 +55,11 @@
         <li class="my-margin-top-19">
           <a href="{!! url($action['url']) !!}">
             <div class="d-flex align-items-center">
-              <div class="my-padding-right-19 my-entity-icon">
+              <div class="my-padding-right-19 my-sidebar-action-icon">
                 <i class="fas fa-sitemap"></i>
               </div>
               
-              <div class="my-entity-label">
+              <div class="my-sidebar-action-label">
                 {!! $action['label'] !!}
               </div>
             </div>
