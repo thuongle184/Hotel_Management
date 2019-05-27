@@ -59,7 +59,7 @@
           <div class="my-padding-bottom-8 my-padding-right-40">
             <div class="d-flex align-items-center text-info">
               <div class="my-margin-right-19 my-room-equipment-icon">
-                <i class="fa-check-circle"></i>
+                <i class="fas fa-check-circle"></i>
               </div>
                
               <div class="my-room-equipment-label">
