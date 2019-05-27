@@ -36,3 +36,6 @@ Route::resources([
 
 
 Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->name('dishes.discardPicture');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
