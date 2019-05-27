@@ -341,6 +341,22 @@
     </div>
   </div>
 
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="password">Password confirmation:<label>
+    </div>
+  
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      <input
+        id="password-confirmation"
+        type="password"
+        class="form-control"
+        name="password_confirmation"
+        value="{!! old ('password',isset($user)?$user['password']:NULL) !!}"
+      >
+    </div>
+  </div>
+
 
   <!-- button Save -->
 

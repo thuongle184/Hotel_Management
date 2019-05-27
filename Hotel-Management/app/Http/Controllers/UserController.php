@@ -69,11 +69,13 @@ class UserController extends Controller
       $user->save();
 
       // saving companies linked to the user
-      foreach ($request->input('company_id') as $companyId) {
-        $usersCompany = new UsersCompany;
-        $usersCompany->user_id = $user->id;
-        $usersCompany->company_id = $companyId;
-        $usersCompany->save();
+      if ($request->input('company_id') != NULL) {
+        foreach ($request->input('company_id') as $companyId) {
+          $usersCompany = new UsersCompany;
+          $usersCompany->user_id = $user->id;
+          $usersCompany->company_id = $companyId;
+          $usersCompany->save();
+        }
       }
 
       return redirect()->route('users.index')->with('success','Add success!');
@@ -141,6 +143,11 @@ class UserController extends Controller
             })
 
           ->toArray();
+
+
+      if ($companyIds == NULL) {
+        $companyIds = [];
+      }
 
 
       // for each company selected in the form, creating a new record in users_companies
