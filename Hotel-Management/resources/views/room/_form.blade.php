@@ -129,6 +129,20 @@
     </div>
   </div>
 
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label for="equipment_equipment_id">Equipment:<label>
+    </div>
+    
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        
+        @foreach ($equipments as $equipment)
+           <input type="checkbox" name="equipment_id[]" value="{!! $equipment['id'] !!}"><label> {!! $equipment['label'] !!}</label><br>
+        @endforeach
+
+    </div>
+  </div>
+
 
   <!-- button Save -->
   <div class="row">
