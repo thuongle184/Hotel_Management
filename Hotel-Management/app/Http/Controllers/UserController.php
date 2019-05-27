@@ -17,6 +17,11 @@ use Validator;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['create', 'edit', 'store', 'update']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -114,6 +119,19 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
         $identificationTypes = IdentificationType::orderBy('id')->get();
@@ -144,7 +162,20 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-      if (strlen($request->password) > 0) {
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+
+        if (strlen($request->password) > 0) {
         
         $validator = Validator::make($request->all(), $user->rules(), $user->messages);
 

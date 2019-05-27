@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class DishController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
