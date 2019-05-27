@@ -14,7 +14,7 @@
 
   @foreach($users as $user)
 
-    @if (count($users->vipCard) > 0)
+    @if (count($users->vipCards) > 0)
 
       <div class="my-vipCard-type">
 
