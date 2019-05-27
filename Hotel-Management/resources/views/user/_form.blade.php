@@ -87,41 +87,53 @@
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-      id="first_name"
-      type="text"
-      class="form-control"
-      name="first_name"
-      value="{!! old ('first_name',isset($user)?$user['first_name']:NULL) !!}"
+        id="first_name"
+        type="text"
+        class="form-control"
+        name="first_name"
+        value="{!! old ('first_name',isset($user)?$user['first_name']:NULL) !!}"
       >
     </div>
   </div>
 
 
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="user_user_type_id">User type:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="user_type_id" class="form-control" id="user_user_type_id">
+  {{-- if user is manager or director and is not editing him/herself --}}
+  @if (Auth::check() && in_array(Auth::user()->user_type_id, [3, 7]) && Auth::id() != $user->id)
 
-        @foreach ($userTypes as $userType)
-          <option
-            value="{!! $userType['id'] !!}"
-            {!!
-                old (
-                  'user_type_id',
-                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL
-                )
-            !!}
-          >
-            {!! $userType['label'] !!}
-          </option>
-        @endforeach
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="user_user_type_id">User type:<label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <select name="user_type_id" class="form-control" id="user_user_type_id">
 
-      </select>
+          @foreach ($userTypes as $userType)
+            <option
+              value="{!! $userType['id'] !!}"
+              {!!
+                  old (
+                    'user_type_id',
+                    isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL
+                  )
+              !!}
+            >
+              {!! $userType['label'] !!}
+            </option>
+          @endforeach
+
+        </select>
+      </div>
     </div>
-  </div>
+
+
+  {{-- else, register as customer --}}
+  @else
+
+    <input type="hidden" name="user_type_id" value="1" >
+
+
+  @endif
 
 
   <div class="row my-padding-bottom-19">

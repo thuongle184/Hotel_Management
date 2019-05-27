@@ -10,6 +10,7 @@ use App\Company;
 use App\IdentificationType;
 use App\UsersCompany;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Validator;
 
@@ -88,7 +89,9 @@ class UserController extends Controller
         }
       }
 
-      return redirect()->route('users.index')->with('success','Add success!');
+      return Auth::check() ?
+          redirect()->route('users.index')->with('success','Add success!') :
+          redirect()->route('login')->with('success','Add success!');
     }
 
     /**

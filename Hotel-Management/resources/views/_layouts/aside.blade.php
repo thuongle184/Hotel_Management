@@ -92,10 +92,9 @@
       </li>
 
 
-      <li class="d-none d-md-block my-margin-top-8">
+      @auth
       
-        @auth
-      
+        <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! url('/logout') !!}">
             <div class="d-flex align-items-center">
               <div class="my-margin-right-19 text-center bg-danger my-sidebar-action-icon">
@@ -107,10 +106,26 @@
               </div>
             </div>
           </a>
+        </li>
+
+        <li class="d-none d-md-block my-margin-top-8">
+          <a href="{!! url('/logout') !!}">
+            <div class="d-flex align-items-center">
+              <div class="my-margin-right-19 text-center bg-danger my-sidebar-action-icon">
+                <i class="fas fa-user-slash my-padding-left-4 my-padding-right-4 text-light"></i>
+              </div>
+              
+              <div class="my-sidebar-action-label">
+                Logout
+              </div>
+            </div>
+          </a>
+        </li>
 
       
-        @else
+      @else
       
+        <li class="d-none d-md-block my-margin-top-8">
           <a href="{!! url('/login') !!}">
             <div class="d-flex align-items-center">
               <div class="my-margin-right-19 text-center bg-info my-sidebar-action-icon">
@@ -122,11 +137,24 @@
               </div>
             </div>
           </a>
+        </li>
+
+        <li class="d-none d-md-block my-margin-top-8">
+          <a href="{!! route('users.create') !!}">
+            <div class="d-flex align-items-center">
+              <div class="my-margin-right-19 text-center bg-success my-sidebar-action-icon">
+                <i class="fas fa-user-plus my-padding-left-4 my-padding-right-4 text-light"></i>
+              </div>
+              
+              <div class="my-sidebar-action-label">
+                Register
+              </div>
+            </div>
+          </a>
+        </li>
 
 
-        @endauth
-      
-      </li>
+      @endauth
 
 
       <div class="d-flex flex-wrap">
