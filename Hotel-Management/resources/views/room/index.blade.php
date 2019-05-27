@@ -30,7 +30,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-room">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  {!! $room["number"] !!}
+                  Room: {!! $room["number"] !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">

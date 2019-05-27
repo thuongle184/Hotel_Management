@@ -14,7 +14,7 @@ class Equipment extends Model
     public $timestamps=true; // set timestamp, allow to use
 
     public function rooms()
-    {
-    	return $this->belongsToMany('App\Room');	
-    }
+   	{
+   		return $this->belongsToMany('App\Room', 'rooms_equipments', 'room_id', 'equipment_id');
+   	}
 }
