@@ -130,7 +130,11 @@
   {{-- else, register as customer --}}
   @else
 
-    <input type="hidden" name="user_type_id" value="1" >
+    <input
+      type="hidden"
+      name="user_type_id"
+      value="{!! old ('user_type_id',isset($user)?$user['user_type_id']:1) !!}"
+    >
 
 
   @endif
