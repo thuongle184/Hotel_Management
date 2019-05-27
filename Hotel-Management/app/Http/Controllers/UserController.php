@@ -10,10 +10,18 @@ use App\Company;
 use App\IdentificationType;
 use App\UsersCompany;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['create', 'edit', 'store', 'update']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -66,6 +74,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
       $user = new User($request->all());
+      
+      $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+      if ($validator->fails()) {
+        return redirect()->route('users.create')->withErrors($validator)->withInput();
+      }
+
+      $user->password = Hash::make($request->password);
       $user->save();
 
       // saving companies linked to the user
@@ -78,7 +94,9 @@ class UserController extends Controller
         }
       }
 
-      return redirect()->route('users.index')->with('success','Add success!');
+      return Auth::check() ?
+          redirect()->route('users.index')->with('success','Add success!') :
+          redirect()->route('login')->with('success','Add success!');
     }
 
     /**
@@ -101,6 +119,19 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+
         $userTypes = UserType::orderBy('id')->get();
         $titles = Title::orderBy('id')->get();
         $identificationTypes = IdentificationType::orderBy('id')->get();
@@ -131,6 +162,36 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+
+        if (strlen($request->password) > 0) {
+        
+        $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('users.edit', $user->id)->withErrors($validator)->withInput();
+        }
+
+        $request->merge(['password' => Hash::make($request->password)]);
+
+      } else {
+
+        $request->offsetUnset('password');
+
+      }
+
+
       $user->update($request->all());
 
       // updating companies linked to the user
@@ -173,7 +234,11 @@ class UserController extends Controller
         }
       }
 
-      return redirect()->route('users.index')->with('success','Edit is success!');
+
+      // if user has admin rights and is not editing him/herself
+      return Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id ?
+          redirect()->route('users.index')->with('success','Successfully updated!') :
+          redirect()->route('home');
     }
 
     /**

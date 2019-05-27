@@ -14,6 +14,11 @@ use Session;
 
 class EquipmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed');
+    }
+    
     /**
      * Display a listing of the resource.
      *

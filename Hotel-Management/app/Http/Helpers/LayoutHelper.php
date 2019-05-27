@@ -1,21 +1,91 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
+
 function myLayoutHelperSidebarActions() {
 
   return [
-    [ "url" => "bookingPurposes", "label" => "Booking purposes"],
-    [ "url" => "companies", "label" => "Companies"],
-    [ "url" => "countries", "label" => "Countries"],
-    [ "url" => "dishTypes", "label" => "Dish categories"],
-    [ "url" => "dishes", "label" => "Dishes"],
-    [ "url" => "equipment", "label" => "Equipment"],
-    [ "url" => "identificationTypes", "label" => "Identification types"],
-    [ "url" => "onlinePlateforms", "label" => "Online booking plateforms"],
-    [ "url" => "roomSizes", "label" => "Room sizes"],
-    [ "url" => "rooms", "label" => "Rooms"],
-    [ "url" => "titles", "label" => "Titles"],
-    [ "url" => "userTypes", "label" => "User categories"],
-    [ "url" => "users", "label" => "Users"]
+
+    [
+      "url"             =>  "bookingPurposes",
+      "label"           =>  "Booking purposes",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "companies",
+      "label"           =>  "Companies",
+      "mayBeDisplayed"  =>  true
+    ],
+
+    [
+      "url"             =>  "countries",
+      "label"           =>  "Countries",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "dishTypes",
+      "label"           =>  "Dish categories",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+
+    [
+      "url"             =>  "dishes",
+      "label"           =>  "Dishes",
+      "mayBeDisplayed"  =>  true 
+    ],
+
+    [
+      "url"             =>  "equipment",
+      "label"           =>  "Equipment",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "identificationTypes",
+      "label"           =>  "Identification types",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "onlinePlateforms",
+      "label"           =>  "Online booking plateforms",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "roomSizes",
+      "label"           =>  "Room sizes",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "rooms",
+      "label"           =>  "Rooms",
+      "mayBeDisplayed"  =>  true
+    ],
+
+    [
+      "url"             =>  "titles",
+      "label"           =>  "Titles",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "userTypes",
+      "label"           =>  "User categories",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "users",
+      "label"           =>  "Users",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ]
+
   ];
 
 }
