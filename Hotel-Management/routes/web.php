@@ -32,6 +32,7 @@ Route::resources([
   'users'                 =>  'UserController',
   'companies'             =>  'CompanyController',
   'userCompanies'         =>  'UserCompanyController',
+  'vipCards'              =>  'VipCardController',
 ]);
 
 
