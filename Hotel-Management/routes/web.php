@@ -39,3 +39,4 @@ Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->
 
 Route::get('login', 'LoginController@login')->name('login');
 Route::post('login', 'LoginController@authenticate')->name('login.authenticate');
+Route::get('logout', 'LoginController@logout')->name('login.logout');
