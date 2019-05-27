@@ -10,6 +10,8 @@ use App\Company;
 use App\IdentificationType;
 use App\UsersCompany;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
+use Validator;
 
 
 class UserController extends Controller
@@ -66,6 +68,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
       $user = new User($request->all());
+      
+      $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+      if ($validator->fails()) {
+        return redirect()->route('users.create')->withErrors($validator)->withInput();
+      }
+
+      $user->password = Hash::make($request->password);
       $user->save();
 
       // saving companies linked to the user
@@ -131,6 +141,23 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
+      if (strlen($request->password) > 0) {
+        
+        $validator = Validator::make($request->all(), $user->rules(), $user->messages);
+
+        if ($validator->fails()) {
+          return redirect()->route('users.edit', $user->id)->withErrors($validator)->withInput();
+        }
+
+        $request->merge(['password' => Hash::make($request->password)]);
+
+      } else {
+
+        $request->offsetUnset('password');
+
+      }
+
+
       $user->update($request->all());
 
       // updating companies linked to the user

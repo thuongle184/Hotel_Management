@@ -12,6 +12,22 @@ class User extends Model
     public $timestamps=true; // set timestamp, allow to use
 
 
+    public $messages = [
+        'password.required'   =>  'Please enter password',
+        'password.min'        =>  'Password must have at least 8 characters',
+        'password.max'        =>  'Password must not have more than 20 characters',
+        'password.confirmed'  =>  'Password and password confirmation do not match'
+      ];
+
+
+    public function rules()
+    {
+      return [
+        'password'  =>  'required|min:8|max:20|confirmed'
+      ];
+    }
+
+
     public function bookings() {
       return $this->hasMany('App\Booking');
     }

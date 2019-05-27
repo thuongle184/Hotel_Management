@@ -336,7 +336,6 @@
         type="password"
         class="form-control"
         name="password"
-        value="{!! old ('password',isset($user)?$user['password']:NULL) !!}"
       >
     </div>
   </div>
@@ -352,7 +351,6 @@
         type="password"
         class="form-control"
         name="password_confirmation"
-        value="{!! old ('password',isset($user)?$user['password']:NULL) !!}"
       >
     </div>
   </div>
