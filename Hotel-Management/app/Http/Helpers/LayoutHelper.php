@@ -6,10 +6,16 @@ use Illuminate\Support\Facades\Auth;
 function myLayoutHelperSidebarActions() {
 
   return [
-
+    
     [
       "url"             =>  "bookingPurposes",
       "label"           =>  "Booking purposes",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+
+    [
+      "url"             =>  "bookingTypes",
+      "label"           =>  "Booking types",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
     ],
 
@@ -30,7 +36,6 @@ function myLayoutHelperSidebarActions() {
       "label"           =>  "Dish categories",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
     ],
-
 
     [
       "url"             =>  "dishes",
