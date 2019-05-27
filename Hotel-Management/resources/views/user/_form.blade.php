@@ -97,8 +97,8 @@
   </div>
 
 
-  {{-- if user is manager or director and is not editing him/herself --}}
-  @if (Auth::check() && in_array(Auth::user()->user_type_id, [3, 7]) && Auth::id() != $user->id)
+  {{-- if user has admin rights and is not editing him/herself --}}
+  @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
 
     <div class="row my-padding-bottom-19">
       <div class="col-md-3 col-lg-4 my-padding-bottom-8">
@@ -374,13 +374,32 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a
-        href="{!! route('users.index') !!}"
-        class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
-      >
-        <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of users</span>
-      </a>
+
+      {{-- if user has admin rights and is not editing him/herself --}}
+      @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
+
+        <a
+          href="{!! route('users.index') !!}"
+          class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
+        >
+          <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
+          <span>Back to list of users</span>
+        </a>
+
+
+      @else
+
+        <a
+          href="{!! url('/') !!}"
+          class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
+        >
+          <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
+          <span>Back to the welcome page</span>
+        </a>
+
+
+      @endif
+
 
       <button
         type="submit"

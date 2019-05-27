@@ -23,7 +23,7 @@ class LoginController extends Controller
     }
 
     else {
-      return redirect()->route('login')->withErrors($validator)->withInput();
+      return redirect()->route('login')->withInput();
     }
   }
 

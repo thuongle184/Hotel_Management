@@ -64,4 +64,9 @@ class User extends Authenticatable
     public function cashierBills() {
       return $this->hasMany('App\Bill', 'cashier_id', 'id');
     }
+
+    public function hasAdminRights() {
+      // if user is manager or director
+      return in_array($this['user_type_id'], [3, 7]);
+    }
 }

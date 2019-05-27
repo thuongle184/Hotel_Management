@@ -33,6 +33,18 @@
           </div>
         </a>
 
+        <a href="{!! route('users.edit', Auth::id()) !!}" class="my-padding-bottom-8 my-padding-right-40">
+          <div class="d-flex align-items-center">
+            <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-primary">
+              <i class="fas fa-user-edit text-light my-padding-left-4 my-padding-right-4"></i>
+            </div>
+            
+            <div>
+              Edit your account
+            </div>
+          </div>
+        </a>
+
 
       @else
         
@@ -44,6 +56,18 @@
             
             <div>
               Login
+            </div>
+          </div>
+        </a>
+
+        <a href="{!! route('users.create') !!}" class="my-padding-bottom-8 my-padding-right-40">
+          <div class="d-flex align-items-center">
+            <div class="my-margin-right-19 text-center my-sidebar-action-icon bg-success">
+              <i class="fas fa-user-plus text-light my-padding-left-4 my-padding-right-4"></i>
+            </div>
+            
+            <div>
+              Register
             </div>
           </div>
         </a>
@@ -109,14 +133,14 @@
         </li>
 
         <li class="d-none d-md-block my-margin-top-8">
-          <a href="{!! url('/logout') !!}">
+          <a href="{!! route('users.edit', Auth::id()) !!}">
             <div class="d-flex align-items-center">
-              <div class="my-margin-right-19 text-center bg-danger my-sidebar-action-icon">
-                <i class="fas fa-user-slash my-padding-left-4 my-padding-right-4 text-light"></i>
+              <div class="my-margin-right-19 text-center bg-primary my-sidebar-action-icon">
+                <i class="fas fa-user-edit my-padding-left-4 my-padding-right-4 text-light"></i>
               </div>
               
               <div class="my-sidebar-action-label">
-                Logout
+                Edit your account
               </div>
             </div>
           </a>
@@ -157,22 +181,26 @@
       @endauth
 
 
-      <div class="d-flex flex-wrap">
+      <div class="d-flex flex-wrap my-padding-top-19 my-margin-top-19 my-border-top">
 
         @foreach(myLayoutHelperSidebarActions() as $action)
-          <li class="my-margin-top-8">
-            <a href="{!! url($action['url']) !!}">
-              <div class="d-flex align-items-center">
-                <div class="my-margin-right-19 text-center my-sidebar-action-icon">
-                  <i class="fas fa-sitemap my-padding-left-4 my-padding-right-4"></i>
+          
+          @if($action['mayBeDisplayed'])
+            <li class="my-margin-top-8">
+              <a href="{!! url($action['url']) !!}">
+                <div class="d-flex align-items-center">
+                  <div class="my-margin-right-19 text-center my-sidebar-action-icon">
+                    <i class="fas fa-sitemap my-padding-left-4 my-padding-right-4"></i>
+                  </div>
+                  
+                  <div class="my-padding-right-19 my-sidebar-action-label">
+                    {!! $action['label'] !!}
+                  </div>
                 </div>
-                
-                <div class="my-padding-right-19 my-sidebar-action-label">
-                  {!! $action['label'] !!}
-                </div>
-              </div>
-            </a>
-          </li>
+              </a>
+            </li>
+          @endif
+          
         @endforeach
 
       </div>
