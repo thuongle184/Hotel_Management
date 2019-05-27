@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
   return view('welcome');
-});
+})->name('home');
 
 
 Route::resources([
@@ -36,4 +36,6 @@ Route::resources([
 
 
 Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->name('dishes.discardPicture');
-Auth::routes();
+
+Route::get('login', 'LoginController@login')->name('login');
+Route::post('login', 'LoginController@authenticate')->name('login.authenticate');

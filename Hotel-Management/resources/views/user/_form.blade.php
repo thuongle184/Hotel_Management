@@ -374,7 +374,7 @@
         type="submit"
         class="btn btn-sm btn-success my-margin-bottom-8"
       >
-        <i class="fas fa-check-circle my-margin-right-12"></i>
+        <i class="fas fa-check-circle"></i>
         <span>Save</span>
       </button>
     </div>

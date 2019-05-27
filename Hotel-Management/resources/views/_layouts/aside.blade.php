@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark py-2">
 
-  <div class="d-md-none">
+  <div class="d-md-none d-flex flex-wrap align-items-center">
 
-    <a href="{!! url('/') !!}">
+    <a href="{!! url('/') !!}" class="my-padding-right-40">
       <div class="d-flex align-items-center">
         <div class="my-padding-right-19 my-sidebar-action-icon">
           <i class="fas fa-home"></i>
@@ -16,10 +16,10 @@
       </div>
     </a>
 
-    <a href="{!! url('/login') !!}">
+    <a href="{!! url('/login') !!}" class="my-padding-right-40">
       <div class="d-flex align-items-center">
         <div class="my-padding-right-19 my-sidebar-action-icon">
-          <i class="fas fa-user"></i>
+          <i class="far fa-user-circle"></i>
         </div>
         
         <div>
@@ -66,11 +66,11 @@
         </a>
       </li>
 
-      <li class="d-none d-md-block">
+      <li class="d-none d-md-block my-margin-top-8">
         <a href="{!! url('/login') !!}">
           <div class="d-flex align-items-center">
             <div class="my-padding-right-19 my-sidebar-action-icon">
-              <i class="fas fa-user"></i>
+              <i class="far fa-user-circle"></i>
             </div>
             
             <div class="my-sidebar-action-label">
