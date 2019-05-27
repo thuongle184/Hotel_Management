@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark py-2">
 
   <div class="d-md-none">
+
     <a href="{!! url('/') !!}">
       <div class="d-flex align-items-center">
         <div class="my-padding-right-19 my-sidebar-action-icon">
@@ -14,8 +15,22 @@
         </div>
       </div>
     </a>
+
+    <a href="{!! url('/login') !!}">
+      <div class="d-flex align-items-center">
+        <div class="my-padding-right-19 my-sidebar-action-icon">
+          <i class="fas fa-user"></i>
+        </div>
+        
+        <div>
+          Login
+        </div>
+      </div>
+    </a>
+
   </div>
   
+
   <button
     class="navbar-toggler"
     type="button"
@@ -46,6 +61,20 @@
               <strong>
                 <em>HOME</em>
               </strong>
+            </div>
+          </div>
+        </a>
+      </li>
+
+      <li class="d-none d-md-block">
+        <a href="{!! url('/login') !!}">
+          <div class="d-flex align-items-center">
+            <div class="my-padding-right-19 my-sidebar-action-icon">
+              <i class="fas fa-user"></i>
+            </div>
+            
+            <div class="my-sidebar-action-label">
+              Login
             </div>
           </div>
         </a>
