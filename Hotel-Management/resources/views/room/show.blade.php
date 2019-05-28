@@ -82,12 +82,14 @@
         </a>
       </div>
       
-      <div class="my-padding-bottom-8">
-        <a href="{!! route('rooms.edit', $room["id"]) !!}" class="btn btn-sm btn-outline-primary">
-          <i class="far fa-edit my-margin-right-12"></i>
-          <span>Edit</span>
-        </a>
-      </div>
+      @if(Auth::check() && Auth::user()->hasAdminRights())
+        <div class="my-padding-bottom-8">
+          <a href="{!! route('rooms.edit', $room['id']) !!}" class="btn btn-sm btn-outline-primary">
+            <i class="far fa-edit my-margin-right-12"></i>
+            <span>Edit</span>
+          </a>
+        </div>
+      @endif
 
     </div>
   </div>

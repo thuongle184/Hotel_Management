@@ -20,7 +20,7 @@ class roomController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('checkIfAllowed', ['except' => ['index']]);
+        $this->middleware('checkIfAllowed', ['except' => ['index', 'show']]);
     }
     
     /**

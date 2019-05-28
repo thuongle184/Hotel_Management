@@ -56,25 +56,29 @@
         </a>
       </div>
       
-      <div class="{!! isset($dish['image']) ? 'my-padding-right-8 ' : '' !!}my-padding-bottom-8">
-        <a href="{!! route('dishes.edit', $dish["id"]) !!}" class="btn btn-sm btn-outline-primary">
-          <i class="far fa-edit my-margin-right-12"></i>
-          <span>Edit</span>
-        </a>
-      </div>
+      @if(Auth::check() && Auth::user()->hasAdminRights())
+        <div class="{!! isset($dish['image']) ? 'my-padding-right-8 ' : '' !!}my-padding-bottom-8">
+          <a href="{!! route('dishes.edit', $dish["id"]) !!}" class="btn btn-sm btn-outline-primary">
+            <i class="far fa-edit my-margin-right-12"></i>
+            <span>Edit</span>
+          </a>
+        </div>
+      @endif
 
       @isset($dish['image'])    
-        <div class="my-padding-bottom-8">
-          <button
-            class="btn btn-sm btn-danger my-dish-discard-picture"
-            data-token="{!! csrf_token() !!}"
-            data-url="{!! route('dishes.discardPicture', $dish['id']) !!}"
-          >
-            <i class="far fa-trash-alt"></i>
-            <i class="far fa-image my-margin-right-12"></i>
-            <span>Discard picture</span>
-          </button>
-        </div>
+        @if(Auth::check() && Auth::user()->hasAdminRights())
+          <div class="my-padding-bottom-8">
+            <button
+              class="btn btn-sm btn-danger my-dish-discard-picture"
+              data-token="{!! csrf_token() !!}"
+              data-url="{!! route('dishes.discardPicture', $dish['id']) !!}"
+            >
+              <i class="far fa-trash-alt"></i>
+              <i class="far fa-image my-margin-right-12"></i>
+              <span>Discard picture</span>
+            </button>
+          </div>
+        @endif
       @endisset
 
     </div>
