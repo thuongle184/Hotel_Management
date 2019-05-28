@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Add a new vipcard"]
+    ['title' => "Add a new VIP card"]
   )
 
 @endsection
@@ -13,13 +13,13 @@
 @section('content')
 
   @include(
-    'vipcard/_form',
+    'vipCard/_form',
 
     [
       'errors'      =>  $errors,
       'action'      =>  URL::action('VipCardController@store'),
-      'vipCard'        =>  $vipCard,
-      'user'   =>  $user
+      'vipCard'     =>  $vipCard,
+      'users'       =>  $users
     ]
   )
 

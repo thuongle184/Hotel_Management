@@ -98,7 +98,22 @@
 
 
   {{-- if user has admin rights and is not editing him/herself --}}
-  @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
+  {{-- else, register as customer --}}
+  @if (!Auth::check())
+
+    <input type="hidden" name="user_type_id" value="1">
+
+
+  @elseif (Auth::id() == $user->id)
+
+    <input
+      type="hidden"
+      name="user_type_id"
+      value="{!! old ('user_type_id',isset($user)?$user['user_type_id']:1) !!}"
+    >
+
+  
+  @elseif (Auth::user()->hasAdminRights())
 
     <div class="row my-padding-bottom-19">
       <div class="col-md-3 col-lg-4 my-padding-bottom-8">
@@ -127,14 +142,9 @@
     </div>
 
 
-  {{-- else, register as customer --}}
   @else
 
-    <input
-      type="hidden"
-      name="user_type_id"
-      value="{!! old ('user_type_id',isset($user)?$user['user_type_id']:1) !!}"
-    >
+    <input type="hidden" name="user_type_id" value="1">
 
 
   @endif
@@ -211,7 +221,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="country_id">Country:<label>
+      <label for="country_id">Nationality:<label>
     </div>
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">

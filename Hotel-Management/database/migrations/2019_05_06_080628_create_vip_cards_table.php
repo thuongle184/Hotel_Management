@@ -16,8 +16,7 @@ class CreateVipCardsTable extends Migration
         Schema::create('vip_cards', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->string('number');
-            $table->integer('point');
+            $table->integer('point')->default(0);
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

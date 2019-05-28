@@ -32,8 +32,14 @@ class VipCardController extends Controller
     public function create()
     {
       $vipCard = new vipCard;
-      $user = user::orderBy('id')->get();
-      return view('vipCard/create', compact('vipCard'))->with('user', $user);
+
+      $users = user::orderBy('last_name')
+        ->orderBy('middle_name')
+        ->orderBy('first_name')
+        ->orderBy('title_id')
+        ->get();
+      
+      return view('vipCard/create', compact('vipCard'))->with('users', $users);
     }
 
     /**
@@ -68,8 +74,7 @@ class VipCardController extends Controller
      */
     public function edit(vipCard $vipCard)
     {
-      $userTypes = userType::orderBy('id')->get();
-      return view('vipCard/edit',compact('vipCard'))->with('userTypes', $userTypes);
+      return view('vipCard/edit',compact('vipCard'));
     }
 
     /**
@@ -81,32 +86,8 @@ class VipCardController extends Controller
      */
     public function update(VipCardRequest $request, vipCard $vipCard)
     {
-      if (!$request->is_available) {
-        $request->merge(['is_available' => false]);
-      }
-
-
       $vipCard->update($request->all());
-
-
-      if ($request->hasFile('image')) {
-        
-        $image = $request->file('image');
-        $validator = Validator::make($request->all(), $vipCard->rules, $vipCard->messages);
-
-        if ($validator->fails()) {
-          return redirect()->route('userTypes.edit', $vipCard->id)->withErrors($validator)->withInput();
-        }
-
-        elseif ($image->isValid()) {
-          Storage::delete($vipCard->image);
-          $vipCard->image = $image->store('public/images/vipCard');
-          $vipCard->save();
-        }
-
-      }
-
-      return redirect()->route('userTypes.index')->with('success','Edit is success!');
+      return redirect()->route('vipCards.index')->with('success','Edit successful!');
     }
 
     /**

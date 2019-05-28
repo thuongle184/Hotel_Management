@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.header',
-    ['title' => "Edit {$vipCard['name']}"]
+    ['title' => "Edit VIP card"]
   )
 
 @endsection
@@ -18,8 +18,7 @@
     [
       'errors'      =>  $errors,
       'action'      =>  URL::action('VipCardController@update', $vipCard->id),
-      'vipCard'     =>  $vipCard,
-      'users'       =>  $users
+      'vipCard'     =>  $vipCard
     ]
   )
 

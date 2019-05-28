@@ -8,7 +8,8 @@ class VipCard extends Model
 {
     protected $table = 'vip_cards'; // name of table in the database
     
-    protected $guarded = ['id','user_id', 'point']; // fields in the table
+    protected $guarded = ['id']; // fields in the table
+    protected $fillable = ['user_id', 'point']; // fields in the table
     
     public $timestamps=true; // set timestamp, allow to use
     

@@ -25,7 +25,7 @@ class VipCardRequest extends FormRequest
     {
         return [
           'user_id'  =>  'required',
-          'point'          =>  'required|unique:dishes,name,'.$this->get('id')
+          'point'    =>  'required'
         ];
     }
 
@@ -37,9 +37,8 @@ class VipCardRequest extends FormRequest
     public function messages()
     {
         return [
-          'user_id.required'   =>  'The dish category is required',
-          'point.required'           =>  'The point of the dish is required',
-          'point.unique'             =>  'This dish point has already been taken'
+          'user_id.required'   =>  'The user is required',
+          'point.required'     =>  'The number of points is required'
         ];
     }
 }
