@@ -13,6 +13,11 @@ use Session;
 
 class CompanyController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index', 'create', 'store']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *

@@ -21,7 +21,7 @@
   
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="label">Name of the booking type:<label>
+      <label for="label">Booking type:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -38,7 +38,7 @@
 
   <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="online_flateform_id">Online flateform:<label>
+      <label for="online_flateform_id">Online plateform:<label>
     </div>
     
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
