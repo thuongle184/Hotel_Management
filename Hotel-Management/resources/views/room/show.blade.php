@@ -50,27 +50,28 @@
     </div>
 
     <!-- roomEquipment -->
-    Equipment:
     @if (count($room->equipments) > 0)
-    <div class="my-padding-bottom-19">
-      <div class="d-flex flex-wrap">
-        @foreach($room->equipments as $equipment)
+      <div class="my-padding-bottom-19">Equipment:</div>
+      
+      <div class="my-padding-bottom-19">
+        <div class="d-flex flex-wrap">
+          @foreach($room->equipments as $equipment)
 
-          <div class="my-padding-bottom-8 my-padding-right-40">
-            <div class="d-flex align-items-center text-info">
-              <div class="my-margin-right-19 my-room-equipment-icon">
-                <i class="fas fa-check-circle"></i>
+            <div class="my-padding-bottom-8 my-padding-right-40">
+              <div class="d-flex align-items-center text-info">
+                <div class="my-margin-right-19 my-room-equipment-icon">
+                  <i class="fas fa-check"></i>
+                </div>
+                 
+                <div class="my-room-equipment-label">
+                  <i>{!! $equipment->label !!}</i>
+                </div>
               </div>
-               
-              <div class="my-room-equipment-label">
-                <i>{!! $equipment->label !!}</i>
-              </div>
-            </div>
-          </div>   
-        @endforeach
+            </div>   
+          @endforeach
+        </div>
       </div>
-    </div>
-  @endif<!-- endif roomEquiment -->
+    @endif<!-- endif roomEquiment -->
 
     <div class="d-flex flex-wrap">
 

@@ -1,4 +1,12 @@
+$(window).resize(function(){
+  resizeIconsAndLabels('my-equipment-room-icon', 'my-equipment-room-label');
+});
+
+
 $(function(){
+
+  resizeIconsAndLabels('my-equipment-room-icon', 'my-equipment-room-label');
+  
 
   $('.my-equipment-delete').on('click', function(e) {
     e.preventDefault();

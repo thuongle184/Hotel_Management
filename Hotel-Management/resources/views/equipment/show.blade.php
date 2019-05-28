@@ -16,6 +16,28 @@
     <div class="my-padding-bottom-12">
       Id: {!! $equipment["id"] !!}
     </div>
+
+    @if (count($equipment->rooms) > 0)
+      <div class="my-padding-bottom-19">
+        <div class="d-flex flex-wrap">
+          @foreach($equipment->rooms as $room)
+
+            <div class="my-padding-bottom-8 my-padding-right-40">
+              <div class="d-flex align-items-center text-info">
+                <div class="my-margin-right-19 my-equipment-room-icon">
+                  <i class="fas fa-bed"></i>
+                </div>
+
+                <div class="my-equipment-room-label">
+                  <i>{!! $room->number !!}</i>
+                </div>
+              </div>
+            </div>
+          
+          @endforeach
+        </div>
+      </div>
+    @endif
     
     <div class="d-flex flex-wrap">
 

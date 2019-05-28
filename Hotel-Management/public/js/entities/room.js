@@ -1,4 +1,12 @@
+$(window).resize(function(){
+  resizeIconsAndLabels('my-room-equipment-icon', 'my-room-equipment-label');
+});
+
+
 $(function(){
+
+  resizeIconsAndLabels('my-room-equipment-icon', 'my-room-equipment-label');
+  
 
   $('.my-room-delete').on('click', function(e) {
     e.preventDefault();
