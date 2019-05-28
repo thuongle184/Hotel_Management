@@ -181,7 +181,7 @@
       @endauth
 
 
-      <div class="d-flex flex-wrap my-padding-top-19 my-margin-top-19 my-border-top">
+      <div class="d-flex flex-wrap flex-md-column my-padding-top-19 my-margin-top-19 my-border-top">
 
         @foreach(myLayoutHelperSidebarActions() as $action)
           
