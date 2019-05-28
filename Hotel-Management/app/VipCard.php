@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VipCard extends Model
 {
-    protected $table = 'vipCards'; // name of table in the database
+    protected $table = 'vip_cards'; // name of table in the database
     
     protected $guarded = ['id','user_id', 'point']; // fields in the table
     

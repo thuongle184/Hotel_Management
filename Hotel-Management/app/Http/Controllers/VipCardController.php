@@ -20,11 +20,8 @@ class VipCardController extends Controller
      */
     public function index()
     {
-      $users = User::with(['vipCard' => function ($vipCard) { $vipCard->orderBy('user_id'); }])
-        ->orderBy('id')
-        ->get();
-
-      return view('vipCard/index', compact('users'));
+      $vipCards = VipCard::orderBy('point', 'desc')->get();
+      return view('vipCard/index', compact('vipCards'));
     }
 
     /**

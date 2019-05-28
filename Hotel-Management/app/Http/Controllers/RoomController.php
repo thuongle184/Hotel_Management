@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Room;
 use App\RoomSize;
+use App\Equipment;
+use App\RoomsEquipment;
 use App\Http\Requests\RoomRequest;
+use App\Http\Requests\EquipmentRequest;
 use App\Http\Requests\RoomSizeRequest;
 use Validator;
 use Illuminate\Support\Facades\Storage;
@@ -15,6 +18,11 @@ use Session;
 
 class roomController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed', ['except' => ['index']]);
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +46,18 @@ class roomController extends Controller
     {
       $room = new Room;
       $roomSizes = RoomSize::orderBy('id')->get();
-      return view('room/create', compact('room'))->with('roomSizes', $roomSizes);
+      $equipments = Equipment::orderBy('label')->get();
+
+      $roomEquipmentIds = $room->equipments
+        ->map(function($equipment, $key){
+          return $equipment->id;
+        })
+      ->toArray();
+
+      return view(
+        'room/create',
+        compact('room', 'roomSizes', 'equipments', 'roomEquipmentIds')
+      );
     }
 
     /**
@@ -51,6 +70,17 @@ class roomController extends Controller
     {
       $room = new Room($request->all());
       $room->save();
+
+      // saving equipment linked to the room
+      if ($request->input('equipment_id') != NULL) {
+        foreach ($request->input('equipment_id') as $equipmentId) {
+          $roomsEquipment = new RoomsEquipment;
+          $roomsEquipment->room_id = $room->id;
+          $roomsEquipment->equipment_id = $equipmentId;
+          $roomsEquipment->save();
+        }
+      }
+
       return redirect()->route('rooms.index')->with('success','Add success!');
     }
 
@@ -63,6 +93,7 @@ class roomController extends Controller
     public function show(Room $room)
     {
       return view('room/show', compact('room'));
+      return redirect()->route('rooms.index')->with('success','Add success!');
     }
 
     /**
@@ -74,7 +105,17 @@ class roomController extends Controller
     public function edit(Room $room)
     {
       $roomSizes = RoomSize::orderBy('id')->get();
-      return view('room/edit',compact('room'))->with('roomSizes', $roomSizes);
+      $equipments = Equipment::orderBy('label')->get();
+        
+      $roomEquipmentIds = $room->equipments
+        ->map(function($equipment, $key){
+          return $equipment->id;
+        })
+      ->toArray();
+      return view(
+        'room/edit',
+        compact('room', 'roomSizes', 'equipments', 'roomEquipmentIds')
+      );
     }
 
     /**
@@ -86,15 +127,42 @@ class roomController extends Controller
      */
     public function update(RoomRequest $request, Room $room)
     {
-      if (!$request->is_available) {
-        $request->merge(['is_available' => false]);
-      }
-
-      if (!$request->is_smoking) {
-        $request->merge(['is_smoking' => false]);
-      }
-
       $room->update($request->all());
+
+      $equipmentIds = $request->input('equipment_id');
+
+      $roomEquipmentIds = $room->equipments
+          
+          ->map(function($equipment, $key){
+              return $equipment->id;
+            })
+
+          ->toArray();
+
+
+      if ($equipmentIds == NULL) {
+        $equipmentIds = [];
+      }
+
+      foreach ($equipmentIds as $equipmentId) {
+        if(!in_array($equipmentId, $roomEquipmentIds)) {
+          $roomsEquipment = new RoomsEquipment;
+          $roomsEquipment->room_id = $room->id;
+          $roomsEquipment->equipment_id = $equipmentId;
+          $roomsEquipment->save();
+        }
+      }
+
+      foreach ($roomEquipmentIds as $roomEquipmentId) {
+        if(!in_array($roomEquipmentId, $equipmentIds)) {
+          $roomsEquipments = RoomsEquipment::where('room_id', $room->id)->where('equipment_id', $roomEquipmentId)->get();
+
+          foreach ($roomsEquipments as $roomsEquipment) {
+            $roomsEquipment->delete();
+          }
+        }
+      }
+
       return redirect()->route('rooms.index')->with('success','Edit is success!');
     }
 

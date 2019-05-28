@@ -128,7 +128,42 @@
       >
     </div>
   </div>
+  
+  <div class="row my-padding-bottom-19">
+    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+      <label>Equipment:<label>
+    </div>
+  
+    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+      
+      <div class="d-flex flex-wrap">
+        @foreach($equipments as $equipment)
 
+          <div class="my-padding-bottom-8 my-padding-right-40">
+            <div class="d-flex align-items-center">
+              <input
+                type="checkbox"
+                class="my-margin-right-19 my-room-equipment-icon"
+                id="equipment_id_{!! $equipment->id !!}"
+                name="equipment_id[]"
+                value="{!! $equipment->id !!}"
+
+                @if(in_array($equipment->id, $roomEquipmentIds))
+                  checked="checked"
+                @endif
+              >
+
+              <label for="equipment_id_{!! $equipment->id !!}" class="my-room-equipment-label">
+                {!! $equipment->label !!}
+              </label>
+            </div>
+          </div>
+        
+        @endforeach
+      </div>
+      
+    </div>
+  </div>
 
   <!-- button Save -->
   <div class="row">

@@ -14,27 +14,35 @@ use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
   return view('welcome');
-});
+})->name('home');
 
 
 Route::resources([
+  'bookingPurposes'       =>  'BookingPurposeController',
+  'bookingTypes'          =>  'BookingTypeController',
+  'companies'             =>  'CompanyController',
+  'countries'             =>  'CountryController',
   'dishes'                =>  'DishController',
   'dishTypes'             =>  'DishTypeController',
-  'bookingPurposes'       =>  'BookingPurposeController',
-  'roomSizes'             =>  'RoomSizeController',
-  'rooms'                 =>  'RoomController',
-  'userTypes'             =>  'UserTypeController',
   'equipment'             =>  'EquipmentController',
-  'titles'                =>  'TitleController',
-  'onlinePlateforms'      =>  'OnlinePlateformController',
   'identificationTypes'   =>  'IdentificationTypeController',
-  'countries'             =>  'CountryController',
+  'onlinePlateforms'      =>  'OnlinePlateformController',
+  'rooms'                 =>  'RoomController',
+  'roomSizes'             =>  'RoomSizeController',
+  'titles'                =>  'TitleController',
   'users'                 =>  'UserController',
-  'companies'             =>  'CompanyController',
   'userCompanies'         =>  'UserCompanyController',
-  'vipCards'              =>  'VipCardController',
+  'userTypes'             =>  'UserTypeController',
+  'vipCards'              =>  'VipCardController'
 ]);
 
 
 Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->name('dishes.discardPicture');
-Auth::routes();
+
+Route::get('login', 'LoginController@login')->name('login');
+Route::post('login', 'LoginController@authenticate')->name('login.authenticate');
+Route::get('logout', 'LoginController@logout')->name('login.logout');
+
+Route::get('/forbidden', function () {
+  return view('forbidden');
+})->name('forbidden');

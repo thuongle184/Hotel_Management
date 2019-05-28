@@ -16,10 +16,12 @@
     'room/_form',
 
     [
-      'errors'      =>  $errors,
-      'action'      =>  URL::action('RoomController@store'),
-      'room'        =>  $room,
-      'roomSizes'   =>  $roomSizes
+      'errors'           =>  $errors,
+      'action'           =>  URL::action('RoomController@store'),
+      'room'             =>  $room,
+      'roomSizes'        =>  $roomSizes,
+      'equipments'       =>  $equipments,
+      'roomEquipmentIds' =>  $roomEquipmentIds
     ]
   )
 

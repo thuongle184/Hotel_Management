@@ -87,41 +87,57 @@
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
       <input
-      id="first_name"
-      type="text"
-      class="form-control"
-      name="first_name"
-      value="{!! old ('first_name',isset($user)?$user['first_name']:NULL) !!}"
+        id="first_name"
+        type="text"
+        class="form-control"
+        name="first_name"
+        value="{!! old ('first_name',isset($user)?$user['first_name']:NULL) !!}"
       >
     </div>
   </div>
 
 
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="user_user_type_id">User type:<label>
-    </div>
-    
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="user_type_id" class="form-control" id="user_user_type_id">
+  {{-- if user has admin rights and is not editing him/herself --}}
+  @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
 
-        @foreach ($userTypes as $userType)
-          <option
-            value="{!! $userType['id'] !!}"
-            {!!
-                old (
-                  'user_type_id',
-                  isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL
-                )
-            !!}
-          >
-            {!! $userType['label'] !!}
-          </option>
-        @endforeach
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="user_user_type_id">User type:<label>
+      </div>
+      
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <select name="user_type_id" class="form-control" id="user_user_type_id">
 
-      </select>
+          @foreach ($userTypes as $userType)
+            <option
+              value="{!! $userType['id'] !!}"
+              {!!
+                  old (
+                    'user_type_id',
+                    isset($user) && $user['user_type_id'] == $userType['id'] ? 'selected' : NULL
+                  )
+              !!}
+            >
+              {!! $userType['label'] !!}
+            </option>
+          @endforeach
+
+        </select>
+      </div>
     </div>
-  </div>
+
+
+  {{-- else, register as customer --}}
+  @else
+
+    <input
+      type="hidden"
+      name="user_type_id"
+      value="{!! old ('user_type_id',isset($user)?$user['user_type_id']:1) !!}"
+    >
+
+
+  @endif
 
 
   <div class="row my-padding-bottom-19">
@@ -336,7 +352,6 @@
         type="password"
         class="form-control"
         name="password"
-        value="{!! old ('password',isset($user)?$user['password']:NULL) !!}"
       >
     </div>
   </div>
@@ -352,7 +367,6 @@
         type="password"
         class="form-control"
         name="password_confirmation"
-        value="{!! old ('password',isset($user)?$user['password']:NULL) !!}"
       >
     </div>
   </div>
@@ -364,19 +378,38 @@
     <div class="col-md-3 col-lg-4"></div>
 
     <div class="col-md-9 col-lg-8">
-      <a
-        href="{!! route('users.index') !!}"
-        class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
-      >
-        <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-        <span>Back to list of users</span>
-      </a>
+
+      {{-- if user has admin rights and is not editing him/herself --}}
+      @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
+
+        <a
+          href="{!! route('users.index') !!}"
+          class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
+        >
+          <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
+          <span>Back to list of users</span>
+        </a>
+
+
+      @else
+
+        <a
+          href="{!! url('/') !!}"
+          class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
+        >
+          <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
+          <span>Back to the welcome page</span>
+        </a>
+
+
+      @endif
+
 
       <button
         type="submit"
         class="btn btn-sm btn-success my-margin-bottom-8"
       >
-        <i class="fas fa-check-circle my-margin-right-12"></i>
+        <i class="fas fa-check-circle"></i>
         <span>Save</span>
       </button>
     </div>

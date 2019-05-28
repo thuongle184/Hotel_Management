@@ -16,10 +16,12 @@
     'room/_form',
 
     [
-      'errors'      =>  $errors,
-      'action'      =>  URL::action('RoomController@update', $room->id),
-      'room'        =>  $room,
-      'roomSizes'   =>  $roomSizes
+      'errors'           =>  $errors,
+      'action'           =>  URL::action('RoomController@update', $room->id),
+      'room'             =>  $room,
+      'roomSizes'        =>  $roomSizes,
+      'equipments'       =>  $equipments,
+      'roomEquipmentIds' =>  $roomEquipmentIds
     ]
   )
 

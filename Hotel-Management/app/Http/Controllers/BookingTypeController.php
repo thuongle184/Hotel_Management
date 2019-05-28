@@ -4,25 +4,30 @@ namespace App\Http\Controllers;
 
 use App\BookingType;
 use App\OnlinePlateform;
-use Illuminate\Http\BookingTypeRequest;
+use Illuminate\Http\Request;
 use Validator;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
+use Auth;
+use App\Http\Requests\BookingTypeRequest;
+use Input,File;
+use DB;     
+use Session;
 
 class BookingTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('checkIfAllowed');
+    }
+    
      /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-      $onlinePlateforms = OnlinePlateform::with(['bookingTypes' => function ($bookingType) { $bookingType->orderBy('label'); }])
-          ->orderBy('id')
-          ->get();
-
-      return view('bookingType/index', compact('onlinePlateforms'));
+    { 
+      $bookingTypes = BookingType::all();
+      return view('bookingType/index', compact('bookingTypes'));
     }
 
     /**
@@ -46,7 +51,6 @@ class BookingTypeController extends Controller
     public function store(BookingTypeRequest $request)
     {
       $bookingType = new BookingType($request->all());
-
       $bookingType->save();
       return redirect()->route('bookingTypes.index')->with('success','Add success!');
     }
@@ -70,8 +74,8 @@ class BookingTypeController extends Controller
      */
     public function edit(BookingType $bookingType)
     {
-      $onlinePlateform = OnlinePlateform::orderBy('id')->get();
-      return view('onlinePlateform/edit',compact('onlinePlateform'))->with('onlinePlateforms', $onlinePlateforms);
+      $onlinePlateforms = OnlinePlateform::orderBy('id')->get();
+      return view('bookingType/edit',compact('bookingType','onlinePlateforms'));
     }
 
     /**
@@ -85,7 +89,6 @@ class BookingTypeController extends Controller
     {
       
       $bookingType->update($request->all());
-
       return redirect()->route('bookingTypes.index')->with('success','Update success!');
     }
 
@@ -97,7 +100,7 @@ class BookingTypeController extends Controller
      */
     public function destroy(BookingType $bookingType)
     {
-     $bookingType->delete();
+      $bookingType->delete();
       return "ok";
     }
 

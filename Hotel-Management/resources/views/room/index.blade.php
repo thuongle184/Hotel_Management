@@ -30,7 +30,7 @@
             <div class="col-md-6 col-lg-4 my-padding-bottom-19 my-filter-object my-room">
               <div class="my-frame">
                 <div class="my-padding-bottom-12 my-filter-target">
-                  {!! $room["number"] !!}
+                  Room: {!! $room["number"] !!}
                 </div>
                 
                 <div class="d-flex flex-wrap">
@@ -42,23 +42,25 @@
                     </a>
                   </div>
                   
-                  <div class="my-padding-right-8 my-padding-bottom-8">
-                    <a href="{!! route('rooms.edit', $room["id"]) !!}" class="btn btn-sm btn-outline-primary">
-                      <i class="far fa-edit my-margin-right-12"></i>
-                      <span>Edit</span>
-                    </a>
-                  </div>
+                  @if (Auth::check() && Auth::user()->hasAdminRights())
+                    <div class="my-padding-right-8 my-padding-bottom-8">
+                      <a href="{!! route('rooms.edit', $room["id"]) !!}" class="btn btn-sm btn-outline-primary">
+                        <i class="far fa-edit my-margin-right-12"></i>
+                        <span>Edit</span>
+                      </a>
+                    </div>
 
-                  <div class="my-padding-bottom-8">
-                    <button
-                      class="btn btn-sm btn-danger my-room-delete"
-                      data-token="{!! csrf_token() !!}"
-                      data-url="{!! route('rooms.destroy', $room['id']) !!}"
-                    >
-                      <i class="far fa-trash-alt my-margin-right-12"></i>
-                      <span>Delete</span>
-                    </button>
-                  </div>
+                    <div class="my-padding-bottom-8">
+                      <button
+                        class="btn btn-sm btn-danger my-room-delete"
+                        data-token="{!! csrf_token() !!}"
+                        data-url="{!! route('rooms.destroy', $room['id']) !!}"
+                      >
+                        <i class="far fa-trash-alt my-margin-right-12"></i>
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  @endif
 
                 </div>
               </div>
