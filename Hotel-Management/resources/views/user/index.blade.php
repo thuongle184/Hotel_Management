@@ -46,15 +46,29 @@
 
           <div class="my-padding-right-8 my-padding-bottom-8">
             <a href="{!! route('users.show', $user["id"]) !!}" class="btn btn-sm btn-outline-dark">
-              <i class="fas fa-eye my-margin-right-12"></i>
-              <span>Detail</span>
+              <div class="d-flex align-items-center">
+                <div class="my-margin-right-12 my-action-button-icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+
+                <div class="my-action-button-label text-left">
+                  Detail
+                </div>
+              </div>
             </a>
           </div>
 
           <div class="my-padding-right-8 my-padding-bottom-8">
             <a href="{!! route('users.edit', $user["id"]) !!}" class="btn btn-sm btn-outline-primary">
-              <i class="far fa-edit my-margin-right-12"></i>
-              <span>Edit</span>
+              <div class="d-flex align-items-center">
+                <div class="my-margin-right-12 my-action-button-icon">
+                  <i class="far fa-edit"></i>
+                </div>
+
+                <div class="my-action-button-label text-left">
+                  Edit
+                </div>
+              </div>
             </a>
           </div>
 
@@ -66,8 +80,15 @@
                 data-token="{!! csrf_token() !!}"
                 data-url="{!! route('users.destroy', $user['id']) !!}"
               >
-                <i class="far fa-trash-alt my-margin-right-12"></i>
-                <span>Delete</span>
+                <div class="d-flex align-items-center">
+                  <div class="my-margin-right-12 my-action-button-icon">
+                    <i class="far fa-trash-alt"></i>
+                  </div>
+
+                  <div class="my-action-button-label text-left">
+                    Delete
+                  </div>
+                </div>
               </button>
             </div>
           @endunless

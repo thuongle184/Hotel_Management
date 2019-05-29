@@ -1,13 +1,11 @@
-$(window).resize(function(){
+$(window).on('load resize', function(){
+  resizeIconsAndLabels('my-user-icon', 'my-user-label');
   resizeIconsAndLabels('my-user-company-icon', 'my-user-company-label');
 });
 
 
 $(function(){
 
-  resizeIconsAndLabels('my-user-company-icon', 'my-user-company-label');
-  
-  
   $('.my-user-delete').on('click', function(e) {
     e.preventDefault();
 

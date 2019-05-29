@@ -169,3 +169,6 @@ aside .my-border-top, aside .my-border-bottom { border-color: #ccc; }
   font-weight: normal;
   font-style: italic;
 }
+
+
+.my-word-break { word-break: break-all; }
