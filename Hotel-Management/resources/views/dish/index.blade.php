@@ -29,7 +29,7 @@
         
           @foreach($dishType->dishes as $dish)
 
-            <div class="col-sm-6 col-lg-4 col-xl-3 my-padding-bottom-19 my-filter-object my-entity my-dish">
+            <div class="col-sm-6 col-lg-4 my-padding-bottom-19 my-filter-object my-entity my-dish">
               <div class="my-frame d-flex flex-wrap flex-fill align-items-start justify-content-between">
 
                 <div class="my-padding-bottom-8 my-padding-right-19">
