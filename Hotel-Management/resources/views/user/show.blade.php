@@ -3,7 +3,7 @@
 @section('header')
 
   @include(
-      '_layouts.header',
+      '_layouts.showHeader',
       ['title' => $user["title"]["label"].' '. $user["first_name"].' '.$user["last_name"].' '.$user["middle_name"] ]
     )
 
