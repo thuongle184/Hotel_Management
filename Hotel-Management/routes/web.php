@@ -22,7 +22,6 @@ Route::resources([
   'bookingTypes'          =>  'BookingTypeController',
   'companies'             =>  'CompanyController',
   'countries'             =>  'CountryController',
-  'dishes'                =>  'DishController',
   'dishTypes'             =>  'DishTypeController',
   'equipment'             =>  'EquipmentController',
   'identificationTypes'   =>  'IdentificationTypeController',
@@ -31,11 +30,13 @@ Route::resources([
   'roomSizes'             =>  'RoomSizeController',
   'titles'                =>  'TitleController',
   'users'                 =>  'UserController',
-  'userCompanies'         =>  'UserCompanyController',
+  // 'userCompanies'         =>  'UserCompanyController',
   'userTypes'             =>  'UserTypeController',
   'vipCards'              =>  'VipCardController'
 ]);
 
+
+Route::resource('dishes', 'DishController')->except(['show']);
 
 Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->name('dishes.discardPicture');
 

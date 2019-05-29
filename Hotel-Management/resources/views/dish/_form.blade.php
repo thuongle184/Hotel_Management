@@ -11,6 +11,7 @@
   action="{!! $action !!}"
   method="post"
   enctype="multipart/form-data"
+  class="my-dish"
 >
   @csrf
 

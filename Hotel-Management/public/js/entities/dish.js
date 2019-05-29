@@ -1,4 +1,17 @@
+$(window).resize(function(){
+
+  $('.my-dish-type').each(function(){
+    resizeImages($(this));
+  });
+  
+});
+
 $(function(){
+
+  $('.my-dish-type').each(function(){
+    resizeImages($(this));
+  });
+  
 
   $('.my-dish-delete').on('click', function(e) {
     e.preventDefault();
@@ -72,6 +85,7 @@ $(function(){
     $('.my-frame').removeClass('my-margin-top-40');
     
     $dishDiscardPicture = $(this);
+    $dish = $dishDiscardPicture.closest('.my-dish');
 
 
     $.ajax({
@@ -88,7 +102,7 @@ $(function(){
 
         if(data === "ok") {
 
-          $('.my-dish-image').remove();
+          $dish.find('.my-dish-image').remove();
           $dishDiscardPicture.remove();
 
           $('#my-dish-discard-picture-status')

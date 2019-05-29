@@ -23,7 +23,7 @@ class LoginController extends Controller
     }
 
     else {
-      return redirect()->route('login')->withInput();
+      return redirect()->route('login')->withErrors('Credentials are incorrect');
     }
   }
 

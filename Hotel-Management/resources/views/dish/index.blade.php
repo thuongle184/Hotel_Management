@@ -25,37 +25,39 @@
         </h4>
 
 
-        <div class="row">
+        <div class="row my-entity-images-all-formats">
         
           @foreach($dishType->dishes as $dish)
 
-            <div class="col-xl-6 my-padding-bottom-19 my-filter-object my-dish">
+            <div class="col-sm-6 col-lg-4 col-xl-3 my-padding-bottom-19 my-filter-object my-entity my-dish">
               <div class="my-frame d-flex flex-wrap flex-fill align-items-start justify-content-between">
 
                 <div class="my-padding-bottom-8 my-padding-right-19">
-                  <div class="my-padding-bottom-12 my-filter-target">
+                  <div class="my-padding-bottom-12 my-filter-target my-entity-name">
                     <strong>{!! $dish["name"] !!}</strong>
                   </div>
     
                   @if ($dish->description && strlen($dish->description))    
                     <div class="my-padding-bottom-12">
-                      <p class="text-justify">
+                      <p class="text-justify my-entity-description">
                         <em>{!! str_replace("\n","<br>", $dish->description) !!}</em>
                       </p>
                     </div>
                   @endif
 
                   <div class="my-padding-bottom-12">
-                    @if (!$dish->is_available)    
-                      <i class="text-danger">DISH IS NOT AVAILABLE</i>
+                    <div class="my-entity-price">
+                      @if (!$dish->is_available)    
+                        <i class="text-danger">DISH IS NOT AVAILABLE</i>
 
-                    @elseif ($dish->price)    
-                      VNĐ {!! $dish->price !!}
-                    
-                    @else
-                      <i class="text-info">Ask us for the price</i>
-                    
-                    @endif
+                      @elseif ($dish->price)    
+                        VNĐ {!! $dish->price !!}
+                      
+                      @else
+                        <i class="text-info">Ask us for the price</i>
+                      
+                      @endif
+                    </div>
                   </div>
                   
                   
@@ -64,8 +66,15 @@
 
                       <div class="my-padding-right-8 my-padding-bottom-8">
                         <a href="{!! route('dishes.edit', $dish["id"]) !!}" class="btn btn-sm btn-outline-primary">
-                          <i class="far fa-edit my-margin-right-12"></i>
-                          <span>Edit</span>
+                          <div class="d-flex align-items-center">
+                            <div class="my-margin-right-12 my-action-button-icon">
+                              <i class="far fa-edit"></i>
+                            </div>
+
+                            <div class="my-action-button-label text-left">
+                              Edit
+                            </div>
+                          </div>
                         </a>
                       </div>
 
@@ -75,8 +84,15 @@
                           data-token="{!! csrf_token() !!}"
                           data-url="{!! route('dishes.destroy', $dish['id']) !!}"
                         >
-                          <i class="far fa-trash-alt my-margin-right-12"></i>
-                          <span>Delete</span>
+                          <div class="d-flex align-items-center">
+                            <div class="my-margin-right-12 my-action-button-icon">
+                              <i class="far fa-trash-alt"></i>
+                            </div>
+
+                            <div class="my-action-button-label text-left">
+                              Delete
+                            </div>
+                          </div>
                         </button>
                       </div>
                   
@@ -88,8 +104,8 @@
 
                 @isset($dish['image'])    
                   
-                  <div class="my-padding-bottom-8 my-dish-image">
-                    <img src="{!! Storage::url($dish->image) !!}">
+                  <div class="my-padding-bottom-8 my-entity-image my-dish-image">
+                    <img src="{!! Storage::url($dish->image) !!}" class="mx-auto d-block">
 
                     @if (Auth::check() && Auth::user()->hasAdminRights())
                       <div class="my-padding-bottom-8 text-center">
@@ -114,6 +130,25 @@
 
           @endforeach
 
+        </div>
+
+
+        <div class="row my-entity-images-landscape">
+        </div>
+
+        <div class="row my-entity-images-portrait">
+        </div>
+
+        <div class="row my-entity-images-landscape-no-description">
+        </div>
+
+        <div class="row my-entity-images-portrait-no-description">
+        </div>
+
+        <div class="row my-entity-no-image">
+        </div>
+
+        <div class="row my-entity-no-image-no-description">
         </div>
 
       </div>
