@@ -15,6 +15,6 @@ class Equipment extends Model
 
     public function rooms()
    	{
-   		return $this->belongsToMany('App\Room', 'rooms_equipments', 'room_id', 'equipment_id');
+   		return $this->belongsToMany('App\Room', 'rooms_equipments', 'equipment_id', 'room_id');
    	}
 }
