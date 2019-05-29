@@ -163,10 +163,10 @@ var resizeImagePart = function($element) {
 
 var resizeParts = function($element) {
 
-  var parts = ['.my-entity-description', '.my-entity-price'];
+  var parts = ['.my-entity-name', '.my-entity-description', '.my-entity-price'];
 
   $.each(parts, function(index, part){
-  
+
     $element.find(part).css('height', 'auto');
 
     if (Modernizr.mq('(min-width: 576px)')) {
@@ -220,28 +220,28 @@ var deferredImageReorganize = function($element) {
 
       case (!width && $entityDescription.length > 0):
       case (!height && $entityDescription.length > 0):
-        $('.my-entity-no-image-no-description').append($entity);
+        $element.find('.my-entity-no-image-no-description').append($entity);
         break;
       
       case (!width):
       case (!height):
-        $('.my-entity-no-image').append($entity);
+        $element.find('.my-entity-no-image').append($entity);
         break;
       
       case (width >= height && $entityDescription.length > 0):
-        $('.my-entity-images-landscape').append($entity);
+        $element.find('.my-entity-images-landscape').append($entity);
         break;
       
       case (width < height && $entityDescription.length > 0):
-        $('.my-entity-images-portrait').append($entity);
+        $element.find('.my-entity-images-portrait').append($entity);
         break;
       
       case (width >= height):
-        $('.my-entity-images-landscape-no-description').append($entity);
+        $element.find('.my-entity-images-landscape-no-description').append($entity);
         break;
       
       case (width < height):
-        $('.my-entity-images-portrait-no-description').append($entity);
+        $element.find('.my-entity-images-portrait-no-description').append($entity);
 
     }
   

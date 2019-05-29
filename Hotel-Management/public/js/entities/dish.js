@@ -1,10 +1,11 @@
-$(window).resize(function(){
+$(window).on('load resize', function(){
 
   $('.my-dish-type').each(function(){
     resizeImages($(this));
   });
-  
+
 });
+
 
 $(function(){
 
@@ -79,6 +80,7 @@ $(function(){
     });
   });
 
+
   $('.my-dish-discard-picture').on('click', function(e) {
     e.preventDefault();
 
@@ -86,6 +88,7 @@ $(function(){
     
     $dishDiscardPicture = $(this);
     $dish = $dishDiscardPicture.closest('.my-dish');
+    $dishType = $dish.closest('.my-dish-type');
 
 
     $.ajax({
@@ -104,18 +107,23 @@ $(function(){
 
           $dish.find('.my-dish-image').remove();
           $dishDiscardPicture.remove();
+          $dishType.find('.my-entity-images-all-formats').append($dish);
 
-          $('#my-dish-discard-picture-status')
+          $('#my-entity-delete-status, #my-dish-discard-picture-status')
             .addClass('my-entity-delete-status-ok')
             .removeClass('d-none')
             .html(`Picture has successfully been deleted`);
+
+
+          resizeImages($dishType);
+          resizeLayout();
 
         } 
 
 
         else {
           
-          $('#my-dish-discard-picture-status')
+          $('#my-entity-delete-status, #my-dish-discard-picture-status')
             .addClass('my-entity-delete-status-ko')
             .removeClass('d-none')
             .html(`Something went wrong when attempting to delete the picture`);
@@ -127,7 +135,7 @@ $(function(){
 
       error: function (error) {
         
-        $('#my-dish-discard-picture-status')
+        $('#my-entity-delete-status, #my-dish-discard-picture-status')
           .addClass('my-entity-delete-status-ko')
           .removeClass('d-none')
           .text(error);

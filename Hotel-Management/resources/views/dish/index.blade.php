@@ -104,8 +104,8 @@
 
                 @isset($dish['image'])    
                   
-                  <div class="my-padding-bottom-8 my-entity-image my-dish-image">
-                    <img src="{!! Storage::url($dish->image) !!}" class="mx-auto d-block">
+                  <div class="my-entity-image my-dish-image">
+                    <img src="{!! Storage::url($dish->image) !!}" class="my-padding-bottom-8 mx-auto d-block">
 
                     @if (Auth::check() && Auth::user()->hasAdminRights())
                       <div class="my-padding-bottom-8 text-center">
