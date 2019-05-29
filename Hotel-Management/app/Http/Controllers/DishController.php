@@ -75,17 +75,6 @@ class DishController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Dish  $dish
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Dish $dish)
-    {
-      return view('dish/show', compact('dish'));
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Dish  $dish
