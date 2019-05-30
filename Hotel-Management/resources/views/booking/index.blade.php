@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.indexHeader',
-    ['title' => "Reservations", 'route' => route('bookings.create'), 'buttonLabel' => "Add a new reservation"]
+    ['title' => "Reservations", 'route' => route('bookings.create'), 'buttonLabel' => "Add a reservation"]
   )
 
 @endsection
@@ -73,7 +73,7 @@
           
               <div class="my-padding-bottom-8">
                 <button
-                  class="btn btn-sm btn-danger my-user-delete"
+                  class="btn btn-sm btn-danger my-booking-delete"
                   data-token="{!! csrf_token() !!}"
                   data-url="{!! route('bookings.destroy', $booking['id']) !!}"
                 >

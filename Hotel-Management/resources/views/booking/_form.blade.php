@@ -234,11 +234,11 @@
       @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
 
         <a
-          href="{!! route('users.index') !!}"
+          href="{!! route('bookings.index') !!}"
           class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
         >
           <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-          <span>Back to list of rooms</span>
+          <span>Back to list of bookings</span>
         </a>
 
 
