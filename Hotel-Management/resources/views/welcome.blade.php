@@ -2,6 +2,12 @@
 
 @section('content')
 
+  <div id="my-welcome-slides-hidden" class="d-none">
+    @foreach(mySlideHelperWelcomePage() as $slide)
+      <img class="w-100" src="{!! $slide['url'] !!}">
+    @endforeach
+  </div>
+
   <div id="my-welcome-slides" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       @foreach(mySlideHelperWelcomePage() as $slide)
@@ -50,7 +56,7 @@
             </figcaption>
           </figure>
         
-        
+
         @endif
 
       @endforeach
