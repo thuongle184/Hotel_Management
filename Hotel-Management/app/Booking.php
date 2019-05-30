@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     protected $table = 'bookings'; // name of the table in the database
-    protected $guarded = ['id','booking_type_id','user_id', 'room_id', 'entry_date', 'exit_date', 'booking_purpose_id']; // fields in the table
+    protected $guarded = ['id'];
+     // fields in the table
+    protected $fillable = ['booking_type_id','user_id', 'room_id', 'entry_date', 'exit_date', 'booking_purpose_id'];
     public $timestamps=true; // set timestamp, allow to use
 
     public function bill() {

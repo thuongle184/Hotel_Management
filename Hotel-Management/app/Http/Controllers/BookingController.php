@@ -18,7 +18,7 @@ class BookingController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('checkIfAllowed', ['except' => ['create', 'store']]);
+        $this->middleware('checkIfAllowed', ['except' => ['create', 'store', 'update']]);
     }
     
     /**
@@ -28,10 +28,16 @@ class BookingController extends Controller
      */
     public function index()
     {
-        $bookings = User::with(['bookings' => function ($booking) { $booking->orderBy('id'); }])
+      //   $bookings = User::with(['bookings' => function ($booking) { $booking->orderBy('id'); }])
+      //   ->get();
+    
+      // return view('booking/index', compact('bookings'));
+      // 
+      $bookingPurposes = BookingPurpose::with(['bookings' => function ($booking) { $booking->orderBy('id'); }])
+        ->orderBy('id')
         ->get();
     
-      return view('booking/index', compact('bookings'));
+      return view('booking/index', compact('bookingPurposes'));
     }
 
     /**
@@ -45,11 +51,12 @@ class BookingController extends Controller
         $users = User::orderBy('id')->get();
         $bookingTypes = BookingType::orderBy('id')->get();
         $room = Room::find($request->get('roomId'));
+        $rooms = Room::orderBy('number')->get();
         $bookingPurposes = BookingPurpose::orderBy('id')->get();
-        
+
         return view(
           'booking/create',
-          compact('room','booking', 'users', 'bookingTypes', 'bookingPurposes')
+          compact('room','rooms','booking', 'users', 'bookingTypes', 'bookingPurposes')
         );
     }
 
@@ -59,22 +66,13 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        
-        $booking = new Booking; // ten model
-        $booking->booking_type_id = $request->booking_type_id;
-        $booking->user_id = $request->user_id;
-        $booking->room_id= $request->room_id;
-        $booking->entry_date=$request->entry_date;
-        $booking->exit_date= $request->exit_date;
-        $booking->booking_purpose_id=$request->booking_purpose_id;
-        $booking->save();
-
-        // return 
-         
-        //   redirect()->route('welcome')->with('success','Add success!');
-        echo "ok";
+    public function store(BookingRequest $request)
+    { 
+      $booking = new Booking($request->all());
+      $booking->save();
+      return Auth::check() && Auth::user()->hasAdminRights() ?
+          redirect()->route('bookings.index')->with('success','Add success!') :
+          redirect()->route('home')->with('success','Add success!');
 
     }
 
@@ -86,7 +84,8 @@ class BookingController extends Controller
      */
     public function show(Booking $booking)
     {
-        //
+       return view('booking/show', compact('booking','bookingPurposes'));
+        return redirect()->route('booking.index')->with('success','Add success!');
     }
 
     /**
@@ -95,9 +94,29 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit(Booking $booking, Request $request)
     {
-        //
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+        $users = User::orderBy('id')->get();
+        $rooms = Room::orderBy('number')->get();
+        $bookingTypes = BookingType::orderBy('id')->get();
+        $bookingPurposes = BookingPurpose::orderBy('id')->get();
+
+        return view(
+          'booking/edit',
+          compact('booking', 'users', 'rooms', 'bookingTypes', 'bookingPurposes')
+        );
     }
 
     /**
@@ -107,9 +126,26 @@ class BookingController extends Controller
      * @param  \App\Booking  $booking
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(BookingRequest $request, Booking $booking)
     {
-        //
+        if (!Auth::check()) {
+
+          return view('forbidden');
+        
+        } elseif (Auth::user()->hasAdminRights()) {
+
+        } elseif (Auth::id() != $user->id) {
+
+          return view('forbidden');
+
+        }
+
+      $booking->update($request->all());
+
+      // if user has admin rights and is not editing him/herself
+      return Auth::check() && Auth::user()->hasAdminRights() ?
+          redirect()->route('bookings.index')->with('success','Successfully updated!') :
+          redirect()->route('home');
     }
 
     /**
@@ -120,6 +156,7 @@ class BookingController extends Controller
      */
     public function destroy(Booking $booking)
     {
-        //
+       $booking->delete();
+        return "ok";
     }
 }

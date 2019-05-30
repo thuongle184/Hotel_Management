@@ -22,6 +22,7 @@
       'users'               =>  $users,
       'bookingTypes'        =>  $bookingTypes,
       'room'                =>  $room,
+      'rooms'               =>  $rooms,
       'bookingPurposes'     =>  $bookingPurposes      
     ]
   )
