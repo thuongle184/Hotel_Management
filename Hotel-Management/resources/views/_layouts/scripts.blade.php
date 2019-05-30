@@ -24,5 +24,6 @@
 <script src="{{URL::asset('js/entities/company.js')}}"></script>
 <script src="{{URL::asset('js/entities/bookingType.js')}}"></script>
 <script src="{{URL::asset('js/entities/vipCard.js')}}"></script>
+<script src="{{URL::asset('js/entities/customerMessage.js')}}"></script>
 
 

@@ -95,6 +95,12 @@ function myLayoutHelperSidebarActions() {
       "url"             =>  "vipCards",
       "label"           =>  "VIP cards",
       "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
+    ],
+  
+    [ 
+      "url"             =>  "customerMessages",
+      "label"           =>  "Customer messages",
+      "mayBeDisplayed"  =>  Auth::check() && Auth::user()->hasAdminRights() 
     ]
 
   ];

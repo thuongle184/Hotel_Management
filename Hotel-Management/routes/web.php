@@ -30,13 +30,14 @@ Route::resources([
   'roomSizes'             =>  'RoomSizeController',
   'titles'                =>  'TitleController',
   'users'                 =>  'UserController',
-  // 'userCompanies'         =>  'UserCompanyController',
   'userTypes'             =>  'UserTypeController',
   'vipCards'              =>  'VipCardController'
 ]);
 
 
 Route::resource('dishes', 'DishController')->except(['show']);
+Route::resource('customerMessages', 'CustomerMessageController')->only(['index', 'store', 'destroy']);
+
 
 Route::patch('dishes/{dish}/discard_picture', 'DishController@discardPicture')->name('dishes.discardPicture');
 
