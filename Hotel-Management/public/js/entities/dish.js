@@ -9,11 +9,6 @@ $(window).on('load resize', function(){
 
 $(function(){
 
-  $('.my-dish-type').each(function(){
-    resizeImages($(this));
-  });
-  
-
   $('.my-dish-delete').on('click', function(e) {
     e.preventDefault();
 
