@@ -228,6 +228,7 @@ var deferredImageReorganize = function($element) {
   var deferredReorganize = $.Deferred();
 
   var quantityOfImages = $element.find('.my-entity-images-all-formats .my-entity').length;
+  var iterator = 0;
 
   if (quantityOfImages < 1) {
     deferredReorganize.resolve();
@@ -243,7 +244,6 @@ var deferredImageReorganize = function($element) {
     var width = $entityImage.length ? parseFloat($entityImage.css('width')) : null;
     var height = $entityImage.length ? parseFloat($entityImage.css('height')) : null;
 
-    var iterator = 0;
     
 
     switch (true) {
