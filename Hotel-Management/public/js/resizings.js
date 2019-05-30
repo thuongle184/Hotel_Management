@@ -142,11 +142,11 @@ var getScrollBarWidth = function () {
 
 var resizeImagePart = function($element) {
 
-  $element.find(".my-entity-image").css('height', 'auto');
+  $element.find(".my-entity-image img").css('height', 'auto');
 
   if (Modernizr.mq('(min-width: 576px)')) {
 
-    var quantityOfImages = $element.find(".my-entity-image").length;
+    var quantityOfImages = $element.find(".my-entity-image img").length;
     
     if (quantityOfImages < 1) {
       return;
@@ -156,14 +156,14 @@ var resizeImagePart = function($element) {
     var idxImage = 0;
     var sumHeight = 0;
     
-    $element.find(".my-entity-image").each(function() {
+    $element.find(".my-entity-image img").each(function() {
       if (parseFloat($(this).css('width')) > parseFloat($(this).css('height'))) {
         return quantityOfLandscapeImage++;
       }
     });
 
     
-    $element.find(".my-entity-image").each(function() {
+    $element.find(".my-entity-image img").each(function() {
       
       var width = parseFloat($(this).css('width'));
       var height = parseFloat($(this).css('height'));
@@ -182,7 +182,7 @@ var resizeImagePart = function($element) {
 
     var newHeight = sumHeight / idxImage;
 
-    $element.find(".my-entity-image").each(function() {
+    $element.find(".my-entity-image img").each(function() {
       $(this).css('height', newHeight);
     });
 
