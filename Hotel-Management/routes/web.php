@@ -16,6 +16,7 @@ Route::get('/', function () {
   return view('welcome');
 })->name('home');
 
+Route::post('/', 'MailController@postContact')->name('home.postContact');
 
 Route::resources([
   'bookingPurposes'       =>  'BookingPurposeController',

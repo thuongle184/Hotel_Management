@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Session;
+use Mail;
+use App\Mail\SendEmail;
 use App\Booking;
 use App\User;
 use App\BookingType;
@@ -71,6 +73,8 @@ class BookingController extends Controller
         $booking->booking_purpose_id=$request->booking_purpose_id;
         $booking->save();
 
+
+        Mail::to(Auth::user())->send(new SendEmail('Đặt hàng'," $booking->entry_date, $booking->exit_date"));
         // return 
          
         //   redirect()->route('welcome')->with('success','Add success!');
