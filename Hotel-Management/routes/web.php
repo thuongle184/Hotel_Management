@@ -31,7 +31,8 @@ Route::resources([
   'titles'                =>  'TitleController',
   'users'                 =>  'UserController',
   'userTypes'             =>  'UserTypeController',
-  'vipCards'              =>  'VipCardController'
+  'vipCards'              =>  'VipCardController',
+  'bookings'              =>  'BookingController'
 ]);
 
 
