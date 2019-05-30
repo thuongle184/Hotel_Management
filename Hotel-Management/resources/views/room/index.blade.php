@@ -41,6 +41,18 @@
                       <span>Detail</span>
                     </a>
                   </div>
+
+                  @auth
+                    <div class="my-padding-right-8 my-padding-bottom-8">
+                      <a
+                        href="{!! route('bookings.create', ['roomId'=>$room->id]) !!}"
+                        class="btn btn-sm btn-warning"
+                      >
+                        <i class="far fa-hand-pointer my-margin-right-12"></i>
+                        <span>Book</span>
+                      </a>
+                    </div>
+                  @endauth
                   
                   @if (Auth::check() && Auth::user()->hasAdminRights())
                     <div class="my-padding-right-8 my-padding-bottom-8">
