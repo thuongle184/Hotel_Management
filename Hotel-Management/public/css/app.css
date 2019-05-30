@@ -172,3 +172,7 @@ aside .my-border-top, aside .my-border-bottom { border-color: #ccc; }
 
 
 .my-word-break { word-break: break-all; }
+
+#con{
+  text-align: center;
+}
