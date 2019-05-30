@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
+// Route::get('/', function () {
+//   return view('welcome');
+// })->name('home');
 Route::get('/', function () {
-  return view('welcome');
+    return view('welcome');
 })->name('home');
-
-Route::post('/', 'MailController@postContact')->name('home.postContact');
 
 Route::resources([
   'bookingPurposes'       =>  'BookingPurposeController',
@@ -50,3 +51,4 @@ Route::get('logout', 'LoginController@logout')->name('login.logout');
 Route::get('/forbidden', function () {
   return view('forbidden');
 })->name('forbidden');
+

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\CustomerMessage;
 use App\Http\Requests\CustomerMessageRequest;
-
+use Mail;
+use Session;
+use App\User;
 
 class CustomerMessageController extends Controller
 {
@@ -47,4 +49,5 @@ class CustomerMessageController extends Controller
     $customerMessage->delete();
     return 'ok';
   }
+
 }

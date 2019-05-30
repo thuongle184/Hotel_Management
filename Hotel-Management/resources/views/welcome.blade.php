@@ -71,28 +71,128 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+  </div><!-- end carousel -->
+
+
+  <div class="d-flex flex-wrap align-items-center flex-fill justify-content-between">
+
+    <a href="mailto:hotelInfor@gmail.com">
+      <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+        <div class="my-padding-right-19">
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        
+        <div>
+          <em>hotelInfor@gmail.com</em>
+        </div>
+      </div>
+    </a>
+
+
+    <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+      <div class="my-padding-right-19">
+        <i class="fas fa-phone-square"></i>
+      </div>
+      
+      <div>
+        <em>+84 342 713 011</em>
+      </div>
+    </div>
+
+
+    <a
+      href="http://maps.google.com/maps?q=99 Tô Hiến Thành, Phước Mỹ, Sơn Trà, Đà Nẵng 550000"
+      target="_blank"
+    >
+      <div class="d-flex align-items-start my-padding-bottom-12 my-padding-right-40">
+        <div class="my-padding-right-19">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
+        
+        <div>
+          <em>99 Tô Hiến Thành, Phước Mỹ, Sơn Trà, Đà Nẵng 550000</em>
+        </div>
+      </div>
+    </a>
+
   </div>
-  <div class="col-md-7">
-    <h1>Contact Me</h1>
+
+
+  <div class="my-margin-top-19 my-padding-top-19 my-border-top">
+    
+    <h3>Contact Us</h3>
     <hr>
-    <form action="" method="POST">
-        {{ csrf_field() }}
-        <div class="form-group">
-            <label name="email">Email:</label>
-            <input id="email" name="email" class="form-control" placeholder="Email">
+    
+    <form action="{!! url('/customerMessages') !!}" method="POST">
+
+      {{ csrf_field() }}
+
+      @auth
+      
+        <input
+          type="hidden"
+          name="name"
+          value="{!! Auth::user()->fullName() !!}"
+        >
+        
+        <input type="hidden" name="email" value="{!! Auth::user()->email !!}">
+      
+
+      @else
+
+        <div class="row my-padding-bottom-19">
+          <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="name">Name:<label>
+          </div>
+          
+          <div class="col my-padding-bottom-8">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Your name...">
+          </div>
         </div>
 
-        <div class="form-group">
-            <label name="subject">Subject:</label>
-            <input id="subject" name="subject" class="form-control" placeholder="Subject">
+
+        <div class="row my-padding-bottom-19">
+          <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+            <label for="email">Email:<label>
+          </div>
+          
+          <div class="col my-padding-bottom-8">
+            <input type="text" id="email" name="email" class="form-control" placeholder="Your e-mail address...">
+          </div>
         </div>
 
-        <div class="form-group">
-            <label name="message">Message:</label>
-            <textarea id="message" name="message" class="form-control" placeholder="Type your message here..."></textarea>
-        </div>
 
-        <input type="submit" value="Send Message" class="btn btn-success">
+      @endauth
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+          <label for="message">Message:</label>
+        </div>
+        
+        <div class="col my-padding-bottom-8">
+          <textarea
+            rows="4"
+            id="message"
+            name="message"
+            class="form-control"
+            placeholder="Your message..."
+          ></textarea>
+        </div>
+      </div>
+
+
+      <div class="row my-padding-bottom-19">
+        <div class="col-md-3 col-lg-4 my-padding-bottom-8"></div>
+        
+        <div class="col my-padding-bottom-8">
+          <button type="submit" class="btn btn-success btn-sm">
+            <i class="far fa-share-square my-margin-right-19"></i>
+            <span>Send your message</span>
+          </button>
+        </div>
+      </div>
+
     </form>
-</div>
+
+  </div>
 @endsection
