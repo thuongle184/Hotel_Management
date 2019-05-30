@@ -19,38 +19,56 @@
     <input type="hidden" name="id" value="{!! $booking['id'] !!}">
   @endif 
 
-  <div class="row my-padding-bottom-19">
-    <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label for="booking_type_id">Booking type:<label>
+
+  @if(Auth::check() && Auth::user()->hasAdminRights())
+
+    <div class="row my-padding-bottom-19">
+      <div class="col-md-3 col-lg-4 my-padding-bottom-8">
+        <label for="booking_type_id">Booking type:<label>
+      </div>
+
+      <div class="col-md-9 col-lg-8 my-padding-bottom-8">
+        <select name="booking_type_id" class="form-control" id="booking_type_id">
+
+          @foreach ($bookingTypes as $bookingType)
+            <option
+              value="{!! $bookingType['id'] !!}"
+              {!!
+                  old (
+                    'booking_type_id',
+                    isset($booking) && $booking['booking_type_id'] == $bookingType['id'] ? 'selected' : NULL 
+                  )
+              !!}
+            >
+              @if($bookingType['online_plateform_id'])
+                {!! $bookingType->onlinePlateform->label !!}
+              
+              @else
+                {!! $bookingType['label'] !!}
+              
+              @endif
+            </option>
+          @endforeach
+
+        </select>
+      </div>
     </div>
 
-    <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      <select name="booking_type_id" class="form-control" id="booking_type_id">
 
-        @foreach ($bookingTypes as $bookingType)
-          <option
-            value="{!! $bookingType['id'] !!}"
-            {!!
-                old (
-                  'booking_type_id',
-                  isset($booking) && $booking['booking_type_id'] == $bookingType['id'] ? 'selected' : NULL 
-                )
-            !!}
-          >
-            {!! $bookingType['label'] !!}
-          </option>
-        @endforeach
+  @elseif(Auth::check())
 
-      </select>
-    </div>
-  </div>
+    <!-- Value 7 = Website -->
+    <input type="hidden" name="booking_type_id" value="7">
+
+  
+  @endif
 
 
   @if(Auth::check() && Auth::user()->hasAdminRights())
   
     <div class="row my-padding-bottom-19">
       <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-        <label for="user_id">User id:<label>
+        <label for="user_id">User:<label>
       </div>
 
       <div class="col-md-9 col-lg-8 my-padding-bottom-8">
@@ -66,7 +84,7 @@
                   )
               !!}
             >
-              {!! $user['first_name'] !!}
+              {!! $user->fullName() !!}
             </option>
           @endforeach
 
@@ -85,12 +103,36 @@
 
    <div class="row my-padding-bottom-19">
     <div class="col-md-3 col-lg-4 my-padding-bottom-8">
-      <label>Room nr.:<label>
+      <label for="room_id">Room nr.:<label>
     </div>
 
     <div class="col-md-9 col-lg-8 my-padding-bottom-8">
-      {!! $room->number !!}
-      <input type="hidden" name="room_id" value="{!! $room->id !!}">
+      @isset($room)
+        {!! $room->number !!}
+        <input type="hidden" name="room_id" value="{!! $room->id !!}">
+
+      @else  
+      
+        <select name="room_id" class="form-control" id="room_id">
+
+          @foreach ($rooms as $room)
+            <option
+              value="{!! $room['id'] !!}"
+              {!!
+                  old (
+                    'room_id',
+                    isset($booking) && $booking['room_id'] == $room['id'] ? 'selected' : NULL 
+                  )
+              !!}
+            >
+              {!! $room->number !!}
+            </option>
+          @endforeach
+
+        </select>
+
+
+      @endisset
     </div>
   </div>
       
@@ -192,11 +234,11 @@
       @if (Auth::check() && Auth::user()->hasAdminRights() && Auth::id() != $user->id)
 
         <a
-          href="{!! route('users.index') !!}"
+          href="{!! route('bookings.index') !!}"
           class="btn btn-sm btn-outline-dark my-margin-right-8 my-margin-bottom-8"
         >
           <i class="far fa-arrow-alt-circle-left my-margin-right-12"></i>
-          <span>Back to list of rooms</span>
+          <span>Back to list of bookings</span>
         </a>
 
 

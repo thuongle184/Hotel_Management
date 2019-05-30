@@ -69,6 +69,7 @@ class User extends Authenticatable
       // if user is manager or director
       return in_array($this['user_type_id'], [3, 7]);
     }
+
     public function fullName() {
       return $this->middle_name ?
           $this->title->label." ".$this->first_name." ".$this->middle_name." ".$this->last_name :
