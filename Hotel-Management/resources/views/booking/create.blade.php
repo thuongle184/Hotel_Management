@@ -4,7 +4,7 @@
 
   @include(
     '_layouts.showHeader',
-    ['title' => $booking["label"]]
+    ['title' => "Add a new reservation"]
   )
 
 @endsection
@@ -22,6 +22,7 @@
       'users'               =>  $users,
       'bookingTypes'        =>  $bookingTypes,
       'room'                =>  $room,
+      'rooms'               =>  $rooms,
       'bookingPurposes'     =>  $bookingPurposes      
     ]
   )
